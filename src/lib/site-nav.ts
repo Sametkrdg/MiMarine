@@ -4,11 +4,21 @@
  * message files at render time.
  */
 
-export const fleetTabs = [
-  { href: "/fleet/delivered", labelKey: "delivered" },
-  { href: "/fleet/ready-for-delivery", labelKey: "readyForDelivery" },
-  { href: "/fleet/in-production", labelKey: "inProduction" },
-] as const;
+import type { DealerRegion, YachtStatus } from "@/content/types";
+
+export const fleetTabs: {
+  href: string;
+  status: YachtStatus;
+  labelKey: string;
+}[] = [
+  { href: "/fleet/delivered", status: "delivered", labelKey: "delivered" },
+  {
+    href: "/fleet/ready-for-delivery",
+    status: "ready-for-delivery",
+    labelKey: "readyForDelivery",
+  },
+  { href: "/fleet/in-production", status: "in-production", labelKey: "inProduction" },
+];
 
 export const newsSections = [
   { href: "/news-and-events#upcoming", labelKey: "upcoming" },
@@ -23,6 +33,13 @@ export const primaryRoutes = {
   network: "/dealer-and-services-network",
   contact: "/contact",
 } as const;
+
+/** Query key used by the network page's region filter. */
+export const REGION_PARAM = "region";
+
+export function regionHref(region: DealerRegion): string {
+  return `${primaryRoutes.network}?${REGION_PARAM}=${region}`;
+}
 
 /** Flat list used by the mobile drawer, in the order the design shows them. */
 export const mobileLinks = [

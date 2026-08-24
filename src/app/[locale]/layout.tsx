@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Footer from "@/components/site/Footer";
 import Navbar from "@/components/site/Navbar";
+import { getYachtCounts } from "@/content";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -49,11 +50,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   // Opts every page under this layout into static rendering.
   setRequestLocale(locale);
 
+  const fleetCounts = await getYachtCounts();
+
   return (
     <html lang={locale} className={jost.variable}>
       <body className="flex min-h-screen flex-col font-sans">
         <NextIntlClientProvider>
-          <Navbar />
+          <Navbar fleetCounts={fleetCounts} />
           <main className="flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>

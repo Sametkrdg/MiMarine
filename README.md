@@ -36,9 +36,10 @@ src/
       contact/           Resend (henüz bağlı değil — 503 döner)
       revalidate/        Sanity webhook (henüz bağlı değil — 503 döner)
     globals.css          Tailwind v4 tema token'ları
-  components/site/       Navbar, Footer, Wordmark, form, yer tutucular
+  components/site/       Navbar, Footer, Wordmark, kartlar, form, yer tutucular
+  content/               types.ts · sample-data.ts · index.ts (içerik katmanı)
   i18n/                  next-intl routing / navigation / request
-  lib/                   brand, site-nav, metadata, placeholder
+  lib/                   brand, site-nav, metadata, format, placeholder
   proxy.ts               locale yönlendirmesi (Next 16'da "middleware"nin yeni adı)
 messages/                tr.json · en.json — sabit arayüz metinleri
 ```
@@ -65,9 +66,46 @@ Tipografi: **Jost** (200 / 300 / 400), `next/font/google` üzerinden self-host e
 Marka metinleri tek yerden gelir: [`src/lib/brand.ts`](./src/lib/brand.ts).
 Logo/wordmark değişirse orayı düzenlemek yeterlidir.
 
+## İçerik Katmanı — Sanity'ye Geçiş
+
+Sayfalar içeriği **yalnızca** `src/content/index.ts` üzerinden alır. Bugün bu
+fonksiyonlar `sample-data.ts`'i okuyor; Faz 2'de her fonksiyonun **gövdesi**
+GROQ sorgusuna çevrilecek ve **hiçbir sayfa değişmeyecek**. Bu dolaylılık
+bilerek konuldu — sayfalardan doğrudan `sample-data` import etmeyin.
+
+```
+src/content/types.ts        Sanity şemasını aynalayan tipler (L10n<T> = { tr, en })
+src/content/sample-data.ts  ⚠ YER TUTUCU İÇERİK — Faz 2'de silinecek
+src/content/index.ts        getYachts() · getEventBySlug() · getDealers() …
+```
+
+Kurallar:
+
+- Çok dilli alanlar `L10n<T>` (`{ tr, en }`); `pick(alan, locale)` ile çözülür.
+- Yaklaşan / Geçmiş etkinlik ayrımı **tarihten hesaplanır**, elle seçilmez
+  (PROJE_PLANI.md'deki kural).
+- Bilinmeyen slug → `notFound()` (404 döner, doğrulandı).
+- Yat ve etkinlik detay sayfaları `generateStaticParams` ile prerender edilir.
+
+## Yer Tutucu İçerik Hakkında
+
+`src/content/sample-data.ts` bilerek şu kurallara uyar:
+
+- Kuruluş yılı, teslim adedi gibi **hiçbir istatistik uydurulmadı** — o alanlar
+  `[00]` gibi köşeli parantezli işaretler taşıyor.
+- **Hiçbir telefon, e-posta veya adres uydurulmadı** — kimse yanlış bir tarafa
+  ulaşamasın diye.
+- Hiçbir üçüncü taraf bayi/partner firma adı uydurulmadı.
+- Yatlar uydurma tekne adı yerine model/tekne numarası taşıyor.
+
 ## Bilinen Eksikler
 
-- İçerik Sanity'den değil; sayfalarda yer tutucu var (Faz 2).
+- İçerik Sanity'den değil, `src/content/sample-data.ts`'ten geliyor (Faz 2).
+- Görseller yok; her görsel alanında ne geleceğini yazan yer tutucu kutu var
+  (`ImagePlaceholder`). Plan Unsplash placeholder'a izin veriyor — istenirse
+  eklenebilir, şu an bilerek eklenmedi (kırık görsel riski).
+- Bayi haritası henüz Mapbox değil, yer tutucu kutu (token bekliyor).
+- Fleet sekme şeridi dar ekranda yatay kayar (tasarımın kendi davranışı).
 - `/api/contact` ve `/api/revalidate` bilinçli olarak stub — env değişkenleri
   yokken 503 döner ki hata sessizce yutulmasın.
 - İletişim bilgileri `src/lib/placeholder.ts` içinde `[ADDRESS LINE 1]` gibi

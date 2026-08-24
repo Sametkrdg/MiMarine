@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import type { YachtStatus } from "@/content/types";
 import { fleetTabs, mobileLinks, newsSections, primaryRoutes } from "@/lib/site-nav";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Wordmark from "./Wordmark";
@@ -18,10 +19,16 @@ function Chevron() {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({
+  fleetCounts,
+}: {
+  /** Yacht count per status, resolved on the server by the layout. */
+  fleetCounts: Record<YachtStatus, number>;
+}) {
   const t = useTranslations("nav");
   const tFleet = useTranslations("fleetTabs");
   const tNews = useTranslations("newsSections");
+  const tCount = useTranslations("fleet");
 
   const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -43,10 +50,17 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const menus: Record<MenuKey, { title: string; items: { href: string; label: string }[] }> = {
+  const menus: Record<
+    MenuKey,
+    { title: string; items: { href: string; label: string; meta?: string }[] }
+  > = {
     fleet: {
       title: t("fleet"),
-      items: fleetTabs.map((tab) => ({ href: tab.href, label: tFleet(tab.labelKey) })),
+      items: fleetTabs.map((tab) => ({
+        href: tab.href,
+        label: tFleet(tab.labelKey),
+        meta: tCount("count", { count: fleetCounts[tab.status] }),
+      })),
     },
     news: {
       title: t("newsAndEvents"),
@@ -182,6 +196,11 @@ export default function Navbar() {
                   className="flex min-w-[420px] items-baseline justify-between gap-10 border-b border-ink py-[9px] text-[26px] font-extralight text-ink transition-colors hover:text-accent"
                 >
                   <span>{item.label}</span>
+                  {item.meta && (
+                    <span className="text-[11px] tracking-[0.16em] text-muted">
+                      {item.meta}
+                    </span>
+                  )}
                 </Link>
               ))}
             </div>

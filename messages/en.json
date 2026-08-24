@@ -25,7 +25,13 @@
   },
   "home": {
     "eyebrow": "MiMarine Yacht",
-    "title": "Quiet water, built to last."
+    "title": "Quiet water, built to last.",
+    "sectionHouse": "01 — The yard",
+    "sectionFeatured": "02 — Featured",
+    "allModels": "All models",
+    "exploreFleet": "Explore the fleet",
+    "enquiries": "Enquiries",
+    "speakWithUs": "Speak with us"
   },
   "fleet": {
     "eyebrow": "Fleet",
@@ -40,20 +46,38 @@
     "inProduction": {
       "title": "Currently in the sheds.",
       "intro": "Hulls under construction and open build slots. Early commissions can still influence layout, propulsion and interior."
-    }
+    },
+    "count": "{count} yachts"
   },
   "ourWorld": {
     "eyebrow": "Our World",
-    "title": "A small yard, a long horizon."
+    "title": "A small yard, a long horizon.",
+    "yardLabel": "The yard",
+    "commitments": "Our commitments"
   },
   "news": {
     "eyebrow": "News and Events",
-    "title": "From the yard and the water."
+    "title": "From the yard and the water.",
+    "archive": "Archive",
+    "upcomingCount": "{count} dates"
   },
   "network": {
     "eyebrow": "Dealer and Services Network",
     "title": "One service record, in every port.",
-    "intro": "Choose a region to see representation and refit capability."
+    "intro": "Choose a region to see representation and refit capability.",
+    "summary": "{dealers} dealers · {services} service yards · {regions} regions",
+    "mapLabel": "Map",
+    "regions": {
+      "mediterranean": "Mediterranean",
+      "northern-europe": "Northern Europe",
+      "americas": "Americas",
+      "asia-pacific": "Asia-Pacific"
+    },
+    "roles": {
+      "dealer": "Dealer",
+      "service": "Service",
+      "both": "Dealer · Service"
+    }
   },
   "contact": {
     "eyebrow": "Contact",
@@ -71,7 +95,8 @@
       "messagePlaceholder": "A few lines about the yacht, the cruising ground, the timeline.",
       "submit": "Send enquiry",
       "note": "We answer every enquiry personally, usually within two working days."
-    }
+    },
+    "officesLabel": "Offices"
   },
   "footer": {
     "fleet": "Fleet",
@@ -87,5 +112,18 @@
     "readMore": "Read more",
     "backTo": "Back",
     "placeholderNotice": "Content for this page will be filled once Sanity is connected."
+  },
+  "yacht": {
+    "brief": "The brief",
+    "specifications": "Specifications",
+    "gallery": "Gallery",
+    "closing": "Request the full specification and general arrangement.",
+    "enquire": "Enquire",
+    "backToFleet": "Fleet"
+  },
+  "article": {
+    "share": "Share",
+    "copyLink": "Copy link",
+    "backToNews": "News and Events"
   }
 }

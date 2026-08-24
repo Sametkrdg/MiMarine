@@ -25,7 +25,13 @@
   },
   "home": {
     "eyebrow": "MiMarine Yacht",
-    "title": "Sakin su, kalıcı yapı."
+    "title": "Sakin su, kalıcı yapı.",
+    "sectionHouse": "01 — Tersane",
+    "sectionFeatured": "02 — Öne çıkan",
+    "allModels": "Tüm modeller",
+    "exploreFleet": "Filoyu keşfet",
+    "enquiries": "Talepler",
+    "speakWithUs": "Bizimle konuşun"
   },
   "fleet": {
     "eyebrow": "Filo",
@@ -40,20 +46,38 @@
     "inProduction": {
       "title": "Şu an tezgâhta olanlar.",
       "intro": "İnşa hâlindeki tekneler ve açık üretim slotları. Erken siparişler yerleşimi, tahrik sistemini ve iç mekânı hâlâ etkileyebilir."
-    }
+    },
+    "count": "{count} yat"
   },
   "ourWorld": {
     "eyebrow": "Dünyamız",
-    "title": "Küçük bir tersane, uzun bir ufuk."
+    "title": "Küçük bir tersane, uzun bir ufuk.",
+    "yardLabel": "Tersane",
+    "commitments": "Taahhütlerimiz"
   },
   "news": {
     "eyebrow": "Haberler ve Etkinlikler",
-    "title": "Tersaneden ve sudan."
+    "title": "Tersaneden ve sudan.",
+    "archive": "Arşiv",
+    "upcomingCount": "{count} tarih"
   },
   "network": {
     "eyebrow": "Bayi ve Servis Ağı",
     "title": "Her limanda tek bir servis kaydı.",
-    "intro": "Temsilcilik ve refit kabiliyetini görmek için bir bölge seçin."
+    "intro": "Temsilcilik ve refit kabiliyetini görmek için bir bölge seçin.",
+    "summary": "{dealers} bayi · {services} servis · {regions} bölge",
+    "mapLabel": "Harita",
+    "regions": {
+      "mediterranean": "Akdeniz",
+      "northern-europe": "Kuzey Avrupa",
+      "americas": "Amerika",
+      "asia-pacific": "Asya-Pasifik"
+    },
+    "roles": {
+      "dealer": "Bayi",
+      "service": "Servis",
+      "both": "Bayi · Servis"
+    }
   },
   "contact": {
     "eyebrow": "İletişim",
@@ -71,7 +95,8 @@
       "messagePlaceholder": "Tekne, seyir bölgesi ve zaman planı hakkında birkaç satır.",
       "submit": "Talebi gönder",
       "note": "Her talebi bizzat yanıtlıyoruz, genellikle iki iş günü içinde."
-    }
+    },
+    "officesLabel": "Ofisler"
   },
   "footer": {
     "fleet": "Filo",
@@ -87,5 +112,18 @@
     "readMore": "Devamını oku",
     "backTo": "Geri",
     "placeholderNotice": "Bu sayfanın içeriği Sanity bağlandığında doldurulacak."
+  },
+  "yacht": {
+    "brief": "Tasarım notu",
+    "specifications": "Teknik özellikler",
+    "gallery": "Galeri",
+    "closing": "Tam spesifikasyon ve genel yerleşim planını talep edin.",
+    "enquire": "Talep gönder",
+    "backToFleet": "Filo"
+  },
+  "article": {
+    "share": "Paylaş",
+    "copyLink": "Bağlantıyı kopyala",
+    "backToNews": "Haberler ve Etkinlikler"
   }
 }

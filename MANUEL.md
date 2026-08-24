@@ -41,7 +41,12 @@ parantezli yer tutucular kondu (`src/lib/placeholder.ts`).
 
 ## İçerik & Görsel
 
-- [ ] Gerçek yat fotoğrafları ve galeri görsellerini sağlayın (şu an Unsplash placeholder kullanılıyor).
+- [ ] Gerçek yat fotoğrafları ve galeri görsellerini sağlayın (şu an her görsel alanında
+      ne geleceğini yazan boş bir yer tutucu kutu var).
+- [ ] `src/content/sample-data.ts` içindeki **tüm yer tutucu içeriği** gözden geçirin:
+      yat modelleri/adları, teknik özellikler, etkinlik metinleri, bayi listesi.
+      Bu dosya Sanity bağlanınca silinecek — ama o zamana kadar sitede görünen
+      metinler burada. Uydurulmamış alanlar `[KÖŞELİ PARANTEZ]` ya da `—` taşıyor.
 - [ ] Logo dosyasını (SVG tercihen) ve marka renk kodlarını sağlayın. Şu an prototipin
       paleti geçici olarak kullanılıyor (mor aksan `#5B54A6`, kağıt `#FBFAF8`,
       mürekkep `#171717`) — hepsi `src/app/globals.css` içindeki `@theme` bloğunda.

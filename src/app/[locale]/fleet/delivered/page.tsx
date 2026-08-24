@@ -10,5 +10,5 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function Page({ params }: Props) {
   const { locale } = await params;
-  return <FleetTabPage locale={locale} tab="delivered" />;
+  return <FleetTabPage locale={locale} status="delivered" />;
 }
