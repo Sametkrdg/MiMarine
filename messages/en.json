@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "titleTemplate": "%s · MiMarine Yacht",
+    "defaultTitle": "MiMarine Yacht",
+    "defaultDescription": "Sustainable aluminium yachts, built by hand on the Aegean coast."
+  },
+  "nav": {
+    "fleet": "Fleet",
+    "ourWorld": "Our World",
+    "newsAndEvents": "News and Events",
+    "network": "Dealer and Services Network",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "languageLabel": "Language"
+  },
+  "fleetTabs": {
+    "delivered": "Delivered Yachts",
+    "readyForDelivery": "Ready for Delivery",
+    "inProduction": "In Production"
+  },
+  "newsSections": {
+    "upcoming": "Upcoming Events",
+    "past": "Past / Held Events"
+  },
+  "home": {
+    "eyebrow": "MiMarine Yacht",
+    "title": "Quiet water, built to last."
+  },
+  "fleet": {
+    "eyebrow": "Fleet",
+    "delivered": {
+      "title": "Finished, on the water, still on our register.",
+      "intro": "A record of every yacht we have handed over — each one stays on our service register and is visited by the yard once a year."
+    },
+    "readyForDelivery": {
+      "title": "Finished, trialled, waiting for an owner.",
+      "intro": "Yachts completed on speculation or released from a contract. Specification is largely fixed; textiles, artwork and flag remain open."
+    },
+    "inProduction": {
+      "title": "Currently in the sheds.",
+      "intro": "Hulls under construction and open build slots. Early commissions can still influence layout, propulsion and interior."
+    }
+  },
+  "ourWorld": {
+    "eyebrow": "Our World",
+    "title": "A small yard, a long horizon."
+  },
+  "news": {
+    "eyebrow": "News and Events",
+    "title": "From the yard and the water."
+  },
+  "network": {
+    "eyebrow": "Dealer and Services Network",
+    "title": "One service record, in every port.",
+    "intro": "Choose a region to see representation and refit capability."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Tell us about your water.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Full name",
+      "email": "Email",
+      "emailPlaceholder": "name@company.com",
+      "country": "Country",
+      "countryPlaceholder": "Türkiye",
+      "interest": "Interest",
+      "interestPlaceholder": "New build, brokerage, service",
+      "message": "Message",
+      "messagePlaceholder": "A few lines about the yacht, the cruising ground, the timeline.",
+      "submit": "Send enquiry",
+      "note": "We answer every enquiry personally, usually within two working days."
+    }
+  },
+  "footer": {
+    "fleet": "Fleet",
+    "company": "Company",
+    "contact": "Contact",
+    "enquiries": "Enquiries",
+    "ownerServices": "Owner services",
+    "press": "Press",
+    "rights": "All rights reserved",
+    "privacy": "Privacy"
+  },
+  "common": {
+    "readMore": "Read more",
+    "backTo": "Back",
+    "placeholderNotice": "Content for this page will be filled once Sanity is connected."
+  }
+}

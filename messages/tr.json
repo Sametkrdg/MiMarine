@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "titleTemplate": "%s · MiMarine Yacht",
+    "defaultTitle": "MiMarine Yacht",
+    "defaultDescription": "Ege kıyısında el işçiliğiyle üretilen sürdürülebilir alüminyum yatlar."
+  },
+  "nav": {
+    "fleet": "Filo",
+    "ourWorld": "Dünyamız",
+    "newsAndEvents": "Haberler ve Etkinlikler",
+    "network": "Bayi ve Servis Ağı",
+    "contact": "İletişim",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "languageLabel": "Dil"
+  },
+  "fleetTabs": {
+    "delivered": "Teslim Edilen Yatlar",
+    "readyForDelivery": "Teslime Hazır",
+    "inProduction": "Üretimde"
+  },
+  "newsSections": {
+    "upcoming": "Yaklaşan Etkinlikler",
+    "past": "Geçmiş Etkinlikler"
+  },
+  "home": {
+    "eyebrow": "MiMarine Yacht",
+    "title": "Sakin su, kalıcı yapı."
+  },
+  "fleet": {
+    "eyebrow": "Filo",
+    "delivered": {
+      "title": "Teslim ettiğimiz her tekne hâlâ servis kaydımızda.",
+      "intro": "Devrettiğimiz yatların kaydı — her biri servis defterimizde kalır ve yılda bir kez tersane tarafından ziyaret edilir."
+    },
+    "readyForDelivery": {
+      "title": "Bitmiş, denenmiş, armatörünü bekliyor.",
+      "intro": "Tamamlanmış ya da sözleşmeden çıkmış tekneler. Spesifikasyon büyük ölçüde sabit; kumaş, sanat eseri ve bayrak açık kalır."
+    },
+    "inProduction": {
+      "title": "Şu an tezgâhta olanlar.",
+      "intro": "İnşa hâlindeki tekneler ve açık üretim slotları. Erken siparişler yerleşimi, tahrik sistemini ve iç mekânı hâlâ etkileyebilir."
+    }
+  },
+  "ourWorld": {
+    "eyebrow": "Dünyamız",
+    "title": "Küçük bir tersane, uzun bir ufuk."
+  },
+  "news": {
+    "eyebrow": "Haberler ve Etkinlikler",
+    "title": "Tersaneden ve sudan."
+  },
+  "network": {
+    "eyebrow": "Bayi ve Servis Ağı",
+    "title": "Her limanda tek bir servis kaydı.",
+    "intro": "Temsilcilik ve refit kabiliyetini görmek için bir bölge seçin."
+  },
+  "contact": {
+    "eyebrow": "İletişim",
+    "title": "Bize sularınızdan bahsedin.",
+    "form": {
+      "name": "Ad Soyad",
+      "namePlaceholder": "Ad Soyad",
+      "email": "E-posta",
+      "emailPlaceholder": "ad@sirket.com",
+      "country": "Ülke",
+      "countryPlaceholder": "Türkiye",
+      "interest": "İlgi alanı",
+      "interestPlaceholder": "Yeni inşa, brokerlik, servis",
+      "message": "Mesaj",
+      "messagePlaceholder": "Tekne, seyir bölgesi ve zaman planı hakkında birkaç satır.",
+      "submit": "Talebi gönder",
+      "note": "Her talebi bizzat yanıtlıyoruz, genellikle iki iş günü içinde."
+    }
+  },
+  "footer": {
+    "fleet": "Filo",
+    "company": "Kurumsal",
+    "contact": "İletişim",
+    "enquiries": "Talepler",
+    "ownerServices": "Armatör hizmetleri",
+    "press": "Basın",
+    "rights": "Tüm hakları saklıdır",
+    "privacy": "Gizlilik"
+  },
+  "common": {
+    "readMore": "Devamını oku",
+    "backTo": "Geri",
+    "placeholderNotice": "Bu sayfanın içeriği Sanity bağlandığında doldurulacak."
+  }
+}
