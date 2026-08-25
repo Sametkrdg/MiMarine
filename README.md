@@ -75,6 +75,31 @@ wordmark (tek satır `MIMARINE YACHT`), tam ad, tescilli unvan ve sosyal medya
 hesapları. `social` boş olduğu sürece footer'daki sosyal satır hiç
 render edilmez; ölü link göstermektense hiç göstermemek daha iyi.
 
+## Site Asistanı (chatbot)
+
+Google Gemini ile çalışır. Bilgi tabanı, sayfaların okuduğu **aynı içerik
+katmanından** her istekte yeniden kurulur (`src/lib/chat-context.ts`) — vektör
+veritabanı, embedding adımı, ek servis yok. Bot siteden daha eski bilgi
+veremez ve site dışına çıkamaz.
+
+```
+src/lib/chat-context.ts        Bilgi tabanı + sistem talimatı
+src/app/api/chat/route.ts      Gemini'ye stream eden uç nokta
+src/components/site/ChatWidget.tsx   Arayüz
+```
+
+- Model `GEMINI_MODEL` ile değiştirilebilir; varsayılan `gemini-3.5-flash-lite`.
+- `GEMINI_API_KEY` yoksa **balon hiç render edilmez** — çalışmayan bir butona
+  tıklanmaz.
+- IP başına 10 dakikada 20 istek sınırı var. Serverless örnekler bellek
+  paylaşmadığı için bu tek örneği sınırlar; ücretsiz kotayı kazara tüketmeye
+  karşı yeterli, güvenlik kontrolü değil.
+- Sistem talimatı botu üç konuda bağlar: **uydurma yok** (fiyat, tarih, garanti
+  sorulursa iletişime yönlendirir), **kişisel bilgi istemez**, **teknik
+  özelliklerin geçici olduğunu söyler**. Üçü de test edildi.
+- Sohbet kutusunun altında Gemini kullanıldığı ve kişisel bilgi paylaşılmaması
+  gerektiği yazar; KVKK metnine de ayrı bir bölüm eklendi.
+
 ## Harita
 
 Leaflet + OpenStreetMap. Hesap, API key ve kredi kartı gerektirmez.
@@ -82,21 +107,51 @@ OSM'in tile kullanım politikası **atıf zorunlu** kılar; atıf tile katmanın
 kendisi tarafından basılır, kaldırmayın. Yoğun trafikte kendi tile
 sağlayıcınıza geçmek gerekebilir.
 
-Harita yalnızca koordinatı olan bayiler varsa çizilir
+Bayi haritası yalnızca koordinatı olan bayiler varsa çizilir
 (`getMappableDealers()`), yoksa yer tutucu görsel gösterilir.
 
-## İçerik Katmanı — Sanity'ye Geçiş
+İletişim sayfasındaki harita tersanenin gerçek konumunu gösterir
+(`40.968312, 40.305812` — client tarafından doğrulandı).
 
-Sayfalar içeriği **yalnızca** `src/content/index.ts` üzerinden alır. Bugün bu
-fonksiyonlar `sample-data.ts`'i okuyor; Faz 2'de her fonksiyonun **gövdesi**
-GROQ sorgusuna çevrilecek ve **hiçbir sayfa değişmeyecek**. Bu dolaylılık
-bilerek konuldu — sayfalardan doğrudan `sample-data` import etmeyin.
+## İçerik Katmanı — Sanity
+
+Sayfalar içeriği **yalnızca** `src/content/index.ts` üzerinden alır; oradan
+doğrudan `sample-data` import etmeyin.
 
 ```
-src/content/types.ts        Sanity şemasını aynalayan tipler (L10n<T> = { tr, en })
-src/content/sample-data.ts  ⚠ YER TUTUCU İÇERİK — Faz 2'de silinecek
+src/content/types.ts        Ortak tipler (L10n<T> = { tr, en })
 src/content/index.ts        getYachts() · getEventBySlug() · getDealers() …
+src/content/sample-data.ts  ⚠ YER TUTUCU — Sanity dolunca silinecek
+src/sanity/schemas/         Sanity şeması
+src/sanity/queries.ts       GROQ + Sanity → site tiplerine dönüşüm
+src/sanity/client.ts        Read-only client (projectId yoksa null döner)
 ```
+
+**Devretme mantığı:** her koleksiyon için önce Sanity sorgulanır. Sanity
+yapılandırılmamışsa, ulaşılamıyorsa ya da o tipte **hiç doküman yoksa**
+`sample-data.ts`'e düşülür. Yani içerik girdikçe site koleksiyon koleksiyon
+Sanity'ye geçer; hepsi girilince `sample-data.ts` silinebilir.
+
+Bu davranış uçtan uca test edildi: Sanity'ye bir bayi dokümanı yazıldığında
+site örnek veriyi bırakıp Sanity'yi gösterdi ve koordinatı olduğu için harita
+devreye girdi; doküman silinince örnek veriye geri döndü.
+
+### Sanity Studio
+
+`/studio` adresinde gömülü çalışır — ayrı bir deploy gerekmez. Üç singleton
+(Ana Sayfa, Dünyamız, Site Ayarları) sabit id'lere sabitlendi, editör yanlışlıkla
+ikinci bir kopya oluşturamaz.
+
+Çok dillilik **alan bazlı**: her çevrilebilir alan `{ tr, en }` nesnesi. Eklenti
+yok, doküman ikizlemesi yok — tek yat dokümanında iki dil yan yana.
+
+Uzun metin alanları düz metin olarak saklanır; **boş satır paragraf ayırır**.
+
+### İçerik değişince site nasıl tazelenir
+
+`POST /api/revalidate` — Sanity webhook'u. `next-sanity/webhook` imzayı
+`SANITY_REVALIDATE_SECRET` ile doğrular, imzasız istek reddedilir. Doküman
+tipine göre etkilenen yolları TR ve EN için ayrı ayrı `revalidatePath` eder.
 
 Kurallar:
 
@@ -137,19 +192,20 @@ eksik olduğunu yazar.
 
 ## Bilinen Eksikler
 
-- İçerik Sanity'den değil, `src/content/sample-data.ts`'ten geliyor (Faz 2).
+- Sanity bağlandı ve test edildi, ama **dataset henüz boş** — içerik girilene
+  kadar site `sample-data.ts`'i gösteriyor.
 - Görseller yok; her görsel alanında ne geleceğini yazan yer tutucu kutu var
   (`ImagePlaceholder`). Plan Unsplash placeholder'a izin veriyor — istenirse
   eklenebilir, şu an bilerek eklenmedi (kırık görsel riski).
 - Bayi haritası henüz Mapbox değil, yer tutucu kutu (token bekliyor).
 - Fleet sekme şeridi dar ekranda yatay kayar (tasarımın kendi davranışı).
-- `/api/revalidate` hâlâ stub — Sanity bağlanınca doldurulacak.
+
 - İletişim formu Resend'e bağlı ama **gerçek bir key ile hiç denenmedi**;
   geçersiz key ile hata yolu doğrulandı (401 → 502), başarılı gönderim değil.
-- **Harita kodu hazır ama görünmüyor.** Leaflet + OpenStreetMap ile kuruldu
-  (hesap/API key/kart gerektirmez). Bayilerin koordinatı olmadığı için
-  `getMappableDealers()` boş dönüyor ve yer tutucu görsel gösteriliyor.
-  Koordinat girilir girilmez harita kendiliğinden devreye girer.
+- **Bayi haritası boş.** Leaflet + OpenStreetMap kuruldu ve çalışıyor;
+  bayilerin koordinatı olmadığı için yer tutucu görsel gösteriliyor.
+  Koordinat girilir girilmez devreye girer. (İletişim sayfasındaki tersane
+  haritası çalışıyor.)
 - **İletişim formu kapalı.** Resend key var ama gönderici/alıcı adresi ve
   domain doğrulaması yok; form alanları pasif ve "yakında aktif" notu var.
 - **Gizlilik Politikası bir TASLAK** — hukuki incelemeden geçmedi, sayfanın

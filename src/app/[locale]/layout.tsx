@@ -5,9 +5,11 @@ import { Analytics } from "@vercel/analytics/next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Footer from "@/components/site/Footer";
+import ChatWidget from "@/components/site/ChatWidget";
 import Navbar from "@/components/site/Navbar";
 import { getYachtCounts } from "@/content";
 import { routing } from "@/i18n/routing";
+import { isChatConfigured } from "@/lib/integrations";
 import { brand } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-url";
 import "../globals.css";
@@ -75,6 +77,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <Navbar fleetCounts={fleetCounts} />
           <main className="flex-1">{children}</main>
           <Footer />
+          {isChatConfigured() && <ChatWidget />}
         </NextIntlClientProvider>
         <Analytics />
       </body>

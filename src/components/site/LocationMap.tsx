@@ -13,7 +13,8 @@ export type MapMarker = {
 };
 
 /**
- * Dealer and service network map.
+ * Map of one or more places — the dealer network, or the yard on the contact
+ * page.
  *
  * Leaflet with OpenStreetMap tiles — chosen because it needs no account, no
  * API key and no payment card. Leaflet touches `window` on construction, so it
@@ -22,7 +23,16 @@ export type MapMarker = {
  * Attribution is required by the OSM tile usage policy and is rendered by the
  * tile layer itself; do not remove it.
  */
-export default function DealerMap({ markers }: { markers: MapMarker[] }) {
+export default function LocationMap({
+  markers,
+  className = "h-[320px] lg:h-[520px]",
+  zoom = 9,
+}: {
+  markers: MapMarker[];
+  className?: string;
+  /** Used when there is only one marker to frame. */
+  zoom?: number;
+}) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -66,7 +76,7 @@ export default function DealerMap({ markers }: { markers: MapMarker[] }) {
       }
 
       if (markers.length === 1) {
-        map.setView([markers[0].lat, markers[0].lng], 9);
+        map.setView([markers[0].lat, markers[0].lng], zoom);
       } else {
         map.fitBounds(bounds, { padding: [48, 48] });
       }
@@ -76,12 +86,12 @@ export default function DealerMap({ markers }: { markers: MapMarker[] }) {
       cancelled = true;
       map?.remove();
     };
-  }, [markers]);
+  }, [markers, zoom]);
 
   return (
     <div
       ref={containerRef}
-      className="h-[320px] w-full border border-ink bg-surface lg:h-[520px]"
+      className={`w-full border border-ink bg-surface ${className}`}
       // Leaflet paints its own panes; keep it below the summary chip.
       style={{ zIndex: 0 }}
     />

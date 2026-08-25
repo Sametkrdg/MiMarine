@@ -14,3 +14,8 @@ export function isContactFormConfigured(): boolean {
       process.env.CONTACT_EMAIL_FROM,
   );
 }
+
+/** The site assistant needs a Gemini key; without one the widget stays hidden. */
+export function isChatConfigured(): boolean {
+  return Boolean(process.env.GEMINI_API_KEY);
+}

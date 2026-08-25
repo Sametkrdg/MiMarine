@@ -2,7 +2,7 @@
   "meta": {
     "titleTemplate": "%s · Mimarine Yacht",
     "defaultTitle": "Mimarine Yacht",
-    "defaultDescription": "Ege kıyısında el işçiliğiyle üretilen sürdürülebilir alüminyum yatlar."
+    "defaultDescription": "El işçiliğiyle üretilen sürdürülebilir alüminyum yatlar. Trabzon, Türkiye."
   },
   "nav": {
     "fleet": "Filo",
@@ -153,5 +153,26 @@
     "eyebrow": "Hukuki",
     "draftLabel": "Taslak — hukuki inceleme bekliyor",
     "lastUpdated": "Son güncelleme"
+  },
+  "chat": {
+    "launcher": "Asistan",
+    "close": "Kapat",
+    "title": "Site asistanı",
+    "intro": "Filo, etkinlikler, bayi ağı ve iletişim hakkında sorabilirsiniz.",
+    "placeholder": "Sorunuzu yazın",
+    "send": "Gönder",
+    "sending": "…",
+    "notice": "Yanıtlar Google Gemini ile üretilir ve yalnızca bu sitedeki bilgilere dayanır. Lütfen kişisel bilgi paylaşmayın.",
+    "suggest1": "Hangi yatlar teslime hazır?",
+    "suggest2": "Tersaneniz nerede?",
+    "suggest3": "Yaklaşan etkinlikleriniz neler?",
+    "errors": {
+      "not_configured": "Asistan şu anda kullanılamıyor.",
+      "rate_limited": "Çok fazla soru gönderildi. Lütfen biraz sonra tekrar deneyin.",
+      "quota_exceeded": "Asistan şu anda yoğun. Lütfen biraz sonra tekrar deneyin.",
+      "empty_message": "Lütfen bir soru yazın.",
+      "upstream_error": "Yanıt alınamadı. Lütfen tekrar deneyin.",
+      "upstream_unreachable": "Bağlantı kurulamadı. Lütfen tekrar deneyin."
+    }
   }
 }

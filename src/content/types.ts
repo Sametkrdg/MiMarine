@@ -94,6 +94,7 @@ export type Office = {
   addressLines: string[];
   phone: string;
   email: string;
+  coordinates?: { lat: number; lng: number };
 };
 
 /** Home page singleton. */

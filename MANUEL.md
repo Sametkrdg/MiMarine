@@ -14,23 +14,27 @@ Kod ile otomatikleştirilemeyen, senin yapman gereken adımlar (bkz. `CLAUDE.md`
 
 ---
 
-## 1 · Beni Bekleten Tek Şey: Sanity Değerleri
+## 1 · Sanity — içerik girmeye hazır
 
-Sanity'yi kurmuşsun ama **değerler bende yok** — Vercel'e girdin, benim yerel
-kopyamda yok. Sanity'ye bağlanan kodu yazabilmem ve **test edebilmem** için
-bunlara ihtiyacım var:
+- [x] ~~CORS credentials~~ — düzeltildi, Studio artık login ekranını açıyor.
+- [ ] **`/studio` adresine gir ve içerik eklemeye başla.** Sol menüde: Ana Sayfa,
+      Dünyamız, Site Ayarları (singleton'lar) · Yatlar · Haberler/Etkinlikler ·
+      Bayi ve Servis Ağı.
+      - Çevrilebilir alanlarda TR ve EN kutuları yan yana.
+      - Uzun metinlerde **boş satır paragraf ayırır**.
+      - Bir tipe ilk doküman girildiği anda site o koleksiyonda örnek veriyi
+        bırakıp Sanity'yi göstermeye başlar.
+- [ ] **Webhook'u kaydet** (site canlıya çıkınca): sanity.io/manage → API →
+      Webhooks → Create webhook
+      - URL: `<site-adresi>/api/revalidate`
+      - Trigger on: create · update · delete
+      - Secret: `SANITY_REVALIDATE_SECRET` ile **aynı** değer
+      - HTTP method: POST
+- [ ] İçerik girecek kişiye Sanity'de rol ata / davet gönder.
 
-- [ ] `NEXT_PUBLIC_SANITY_PROJECT_ID`
-- [ ] `NEXT_PUBLIC_SANITY_DATASET` (muhtemelen `production`)
-- [ ] `SANITY_API_TOKEN`
-- [ ] `SANITY_REVALIDATE_SECRET`
-
-En pratiği: proje kökünde `.env.local` dosyası oluşturup bu dördünü yaz.
-`.gitignore`'da, repoya gitmez.
-
-> Şemaları ve sorguları bu değerler olmadan da yazabilirim ama **hiçbirini
-> doğrulayamam**. Doğrulanmamış kod teslim etmek istemiyorum, o yüzden
-> soruyorum.
+> **Not:** Dataset şu an boş. Site, bir tipte hiç doküman yoksa otomatik olarak
+> `sample-data.ts`'e düşüyor. İçerik girdikçe koleksiyon koleksiyon Sanity'ye
+> geçer.
 
 ---
 
@@ -54,7 +58,10 @@ Resend key'i var, form kodu hazır — ama gönderim yapılamıyor.
 
 ---
 
-## 3 · Haritayı Açacak: Koordinatlar
+## 3 · Bayi Haritası: Koordinatlar
+
+- [x] ~~Tersane konumu~~ — `40.968312, 40.305812` onaylandı ve **iletişim
+      sayfasındaki harita çalışıyor.**
 
 **Mapbox iptal edildi.** Harita **Leaflet + OpenStreetMap** ile kuruldu —
 hesap, API key ve kredi kartı gerektirmez. Kod hazır ve test edildi (gerçek
@@ -74,14 +81,38 @@ Eksik olan tek şey veri:
 
 ---
 
-## 4 · Marka Kimliği — hâlâ placeholder
+## 4 · Site Asistanı (chatbot) — çalışıyor
+
+Gemini ile kuruldu ve test edildi. Sağ altta "Asistan" balonu.
+
+- [x] ~~API key~~ — çalışıyor. **Not:** `.env.local`'de `Gemini_API_KEY` olarak
+      yazılmıştı; Node'da env adları büyük/küçük harf duyarlı olduğu için
+      `GEMINI_API_KEY` olarak düzelttim. **Vercel'e de bu adla gir.**
+- [ ] **Vercel'e ekle:** `GEMINI_API_KEY` (zorunlu) ve isterseniz
+      `GEMINI_MODEL` (opsiyonel, varsayılan `gemini-3.5-flash-lite`).
+- [ ] KVKK metnine chatbot bölümü eklendi — **hukuki incelemede bu bölüme de
+      baktırın.** Google'ın ücretsiz katman koşulları, gönderilen içeriğin
+      hizmet geliştirmede kullanılabileceğini öngörebiliyor; metinde bu
+      belirtildi ve sohbet kutusunun altına "kişisel bilgi paylaşmayın" uyarısı
+      kondu.
+- [ ] Trafik artarsa ücretsiz kota yetmeyebilir; o noktada Google Cloud'da
+      faturalandırma açmak ya da modeli düşürmek gerekir.
+
+---
+
+## 5 · Marka Kimliği — hâlâ placeholder
 
 Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 - [ ] **Tescilli şirket unvanı** → footer telif satırı. Şu an "Mimarine Yacht".
 - [ ] **Kuruluş yılı** kullanılacak mı? Kullanılacaksa yıl.
-- [ ] **Gerçek adres, telefon, e-posta** — şu an `[ADRES SATIRI 1]`,
-      `[TELEFON]`, `[E-POSTA]`.
+- [ ] **Tersane nasıl anlatılacak?** Adres Karadeniz'de (Of/Trabzon) ama örnek
+      metinler "Ege kıyısında" diyordu — meta açıklamasını bölge belirtmeyecek
+      şekilde düzelttim. Yat açıklamalarındaki "Ege" ifadeleri seyir bölgesini
+      anlatıyor, onlara dokunmadım; gerçek metinler gelince netleşecek.
+- [x] ~~Gerçek adres~~ — `Kıyıcık, Trabzon Rize Yolu, 61830 Of / Trabzon`
+      girildi (footer, iletişim sayfası, KVKK metni).
+- [ ] **Telefon ve e-posta** — hâlâ `[TELEFON]` / `[E-POSTA]`.
 - [ ] **Ana sayfadaki üç rakam** — şu an `[00]`.
 - [ ] **Logo dosyası** (SVG) ve **marka renk kodları**. Şu an prototipin paleti:
       mor aksan `#5B54A6`, kağıt `#FBFAF8`, mürekkep `#171717` —
@@ -92,7 +123,7 @@ Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 ---
 
-## 5 · İçerik & Görsel
+## 6 · İçerik & Görsel
 
 - [ ] **Gerçek yat fotoğrafları ve galeri görselleri.** Şu an geçici Unsplash
       görselleri — sadece tasarımı göstermek için, hiçbiri Mimarine'e ait değil.
@@ -107,7 +138,7 @@ Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 ---
 
-## 6 · Gizlilik Politikası / KVKK — TASLAK, hukuki onay bekliyor
+## 7 · Gizlilik Politikası / KVKK — TASLAK, hukuki onay bekliyor
 
 `/tr/privacy-policy` ve `/en/privacy-policy` adreslerinde yayında. Sayfanın
 üstünde "hukuki incelemeden geçmemiştir" uyarısı var.
@@ -123,7 +154,7 @@ Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 ---
 
-## 7 · Deploy'da Kalan
+## 8 · Deploy'da Kalan
 
 - [ ] **`NEXT_PUBLIC_SITE_URL`'i canlı domainle doldur** (örn.
       `https://mimarineyacht.com`). Boş kalırsa canonical / sitemap / OG kartı
@@ -135,7 +166,7 @@ Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 ---
 
-## 8 · Yayına Alma Öncesi Son Kontrol
+## 9 · Yayına Alma Öncesi Son Kontrol
 
 - [ ] Sitede hiç `[KÖŞELİ PARANTEZ]` veya `[00]` kaldı mı?
 - [ ] `src/content/sample-data.ts` silindi mi (Sanity'ye geçince silinecek)?

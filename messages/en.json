@@ -2,7 +2,7 @@
   "meta": {
     "titleTemplate": "%s · Mimarine Yacht",
     "defaultTitle": "Mimarine Yacht",
-    "defaultDescription": "Sustainable aluminium yachts, built by hand on the Aegean coast."
+    "defaultDescription": "Sustainable aluminium yachts, built by hand. Trabzon, Türkiye."
   },
   "nav": {
     "fleet": "Fleet",
@@ -153,5 +153,26 @@
     "eyebrow": "Legal",
     "draftLabel": "Draft — pending legal review",
     "lastUpdated": "Last updated"
+  },
+  "chat": {
+    "launcher": "Assistant",
+    "close": "Close",
+    "title": "Site assistant",
+    "intro": "Ask about the fleet, events, the dealer network, or how to reach us.",
+    "placeholder": "Type your question",
+    "send": "Send",
+    "sending": "…",
+    "notice": "Answers are generated with Google Gemini and draw only on this site. Please do not share personal information.",
+    "suggest1": "Which yachts are ready for delivery?",
+    "suggest2": "Where is the yard?",
+    "suggest3": "What events are coming up?",
+    "errors": {
+      "not_configured": "The assistant is unavailable right now.",
+      "rate_limited": "Too many questions. Please try again shortly.",
+      "quota_exceeded": "The assistant is busy. Please try again shortly.",
+      "empty_message": "Please type a question.",
+      "upstream_error": "No answer came back. Please try again.",
+      "upstream_unreachable": "Could not connect. Please try again."
+    }
   }
 }

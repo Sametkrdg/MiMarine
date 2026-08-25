@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import DealerMap from "@/components/site/DealerMap";
+import LocationMap from "@/components/site/LocationMap";
 import Figure from "@/components/site/Figure";
 import PageHeader from "@/components/site/PageHeader";
 import {
@@ -54,7 +54,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
       <section className="shell pt-[76px]">
         <div className="relative">
           {mappable.length > 0 ? (
-            <DealerMap
+            <LocationMap
               markers={mappable.map((d) => ({
                 id: d.id,
                 lat: d.coordinates!.lat,

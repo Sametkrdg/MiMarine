@@ -25,7 +25,7 @@ export const privacyPolicy: LegalDocument = {
   },
 
   // Bumped by hand whenever the text below changes.
-  lastUpdated: "2026-08-25",
+  lastUpdated: "2026-08-26",
 
   notice: {
     tr: "Bu metin bir taslaktır ve hukuki incelemeden geçmemiştir. Sitenin fiilen ne yaptığı esas alınarak hazırlandı; yayına almadan önce bir hukuk danışmanına inceletmenizi öneririz.",
@@ -102,6 +102,7 @@ export const privacyPolicy: LegalDocument = {
           "Resend — iletişim formu mesajlarının e-posta olarak iletilmesi.",
           "Sanity — site içeriğinin yönetimi.",
           "OpenStreetMap — bayi ve servis ağı haritasının görüntülenmesi.",
+          "Google (Gemini) — site asistanına yazdığınız mesajların yanıtlanması.",
           "Bunların dışında verileriniz, yalnızca yasal bir yükümlülük gereği yetkili kamu kurumlarıyla paylaşılabilir.",
         ],
         en: [
@@ -110,7 +111,25 @@ export const privacyPolicy: LegalDocument = {
           "Resend — delivering contact form messages by email.",
           "Sanity — managing site content.",
           "OpenStreetMap — displaying the dealer and service network map.",
+          "Google (Gemini) — answering messages typed into the site assistant.",
           "Beyond these, your data may only be shared with competent public authorities where required by law.",
+        ],
+      },
+    },
+    {
+      heading: { tr: "Site asistanı (chatbot)", en: "Site assistant (chatbot)" },
+      body: {
+        tr: [
+          "Sitede, sorularınızı yanıtlayan bir asistan bulunur. Yazdığınız mesajlar, yanıt üretilebilmesi için Google'ın Gemini servisine iletilir ve Google'ın sunucularında işlenir.",
+          "Asistan yalnızca bu sitedeki bilgilere dayanarak cevap verir ve sizden kişisel bilgi istemez. Sohbet içeriği tarafımızca ayrıca kaydedilmez.",
+          "Google'ın ücretsiz kullanım koşulları, gönderilen içeriğin hizmetlerini geliştirmek amacıyla kullanılabileceğini öngörebilir. Bu nedenle sohbet kutusuna kişisel bilgi (ad, telefon, e-posta, adres) yazmamanızı öneririz; bu uyarı sohbet kutusunun altında da yer alır.",
+          "Talebinizi bize iletmek için asistan yerine İletişim formunu kullanın.",
+        ],
+        en: [
+          "The site includes an assistant that answers questions. Messages you type are sent to Google's Gemini service so a reply can be generated, and are processed on Google's servers.",
+          "The assistant answers only from the content of this site and does not ask you for personal data. We do not separately store the conversation.",
+          "Google's free-tier terms may permit submitted content to be used to improve their services. For that reason we advise against typing personal data (name, phone, e-mail, address) into the chat box; this warning also appears beneath the box itself.",
+          "To send us an enquiry, please use the Contact form rather than the assistant.",
         ],
       },
     },

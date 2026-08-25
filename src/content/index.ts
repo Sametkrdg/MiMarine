@@ -1,14 +1,34 @@
 /**
  * Content accessors.
  *
- * Pages import ONLY from here. Today every function reads `sample-data.ts`;
- * in phase 2 each body becomes a GROQ query against Sanity and no page has to
- * change. That is the whole point of the indirection — keep it.
+ * Pages import ONLY from here. Each function asks Sanity first and falls back
+ * to `sample-data.ts` when Sanity is unconfigured, unreachable, or simply has
+ * no documents of that kind yet — so the site keeps rendering while content is
+ * being entered, and switches over collection by collection as it lands.
+ *
+ * Delete the fallbacks (and `sample-data.ts`) once the CMS is populated.
  */
 
 import { notFound } from "next/navigation";
+import { cache } from "react";
+import {
+  fetchDealers,
+  fetchEvents,
+  fetchHomeContent,
+  fetchOffices,
+  fetchOurWorldContent,
+  fetchYachts,
+} from "@/sanity/queries";
 import { privacyPolicy } from "./legal";
-import { dealers, events, home, maps, offices, ourWorld, yachts } from "./sample-data";
+import {
+  dealers as sampleDealers,
+  events as sampleEvents,
+  home as sampleHome,
+  maps as sampleMaps,
+  offices as sampleOffices,
+  ourWorld as sampleOurWorld,
+  yachts as sampleYachts,
+} from "./sample-data";
 import type {
   Dealer,
   DealerRegion,
@@ -35,15 +55,33 @@ export const dealerRegions: DealerRegion[] = [
   "asia-pacific",
 ];
 
+/**
+ * One Sanity round trip per request, however many components ask.
+ * `cache` dedupes within a single render pass.
+ */
+const allYachts = cache(async (): Promise<Yacht[]> => {
+  return (await fetchYachts()) ?? sampleYachts;
+});
+
+const allEvents = cache(async (): Promise<EventItem[]> => {
+  return (await fetchEvents()) ?? sampleEvents;
+});
+
+const allDealers = cache(async (): Promise<Dealer[]> => {
+  return (await fetchDealers()) ?? sampleDealers;
+});
+
 const byOrder = (a: Yacht, b: Yacht) => a.order - b.order;
 
 export async function getYachts(status?: YachtStatus): Promise<Yacht[]> {
-  const list = status ? yachts.filter((y) => y.status === status) : yachts;
+  const all = await allYachts();
+  const list = status ? all.filter((y) => y.status === status) : all;
   return [...list].sort(byOrder);
 }
 
 export async function getYachtBySlug(slug: string): Promise<Yacht | null> {
-  return yachts.find((y) => y.slug === slug) ?? null;
+  const all = await allYachts();
+  return all.find((y) => y.slug === slug) ?? null;
 }
 
 /** Throws Next's not-found when the slug does not resolve. */
@@ -54,16 +92,17 @@ export async function getYachtOrNotFound(slug: string): Promise<Yacht> {
 }
 
 export async function getFeaturedYacht(): Promise<Yacht | null> {
-  return yachts.find((y) => y.featured) ?? yachts[0] ?? null;
+  const all = await allYachts();
+  return all.find((y) => y.featured) ?? all[0] ?? null;
 }
 
 /** Count per status, for the fleet tabs and the navbar dropdown. */
 export async function getYachtCounts(): Promise<Record<YachtStatus, number>> {
+  const all = await allYachts();
   return {
-    delivered: yachts.filter((y) => y.status === "delivered").length,
-    "ready-for-delivery": yachts.filter((y) => y.status === "ready-for-delivery")
-      .length,
-    "in-production": yachts.filter((y) => y.status === "in-production").length,
+    delivered: all.filter((y) => y.status === "delivered").length,
+    "ready-for-delivery": all.filter((y) => y.status === "ready-for-delivery").length,
+    "in-production": all.filter((y) => y.status === "in-production").length,
   };
 }
 
@@ -80,13 +119,14 @@ export async function getEvents(): Promise<{
   upcoming: EventItem[];
   past: EventItem[];
 }> {
+  const all = await allEvents();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const upcoming = events
+  const upcoming = all
     .filter((e) => isUpcoming(e, today))
     .sort((a, b) => a.date.localeCompare(b.date));
-  const past = events
+  const past = all
     .filter((e) => !isUpcoming(e, today))
     .sort((a, b) => b.date.localeCompare(a.date));
 
@@ -94,7 +134,8 @@ export async function getEvents(): Promise<{
 }
 
 export async function getEventBySlug(slug: string): Promise<EventItem | null> {
-  return events.find((e) => e.slug === slug) ?? null;
+  const all = await allEvents();
+  return all.find((e) => e.slug === slug) ?? null;
 }
 
 export async function getEventOrNotFound(slug: string): Promise<EventItem> {
@@ -104,27 +145,16 @@ export async function getEventOrNotFound(slug: string): Promise<EventItem> {
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
-  return events.map((e) => e.slug);
+  return (await allEvents()).map((e) => e.slug);
 }
 
 export async function getAllYachtSlugs(): Promise<string[]> {
-  return yachts.map((y) => y.slug);
+  return (await allYachts()).map((y) => y.slug);
 }
 
 export async function getDealers(region?: DealerRegion): Promise<Dealer[]> {
-  return region ? dealers.filter((d) => d.region === region) : dealers;
-}
-
-export async function getDealerRegionCounts(): Promise<{
-  dealers: number;
-  services: number;
-  regions: number;
-}> {
-  return {
-    dealers: dealers.filter((d) => d.type === "dealer" || d.type === "both").length,
-    services: dealers.filter((d) => d.type === "service" || d.type === "both").length,
-    regions: dealerRegions.length,
-  };
+  const all = await allDealers();
+  return region ? all.filter((d) => d.region === region) : all;
 }
 
 /**
@@ -133,19 +163,32 @@ export async function getDealerRegionCounts(): Promise<{
  * rather than showing an empty world.
  */
 export async function getMappableDealers(): Promise<Dealer[]> {
-  return dealers.filter((d) => d.coordinates);
+  return (await allDealers()).filter((d) => d.coordinates);
+}
+
+export async function getDealerRegionCounts(): Promise<{
+  dealers: number;
+  services: number;
+  regions: number;
+}> {
+  const all = await allDealers();
+  return {
+    dealers: all.filter((d) => d.type === "dealer" || d.type === "both").length,
+    services: all.filter((d) => d.type === "service" || d.type === "both").length,
+    regions: dealerRegions.length,
+  };
 }
 
 export async function getOffices(): Promise<Office[]> {
-  return offices;
+  return (await fetchOffices()) ?? sampleOffices;
 }
 
 export async function getHomeContent(): Promise<HomeContent> {
-  return home;
+  return (await fetchHomeContent()) ?? sampleHome;
 }
 
 export async function getOurWorldContent(): Promise<OurWorldContent> {
-  return ourWorld;
+  return (await fetchOurWorldContent()) ?? sampleOurWorld;
 }
 
 /** Privacy policy / KVKK text. Still a legal DRAFT — see `legal.ts`. */
@@ -155,7 +198,7 @@ export async function getPrivacyPolicy(): Promise<LegalDocument> {
 
 /** Placeholder map imagery, until the dealer coordinates arrive. */
 export async function getMaps(): Promise<MapImages> {
-  return maps;
+  return sampleMaps;
 }
 
 export * from "./types";

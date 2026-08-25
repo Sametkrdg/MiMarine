@@ -657,18 +657,13 @@ export const offices: Office[] = [
   {
     id: "hq",
     role: { tr: "Merkez · Tersane", en: "Headquarters · Yard" },
-    city: "[ŞEHİR]",
-    addressLines: ["[ADRES SATIRI 1]", "[POSTA KODU / ŞEHİR]"],
+    city: "Of / Trabzon",
+    // Real address, supplied by the client. Phone and e-mail are still unknown.
+    addressLines: ["Kıyıcık, Trabzon Rize Yolu", "61830 Of / Trabzon"],
     phone: "[TELEFON]",
     email: "[E-POSTA]",
-  },
-  {
-    id: "build",
-    role: { tr: "Üretim tesisi", en: "Build facility" },
-    city: "[ŞEHİR]",
-    addressLines: ["[ADRES SATIRI 1]", "[POSTA KODU / ŞEHİR]"],
-    phone: "[TELEFON]",
-    email: "[E-POSTA]",
+    // Derived from the plus code the client supplied, and confirmed by them.
+    coordinates: { lat: 40.968312, lng: 40.305812 },
   },
 ];
 
@@ -678,7 +673,7 @@ export const home: HomeContent = {
     "Sakin suda demirlemiş yat",
     "A yacht at anchor on calm water",
   ),
-  heroEyebrow: { tr: "[KONUM]", en: "[LOCATION]" },
+  heroEyebrow: { tr: "Of · Trabzon · Türkiye", en: "Of · Trabzon · Türkiye" },
   heroTitle: { tr: "Sakin su, kalıcı yapı.", en: "Quiet water, built to last." },
   statement: {
     tr: "Her yıl az sayıda alüminyum yatı elle inşa ediyoruz. Yavaş üretim, uzun servis ömrü ve hesabını verebildiğimiz malzemeler.",

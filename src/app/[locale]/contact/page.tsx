@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import ContactForm from "@/components/site/ContactForm";
 import Figure from "@/components/site/Figure";
+import LocationMap from "@/components/site/LocationMap";
 import PageHeader from "@/components/site/PageHeader";
 import { getMaps, getOffices, pick, type Locale } from "@/content";
 import { isContactFormConfigured } from "@/lib/integrations";
@@ -21,6 +22,8 @@ export default async function ContactPage({ params }: Props) {
   const tNetwork = await getTranslations("network");
   const offices = await getOffices();
   const maps = await getMaps();
+  // The yard has a confirmed coordinate; other offices may not.
+  const located = offices.filter((o) => o.coordinates);
   const l = locale as Locale;
 
   return (
@@ -50,13 +53,27 @@ export default async function ContactPage({ params }: Props) {
               </address>
             </div>
           ))}
-          <Figure
-            image={maps.contact}
-            locale={l}
-            fallbackLabel={tNetwork("mapLabel")}
-            className="h-[280px]"
-            sizes="(min-width: 1025px) 40vw, 100vw"
-          />
+          {located.length > 0 ? (
+            <LocationMap
+              className="h-[280px]"
+              zoom={14}
+              markers={located.map((o) => ({
+                id: o.id,
+                lat: o.coordinates!.lat,
+                lng: o.coordinates!.lng,
+                city: o.city,
+                role: pick(o.role, l),
+              }))}
+            />
+          ) : (
+            <Figure
+              image={maps.contact}
+              locale={l}
+              fallbackLabel={tNetwork("mapLabel")}
+              className="h-[280px]"
+              sizes="(min-width: 1025px) 40vw, 100vw"
+            />
+          )}
         </div>
       </section>
 
