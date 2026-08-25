@@ -12,8 +12,21 @@ const labelClass =
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
+  const tErrors = useTranslations("contact.form.errors");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+
+  /** Maps an API error code to localised copy, falling back to the generic one. */
+  function describe(code: string | undefined): string {
+    const known = [
+      "invalid_json",
+      "missing_fields",
+      "invalid_email",
+      "not_configured",
+      "send_failed",
+    ];
+    return tErrors(known.includes(code ?? "") ? (code as string) : "send_failed");
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,12 +42,15 @@ export default function ContactForm() {
       });
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(body?.error ?? `HTTP ${res.status}`);
+        setStatus("error");
+        setError(describe(body?.error));
+        return;
       }
       setStatus("sent");
-    } catch (err) {
+    } catch {
+      // Network failure before the request reached us.
       setStatus("error");
-      setError(err instanceof Error ? err.message : String(err));
+      setError(describe("send_failed"));
     }
   }
 
@@ -83,7 +99,7 @@ export default function ContactForm() {
           disabled={status === "sending" || status === "sent"}
           className="cursor-pointer border border-ink px-[42px] py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper disabled:cursor-default disabled:opacity-60"
         >
-          {status === "sent" ? "✓" : t("submit")}
+          {status === "sent" ? t("sent") : t("submit")}
         </button>
         <p className="max-w-[34ch] text-[13px] leading-[1.8] text-muted">{t("note")}</p>
       </div>

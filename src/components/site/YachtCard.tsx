@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { pick, type Locale, type Yacht } from "@/content";
-import ImagePlaceholder from "./ImagePlaceholder";
+import Figure from "./Figure";
 
 export default function YachtCard({
   yacht,
@@ -11,7 +11,13 @@ export default function YachtCard({
 }) {
   return (
     <Link href={`/fleet/${yacht.slug}`} className="group block">
-      <ImagePlaceholder label={yacht.coverLabel} className="h-[340px]" />
+      <Figure
+        image={yacht.cover}
+        locale={locale}
+        fallbackLabel={yacht.name}
+        className="h-[340px]"
+        sizes="(min-width: 1025px) 33vw, 100vw"
+      />
       <div className="mt-6 flex items-baseline justify-between gap-6 border-b border-ink pb-4">
         <div>
           <div className="text-[24px] font-extralight text-ink transition-colors group-hover:text-accent">

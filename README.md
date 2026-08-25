@@ -32,14 +32,19 @@ src/
       news-and-events/   liste + [slug]
       dealer-and-services-network/
       contact/
+    error.tsx            Çalışma zamanı hata sınırı
+    not-found.tsx        404
+    opengraph-image.tsx  Sosyal kart (next/og ile üretilir)
     api/
-      contact/           Resend (henüz bağlı değil — 503 döner)
-      revalidate/        Sanity webhook (henüz bağlı değil — 503 döner)
+      contact/           Resend — key yoksa 503
+      revalidate/        Sanity webhook (henüz stub — 503 döner)
     globals.css          Tailwind v4 tema token'ları
+    robots.ts            /robots.txt
+    sitemap.ts           /sitemap.xml (TR+EN, hreflang'li)
   components/site/       Navbar, Footer, Wordmark, kartlar, form, yer tutucular
   content/               types.ts · sample-data.ts · index.ts (içerik katmanı)
   i18n/                  next-intl routing / navigation / request
-  lib/                   brand, site-nav, metadata, format, placeholder
+  lib/                   brand, site-nav, metadata, format, site-url, placeholder
   proxy.ts               locale yönlendirmesi (Next 16'da "middleware"nin yeni adı)
 messages/                tr.json · en.json — sabit arayüz metinleri
 ```
@@ -98,6 +103,24 @@ Kurallar:
 - Hiçbir üçüncü taraf bayi/partner firma adı uydurulmadı.
 - Yatlar uydurma tekne adı yerine model/tekne numarası taşıyor.
 
+## SEO
+
+- Her sayfa canonical + `hreflang` (tr / en / x-default) yayınlar.
+- `sitemap.xml` 48 URL içerir (statik sayfalar + 10 yat + 6 haber × 2 dil),
+  her giriş kendi dil eşini `xhtml:link` ile gösterir.
+- OG kartı `next/og` ile build sırasında üretilir (`opengraph-image.tsx`) —
+  logo dosyası olmadığı için tipografik.
+- `NEXT_PUBLIC_SITE_URL` ayarlanmazsa Vercel deployment URL'i, o da yoksa
+  `localhost:3000` kullanılır. Canlıya çıkmadan **mutlaka ayarlayın**.
+
+## İletişim Formu
+
+`POST /api/contact` → Resend. API dil-bağımsız hata **kodu** döner
+(`invalid_json` · `missing_fields` · `invalid_email` · `not_configured` ·
+`send_failed`); metne çevirme işi istemcide, `messages/*.json` içindeki
+`contact.form.errors` altında. Env eksikse 503 döner ve sunucu log'una neyin
+eksik olduğunu yazar.
+
 ## Bilinen Eksikler
 
 - İçerik Sanity'den değil, `src/content/sample-data.ts`'ten geliyor (Faz 2).
@@ -106,8 +129,10 @@ Kurallar:
   eklenebilir, şu an bilerek eklenmedi (kırık görsel riski).
 - Bayi haritası henüz Mapbox değil, yer tutucu kutu (token bekliyor).
 - Fleet sekme şeridi dar ekranda yatay kayar (tasarımın kendi davranışı).
-- `/api/contact` ve `/api/revalidate` bilinçli olarak stub — env değişkenleri
-  yokken 503 döner ki hata sessizce yutulmasın.
+- `/api/revalidate` hâlâ stub — Sanity bağlanınca doldurulacak.
+- İletişim formu Resend'e bağlı ama **gerçek bir key ile hiç denenmedi**;
+  geçersiz key ile hata yolu doğrulandı (401 → 502), başarılı gönderim değil.
+- **Harita yok.** Mapbox ne token'a ne de koordinata sahip; bkz. MANUEL.md.
 - İletişim bilgileri `src/lib/placeholder.ts` içinde `[ADDRESS LINE 1]` gibi
   köşeli parantezli yer tutucular. Prototipteki uydurma adres/telefon/e-posta
   bilinçli olarak taşınmadı.

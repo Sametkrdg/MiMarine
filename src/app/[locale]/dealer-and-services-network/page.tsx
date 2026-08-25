@@ -1,10 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import ImagePlaceholder from "@/components/site/ImagePlaceholder";
+import Figure from "@/components/site/Figure";
 import PageHeader from "@/components/site/PageHeader";
 import {
   dealerRegions,
   getDealerRegionCounts,
   getDealers,
+  getMaps,
   pick,
   type DealerRegion,
   type Locale,
@@ -20,7 +21,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  return pageMetadata(locale, "nav", "network");
+  return pageMetadata(locale, "nav", "network", "/dealer-and-services-network");
 }
 
 function resolveRegion(value: string | undefined): DealerRegion {
@@ -40,6 +41,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
   const t = await getTranslations("network");
   const dealers = await getDealers(active);
   const counts = await getDealerRegionCounts();
+  const maps = await getMaps();
   const l = locale as Locale;
 
   return (
@@ -48,7 +50,14 @@ export default async function NetworkPage({ params, searchParams }: Props) {
 
       <section className="shell pt-[76px]">
         <div className="relative">
-          <ImagePlaceholder label={t("mapLabel")} className="h-[320px] lg:h-[520px]" />
+          <Figure
+            image={maps.network}
+            locale={l}
+            fallbackLabel={t("mapLabel")}
+            className="h-[320px] lg:h-[520px]"
+            priority
+            sizes="(min-width: 1600px) 1560px, 100vw"
+          />
           <div className="absolute bottom-7 left-7 bg-paper/90 px-6 py-[18px] text-[10px] tracking-nav text-body uppercase">
             {t("summary", {
               dealers: counts.dealers,

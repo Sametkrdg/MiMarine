@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { pick, type EventItem, type Locale } from "@/content";
-import ImagePlaceholder from "./ImagePlaceholder";
+import Figure from "./Figure";
 
 /** Grid card used for past events. */
 export default function EventCard({
@@ -14,7 +14,13 @@ export default function EventCard({
 }) {
   return (
     <Link href={`/news-and-events/${event.slug}`} className="group block">
-      <ImagePlaceholder label={event.coverLabel} className="h-[300px]" />
+      <Figure
+        image={event.cover}
+        locale={locale}
+        fallbackLabel={pick(event.title, locale)}
+        className="h-[300px]"
+        sizes="(min-width: 1025px) 33vw, 100vw"
+      />
       <div className="mt-6 text-[10px] tracking-label text-accent uppercase">
         {dateLabel} · {pick(event.location, locale)}
       </div>

@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { pick, type EventItem, type Locale } from "@/content";
-import ImagePlaceholder from "./ImagePlaceholder";
+import Figure from "./Figure";
 
 /** Wide list row used for upcoming events. */
 export default function EventRow({
@@ -33,7 +33,13 @@ export default function EventRow({
           {pick(event.excerpt, locale)}
         </p>
       </div>
-      <ImagePlaceholder label={event.coverLabel} className="h-[180px]" />
+      <Figure
+        image={event.cover}
+        locale={locale}
+        fallbackLabel={pick(event.title, locale)}
+        className="h-[180px]"
+        sizes="(min-width: 1025px) 340px, 100vw"
+      />
     </Link>
   );
 }

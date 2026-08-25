@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Jost } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Footer from "@/components/site/Footer";
 import Navbar from "@/components/site/Navbar";
 import { getYachtCounts } from "@/content";
 import { routing } from "@/i18n/routing";
+import { brand } from "@/lib/brand";
+import { getSiteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 const jost = Jost({
@@ -34,11 +37,24 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
+    metadataBase: new URL(getSiteUrl()),
     title: {
       default: t("defaultTitle"),
       template: t("titleTemplate"),
     },
     description: t("defaultDescription"),
+    openGraph: {
+      type: "website",
+      siteName: brand.fullName,
+      locale,
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+    },
   };
 }
 
@@ -60,6 +76,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <main className="flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

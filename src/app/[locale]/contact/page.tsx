@@ -1,15 +1,15 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import ContactForm from "@/components/site/ContactForm";
-import ImagePlaceholder from "@/components/site/ImagePlaceholder";
+import Figure from "@/components/site/Figure";
 import PageHeader from "@/components/site/PageHeader";
-import { getOffices, pick, type Locale } from "@/content";
+import { getMaps, getOffices, pick, type Locale } from "@/content";
 import { pageMetadata } from "@/lib/metadata";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  return pageMetadata(locale, "nav", "contact");
+  return pageMetadata(locale, "nav", "contact", "/contact");
 }
 
 export default async function ContactPage({ params }: Props) {
@@ -19,6 +19,7 @@ export default async function ContactPage({ params }: Props) {
   const t = await getTranslations("contact");
   const tNetwork = await getTranslations("network");
   const offices = await getOffices();
+  const maps = await getMaps();
   const l = locale as Locale;
 
   return (
@@ -48,7 +49,13 @@ export default async function ContactPage({ params }: Props) {
               </address>
             </div>
           ))}
-          <ImagePlaceholder label={tNetwork("mapLabel")} className="h-[280px]" />
+          <Figure
+            image={maps.contact}
+            locale={l}
+            fallbackLabel={tNetwork("mapLabel")}
+            className="h-[280px]"
+            sizes="(min-width: 1025px) 40vw, 100vw"
+          />
         </div>
       </section>
 

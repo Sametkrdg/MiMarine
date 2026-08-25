@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import ImagePlaceholder from "@/components/site/ImagePlaceholder";
+import Figure from "@/components/site/Figure";
 import {
   getAllYachtSlugs,
   getYachtOrNotFound,
@@ -9,6 +9,7 @@ import {
 } from "@/content";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { contentMetadata } from "@/lib/metadata";
 import { fleetTabs, primaryRoutes } from "@/lib/site-nav";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -19,9 +20,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const yacht = await getYachtOrNotFound(slug);
-  return { title: yacht.name };
+  return contentMetadata(
+    locale,
+    yacht.name,
+    `/fleet/${slug}`,
+    pick(yacht.lede, locale as Locale),
+  );
 }
 
 /** Route back to the tab this yacht belongs to. */
@@ -48,7 +54,14 @@ export default async function YachtDetailPage({ params }: Props) {
     <>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-[560px] lg:h-[78vh]">
-        <ImagePlaceholder label={yacht.coverLabel} className="absolute inset-0" />
+        <Figure
+          image={yacht.cover}
+          locale={l}
+          fallbackLabel={yacht.name}
+          className="absolute inset-0"
+          priority
+          sizes="100vw"
+        />
         <div className="pointer-events-none absolute inset-0 bg-ink/45" />
         <div className="absolute inset-x-0 bottom-0 pb-14">
           <div className="shell">
@@ -110,12 +123,19 @@ export default async function YachtDetailPage({ params }: Props) {
       <section className="shell pt-[130px]">
         <p className="eyebrow mb-11 tracking-[0.3em]">{t("gallery")}</p>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {yacht.galleryLabels.map((label, i) => (
-            <ImagePlaceholder
-              key={label}
-              label={label}
+          {yacht.gallery.map((image, i) => (
+            <Figure
+              key={image.src + i}
+              image={image}
+              locale={l}
+              fallbackLabel={yacht.name}
               className={
                 i === 0 ? "h-[360px] lg:col-span-2 lg:h-[560px]" : "h-[300px] lg:h-[400px]"
+              }
+              sizes={
+                i === 0
+                  ? "(min-width: 1600px) 1560px, 100vw"
+                  : "(min-width: 1025px) 50vw, 100vw"
               }
             />
           ))}

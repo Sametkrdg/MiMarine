@@ -27,10 +27,45 @@ import type {
   Dealer,
   EventItem,
   HomeContent,
+  MapImages,
   Office,
   OurWorldContent,
+  SiteImage,
   Yacht,
 } from "./types";
+
+/**
+ * PLACEHOLDER imagery from Unsplash, referenced by photo id.
+ *
+ * The Unsplash licence permits use without attribution, but these are stand-ins
+ * only — every one is replaced by client photography via Sanity in phase 2.
+ * Each id below was checked to resolve before being written in.
+ */
+const UNSPLASH = "https://images.unsplash.com/photo-";
+
+function img(id: string, tr: string, en: string): SiteImage {
+  return {
+    src: `${UNSPLASH}${id}?auto=format&fit=crop&w=1800&q=75`,
+    alt: { tr, en },
+  };
+}
+
+/** Interior / detail pool, rotated so hulls do not share an identical gallery. */
+const GALLERY_POOL: SiteImage[] = [
+  img("1604737637145-48cc31d160eb", "Kıç güverte", "Aft deck"),
+  img("1598448251941-ae4dd47dba33", "Ana salon", "Main saloon"),
+  img("1598448056086-307e98ef5c4a", "Armatör kabini", "Owner's cabin"),
+  img("1616207133639-cd5e4db9859f", "Detay — tekne dikişi", "Detail — hull seam"),
+  img("1600812703042-38e573598898", "Yaşam alanı", "Living area"),
+  img("1502986591842-471865a47d0e", "Güverte detayı", "Deck detail"),
+  img("1535078035266-a0fa7d3b8f65", "Kokpit", "Cockpit"),
+  img("1674606878551-f424ad6ce965", "İç mekân detayı", "Interior detail"),
+];
+
+/** Four consecutive pool entries, offset per hull. */
+function gallery(offset: number): SiteImage[] {
+  return [0, 1, 2, 3].map((i) => GALLERY_POOL[(offset + i) % GALLERY_POOL.length]);
+}
 
 const specKeys = {
   loa: { tr: "Tam boy", en: "Length overall" },
@@ -47,13 +82,6 @@ const specKeys = {
 
 /** Values the client must confirm are rendered as an em dash, never guessed. */
 const TBC = "—";
-
-const GALLERY = [
-  "Exterior — aft deck",
-  "Main saloon",
-  "Owner's cabin",
-  "Detail — hull seam",
-];
 
 export const yachts: Yacht[] = [
   {
@@ -88,8 +116,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.range, value: "3.600 nm @ 10 kn" },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 34 · under way",
-    galleryLabels: GALLERY,
+    cover: img("1569263979104-865ab7cd8d13", "MiMarine 34 seyir hâlinde", "MiMarine 34 under way"),
+    gallery: gallery(0),
   },
   {
     slug: "mimarine-28-hull-02",
@@ -123,8 +151,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.range, value: "3.100 nm @ 10 kn" },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 28 · aerial",
-    galleryLabels: GALLERY,
+    cover: img("1523496922380-91d5afba98a3", "MiMarine 28 havadan", "MiMarine 28 from the air"),
+    gallery: gallery(1),
   },
   {
     slug: "mimarine-42-hull-03",
@@ -158,8 +186,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.range, value: "4.200 nm @ 10 kn" },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 42 · at anchor",
-    galleryLabels: GALLERY,
+    cover: img("1605281317010-fe5ffe798166", "MiMarine 42 demirde", "MiMarine 42 at anchor"),
+    gallery: gallery(2),
   },
   {
     slug: "mimarine-24-hull-04",
@@ -193,8 +221,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.range, value: "2.400 nm @ 10 kn" },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 24 · alongside",
-    galleryLabels: GALLERY,
+    cover: img("1562281302-809108fd533c", "MiMarine 24 rıhtımda", "MiMarine 24 alongside"),
+    gallery: gallery(3),
   },
   {
     slug: "mimarine-30-hull-05",
@@ -228,8 +256,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.availability, value: TBC },
       { key: specKeys.range, value: "3.400 nm @ 10 kn" },
     ],
-    coverLabel: "MiMarine 30 · on sea trials",
-    galleryLabels: GALLERY,
+    cover: img("1559385301-0187cb6eff46", "MiMarine 30 deniz denemesinde", "MiMarine 30 on sea trials"),
+    gallery: gallery(4),
   },
   {
     slug: "mimarine-38-hull-06",
@@ -263,8 +291,12 @@ export const yachts: Yacht[] = [
       { key: specKeys.availability, value: TBC },
       { key: specKeys.range, value: "3.900 nm @ 10 kn" },
     ],
-    coverLabel: "MiMarine 38 · in the fitting-out shed",
-    galleryLabels: GALLERY,
+    cover: img(
+      "1535024966840-e7424dc2635b",
+      "MiMarine 38 donatım salonunda",
+      "MiMarine 38 in the fitting-out shed",
+    ),
+    gallery: gallery(5),
   },
   {
     slug: "mimarine-24-hull-07",
@@ -298,8 +330,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.availability, value: TBC },
       { key: specKeys.range, value: "2.400 nm @ 10 kn" },
     ],
-    coverLabel: "MiMarine 24 · cockpit detail",
-    galleryLabels: GALLERY,
+    cover: img("1552160757-52790c6f4faf", "MiMarine 24 kokpit detayı", "MiMarine 24 cockpit detail"),
+    gallery: gallery(6),
   },
   {
     slug: "mimarine-46-hull-08",
@@ -333,8 +365,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.stage, value: TBC },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 46 · bare hull in build",
-    galleryLabels: GALLERY,
+    cover: img("1593351415075-3bac9f45c877", "MiMarine 46 inşa hâlinde", "MiMarine 46 in build"),
+    gallery: gallery(7),
   },
   {
     slug: "mimarine-34-hull-09",
@@ -368,8 +400,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.stage, value: TBC },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 34 · plating in the shed",
-    galleryLabels: GALLERY,
+    cover: img("1598737285721-29346a5c9278", "MiMarine 34 tezgâhta", "MiMarine 34 in the shed"),
+    gallery: gallery(0),
   },
   {
     slug: "mimarine-52-concept",
@@ -403,8 +435,8 @@ export const yachts: Yacht[] = [
       { key: specKeys.stage, value: TBC },
       { key: specKeys.delivery, value: TBC },
     ],
-    coverLabel: "MiMarine 52 · concept rendering",
-    galleryLabels: GALLERY,
+    cover: img("1567899378494-47b22a2ae96a", "MiMarine 52 konsept", "MiMarine 52 concept"),
+    gallery: gallery(2),
   },
 ];
 
@@ -437,7 +469,7 @@ export const events: EventItem[] = [
         "Our engineering team will be aboard to talk through the hybrid package and the material record issued with every delivery.",
       ],
     },
-    coverLabel: "Marina at dawn",
+    cover: img("1777557215949-192a8c51862a", "Akdeniz limanı", "Mediterranean harbour"),
   },
   {
     slug: "open-day",
@@ -458,7 +490,7 @@ export const events: EventItem[] = [
         "Places are limited. Registration through your dealer or the yard.",
       ],
     },
-    coverLabel: "Keel section in the build hall",
+    cover: img("1772550834175-734b417deb42", "Karada bekleyen tekne", "A hull on the hard"),
   },
   {
     slug: "refit-forum",
@@ -479,7 +511,7 @@ export const events: EventItem[] = [
         "Open to owners, captains, surveyors and yards. No trade stands.",
       ],
     },
-    coverLabel: "Forum room, calm daylight",
+    cover: img("1573167507387-6b4b98cb7c13", "Çalışma oturumu", "A working session"),
   },
   {
     slug: "hull-03-delivered",
@@ -500,7 +532,11 @@ export const events: EventItem[] = [
         "What is worth recording is the paperwork: every component on this yacht is documented by origin, mass and recyclability.",
       ],
     },
-    coverLabel: "Leaving the yard at first light",
+    cover: img(
+      "1585000962552-70f0a67223d9",
+      "İlk ışıkta tersaneden çıkış",
+      "Leaving the yard at first light",
+    ),
   },
   {
     slug: "notes-on-size",
@@ -521,7 +557,7 @@ export const events: EventItem[] = [
         "Two commissions came out of the week, both under 40 metres.",
       ],
     },
-    coverLabel: "Harbour from above",
+    cover: img("1779159945563-7b914280471a", "Alacakaranlıkta liman", "Harbour at dusk"),
   },
   {
     slug: "yard-roof-solar",
@@ -545,7 +581,11 @@ export const events: EventItem[] = [
         "Next: the paint shed, which is stubbornly the largest single load in the yard.",
       ],
     },
-    coverLabel: "Solar array over the build shed roof",
+    cover: img(
+      "1786913508480-2dcec035a84a",
+      "Tesis çatısındaki güneş panelleri",
+      "Solar array on the facility roof",
+    ),
   },
 ];
 
@@ -593,6 +633,11 @@ export const offices: Office[] = [
 ];
 
 export const home: HomeContent = {
+  heroImage: img(
+    "1528154291023-a6525fabe5b4",
+    "Sakin suda demirlemiş yat",
+    "A yacht at anchor on calm water",
+  ),
   heroEyebrow: { tr: "[KONUM]", en: "[LOCATION]" },
   heroTitle: { tr: "Sakin su, kalıcı yapı.", en: "Quiet water, built to last." },
   statement: {
@@ -638,7 +683,11 @@ export const home: HomeContent = {
         tr: "Malzeme kaydı, hibrit tahrik ve kendi çatısından beslenen bir tersane.",
         en: "Material records, hybrid drivelines, and a yard that runs on its own roof.",
       },
-      imageLabel: "Solar canopy over the build shed",
+      image: img(
+        "1613665813446-82a78c468a1d",
+        "İnşa salonunun çatısındaki güneş paneli örtüsü",
+        "Solar canopy over the build shed",
+      ),
     },
     {
       href: "/our-world",
@@ -648,7 +697,7 @@ export const home: HomeContent = {
         tr: "Alüminyum tersanede kesilir, marangoz işi yakındaki atölyeden gelir.",
         en: "Aluminium is cut in-house, and joinery comes from a workshop nearby.",
       },
-      imageLabel: "Hands finishing an aluminium seam",
+      image: img("1611021061285-16c871740efa", "Ahşap işleyen eller", "Hands working timber"),
     },
     {
       href: "/news-and-events",
@@ -658,7 +707,7 @@ export const home: HomeContent = {
         tr: "Bu sezon iskelede ve tersanede olacağımız tarihler.",
         en: "Where we will be alongside and at the yard this season.",
       },
-      imageLabel: "Marina at dawn",
+      image: img("1758535013136-8530d1f2ea42", "Marina, havadan", "Marina from the air"),
     },
   ],
   closing: {
@@ -672,6 +721,11 @@ export const ourWorld: OurWorldContent = {
     tr: "Küçük bir tersane, uzun bir ufuk.",
     en: "A small yard, a long horizon.",
   },
+  heroImage: img(
+    "1785038481404-4bd44c535e81",
+    "Tersanede tekne inşası",
+    "Building a hull at the yard",
+  ),
   statement: {
     tr: "Bir yılı, hangardan çıkan tekne sayısıyla ölçüyoruz — hiçbir zaman bir avuçtan fazla değil.",
     en: "We measure a year by the number of hulls that leave the shed — never more than a handful.",
@@ -689,7 +743,11 @@ export const ourWorld: OurWorldContent = {
         tr: "Her bileşen için malzeme kaydı ve her tekne için tasarım hedefiyle karşılaştırmalı yıllık rapor.",
         en: "A material record for every component, and an annual account of each yacht against her design case.",
       },
-      imageLabel: "Solar array over the yard",
+      image: img(
+        "1786913508115-51748da1339b",
+        "Tersane çatısındaki güneş panelleri",
+        "Solar array over the yard roofs",
+      ),
       href: "/news-and-events/yard-roof-solar",
     },
     {
@@ -700,7 +758,7 @@ export const ourWorld: OurWorldContent = {
         tr: "Kaynak, marangozluk ve boya tek çatı altında. Yapısal hiçbir parça bitirilmek üzere tersaneden çıkmaz.",
         en: "Welding, joinery and paint under one roof. Nothing structural leaves the yard for finishing.",
       },
-      imageLabel: "Joiner planing timber",
+      image: img("1631396326646-c06a935ff3a6", "Atölyede marangoz", "Joiner at the bench"),
     },
     {
       id: "history",
@@ -710,7 +768,7 @@ export const ourWorld: OurWorldContent = {
         tr: "[BU BÖLÜMÜN METNİ CLIENT TARAFINDAN VERİLECEK — tersanenin gerçek geçmişi.]",
         en: "[COPY TO BE SUPPLIED BY THE CLIENT — the yard's actual history.]",
       },
-      imageLabel: "Archive photograph",
+      image: img("1509295433237-4b4851f2ab67", "Arşiv görüntüsü", "Archive photograph"),
     },
   ],
   commitments: [
@@ -747,4 +805,10 @@ export const ourWorld: OurWorldContent = {
       },
     },
   ],
+};
+
+/** PLACEHOLDER maps — replaced by a live Mapbox map once a token exists. */
+export const maps: MapImages = {
+  network: img("1478860409698-8707f313ee8b", "Deniz haritası", "Nautical chart"),
+  contact: img("1532154066703-3973764c81fe", "Deniz haritası detayı", "Nautical chart detail"),
 };

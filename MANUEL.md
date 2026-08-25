@@ -1,65 +1,130 @@
 # MANUEL.md
 
-Bu dosya, kod ile otomatikleştirilemeyen ve kullanıcının (samet) kendisinin yapması gereken adımların listesidir. Geliştirme ilerledikçe yeni maddeler eklenecektir (bkz. `CLAUDE.md` → "Manuel Adım Kuralı").
+Kod ile otomatikleştirilemeyen, senin yapman gereken adımlar (bkz. `CLAUDE.md`
+→ "Manuel Adım Kuralı"). Tamamlananı işaretle: `- [ ]` → `- [x]`.
 
-Her madde tamamlandığında başındaki kutuyu işaretleyin: `- [ ]` → `- [x]`.
+Maddeler **neyi açtıklarına göre** sıralandı — yukarıdakiler daha çok işi
+serbest bırakıyor.
 
-## Hesaplar & API Anahtarları
+---
 
-- [ ] **Sanity** hesabı oluştur, yeni proje aç → Project ID ve dataset adı al (`.env` için gerekli).
-- [ ] Sanity Studio'ya içerik girecek kişiye (client/ekip) davetiye gönder / rol ata.
-- [ ] **Mapbox** hesabı oluştur, bir Access Token al (Dealer and Services Network haritası için).
-- [ ] **Resend** hesabı oluştur, API key al.
-- [ ] Resend ile kendi domain'inizden mail gönderebilmek için gerekli DNS kayıtlarını (SPF/DKIM) domain sağlayıcınızda ekleyin ve Resend üzerinde doğrulayın.
-- [ ] Proje için bir **Git deposu** başlatın (`git init`) ve GitHub'da bir repo açıp bağlayın — Vercel deploy'u buna bağlanacak.
-- [ ] **Vercel** hesabı oluştur, GitHub reponuzu Vercel projesine bağlayın.
+## 1 · Şu An Beklemede Olan İşi Açanlar
 
-## Deploy & Domain
+Bu üçü olmadan ilerleyemediğim şeyler var.
 
-- [ ] `.env` içindeki tüm değişkenleri (SANITY, MAPBOX, RESEND vb.) Vercel proje ayarlarına (Environment Variables) girin — Production ve Preview ortamları için ayrı ayrı kontrol edin.
-- [ ] Site için kullanılacak domain adına karar verin (yoksa `.vercel.app` ile geçici olarak devam edilebilir).
-- [ ] Domain satın alındıysa, Vercel'e bağlamak için DNS ayarlarını (A/CNAME kaydı) yapın.
-- [ ] Vercel Analytics'i proje ayarlarından (Vercel Dashboard → Analytics) aktif edin.
+### Sanity → tüm içerik yönetimi
 
-## Marka Kimliği (Faz 1'de ortaya çıktı)
+- [ ] **Sanity** hesabı aç, yeni proje oluştur. Bana şunlar lazım:
+      `NEXT_PUBLIC_SANITY_PROJECT_ID` ve `NEXT_PUBLIC_SANITY_DATASET`
+      (genelde `production`).
+- [ ] Sanity'de bir **API token** üret (read yetkili yeter) → `SANITY_API_TOKEN`.
+- [ ] Kendi belirlediğin bir rastgele string'i `SANITY_REVALIDATE_SECRET`
+      olarak sakla — içerik değişince siteyi tazeleyen webhook bunu kullanacak.
+
+> **Açacağı iş:** şemaların yazılması, Sanity Studio, GROQ sorguları, webhook.
+> Şu an içerik `src/content/sample-data.ts`'ten geliyor; o dosya silinecek.
+
+### Resend → iletişim formu
+
+- [ ] **Resend** hesabı aç, API key al → `RESEND_API_KEY`.
+- [ ] Taleplerin düşeceği e-posta adresini belirle → `CONTACT_EMAIL_TO`.
+- [ ] Gönderici adresi belirle → `CONTACT_EMAIL_FROM`. **Bu adres Resend'de
+      doğrulanmış bir domainde olmalı** (örn. `info@mimarine.com`), gmail vb.
+      olmaz.
+- [ ] Domain'i Resend'de doğrula: Resend'in verdiği SPF/DKIM DNS kayıtlarını
+      domain sağlayıcına ekle.
+
+> **Durum:** form kodu yazıldı ve çalışıyor. Geçersiz key ile hata yolunu test
+> ettim (401 → kullanıcıya düzgün mesaj). **Gerçek bir gönderim hiç
+> denenmedi** — key gelince ilk iş onu test etmek.
+
+### Mapbox → harita
+
+- [ ] **Mapbox** hesabı aç, Access Token al → `NEXT_PUBLIC_MAPBOX_TOKEN`.
+- [ ] **Her bayi/servis için enlem-boylam (lat/lng)** listesi ver.
+
+> **Durum:** harita kodu **bilerek yazılmadı.** Token yok, ama asıl sorun
+> koordinat yokluğu — koordinatsız harita boş bir dünya haritası olur ve
+> uydurma koordinat girmedim. Şu an Bayi Ağı ve İletişim sayfalarında harita
+> yerine bir deniz haritası görseli var. İkisi de gelince bağlarım.
+
+---
+
+## 2 · Marka Kimliği
 
 Tasarım prototipi (`design/tasarim-prototipi.html`) kurgusal bir marka için
 çizilmişti ve içinde **uydurma kurumsal bilgiler** vardı: kuruluş yılı (1974),
-teslim edilen tekne sayısı, Bodrum adresi, telefon numaraları ve
-`@serenyachts.com` e-posta adresleri. Bunlar MiMarine'in gerçek bilgisi
-olmadığı için siteye taşınmadı; yerlerine `[ADDRESS LINE 1]` gibi köşeli
-parantezli yer tutucular kondu (`src/lib/placeholder.ts`).
+teslim edilen tekne sayısı, adres, telefon, `@serenyachts.com` e-postaları.
+Bunlar MiMarine'in gerçeği olmadığı için taşınmadı; yerlerine köşeli parantezli
+işaretler kondu.
 
-- [ ] Wordmark'ın doğru yazımını onaylayın — şu an başlıkta `MIMARINE`, altında
-      `YACHT` yazıyor (`src/lib/brand.ts`). Farklı bir kilitlenme (örn. tek satır
-      "MIMARINE YACHT", ya da "Mi Marine") isteniyorsa söyleyin.
-- [ ] Tescilli şirket unvanını verin (footer'daki telif satırında kullanılacak).
-- [ ] Kuruluş yılı / "since ..." satırı kullanılacak mı, kullanılacaksa doğru yıl nedir?
-- [ ] Gerçek adres, telefon ve e-posta adreslerini verin (merkez + varsa üretim tesisi).
-- [ ] Sitenin varsayılan dili **TR** olarak ayarlandı (`/` → `/tr`). Varsayılan EN
-      olsun isteniyorsa `src/i18n/routing.ts` içinde tek satırlık değişiklik.
+- [ ] **Wordmark'ı onayla.** Şu an üstte `MIMARINE`, altında `YACHT`
+      (`src/lib/brand.ts`). Farklı bir yazım/kilitlenme isteniyorsa söyle —
+      tek dosya değişir.
+- [ ] **Tescilli şirket unvanı** (footer telif satırında kullanılacak).
+- [ ] **Kuruluş yılı / "since ..." satırı** kullanılacak mı? Kullanılacaksa yıl.
+- [ ] **Gerçek adres, telefon, e-posta** (merkez + varsa üretim tesisi).
+      Şu an `[ADDRESS LINE 1]`, `[PHONE]`, `[EMAIL]` yazıyor.
+- [ ] **Ana sayfadaki üç rakam** ne olacak? Şu an `[00]` duruyor. Örn. kuruluş
+      yılı, yıllık üretim adedi, geri dönüştürülmüş malzeme oranı.
+- [ ] **Logo dosyası** (SVG tercihen) ve **marka renk kodları**. Şu an
+      prototipin paleti geçici: mor aksan `#5B54A6`, kağıt `#FBFAF8`, mürekkep
+      `#171717` — hepsi `src/app/globals.css` içindeki `@theme` bloğunda, tek
+      yerden değişir.
+- [ ] Varsayılan dil **TR** ayarlandı (`/` → `/tr`). EN olsun istersen
+      `src/i18n/routing.ts` içinde tek satır.
 
-## İçerik & Görsel
+---
 
-- [ ] Gerçek yat fotoğrafları ve galeri görsellerini sağlayın (şu an her görsel alanında
-      ne geleceğini yazan boş bir yer tutucu kutu var).
-- [ ] `src/content/sample-data.ts` içindeki **tüm yer tutucu içeriği** gözden geçirin:
-      yat modelleri/adları, teknik özellikler, etkinlik metinleri, bayi listesi.
-      Bu dosya Sanity bağlanınca silinecek — ama o zamana kadar sitede görünen
-      metinler burada. Uydurulmamış alanlar `[KÖŞELİ PARANTEZ]` ya da `—` taşıyor.
-- [ ] Logo dosyasını (SVG tercihen) ve marka renk kodlarını sağlayın. Şu an prototipin
-      paleti geçici olarak kullanılıyor (mor aksan `#5B54A6`, kağıt `#FBFAF8`,
-      mürekkep `#171717`) — hepsi `src/app/globals.css` içindeki `@theme` bloğunda.
-- [ ] TR ve EN gerçek metin içeriklerini (Ana Sayfa, Our World, yat açıklamaları, haber/etkinlik metinleri) sağlayın veya taslakları onaylayın.
-- [ ] Bayi ve Servis Ağı için gerçek lokasyon listesini (isim, adres, telefon, koordinat) sağlayın.
+## 3 · İçerik & Görsel
 
-## Karar Gerektiren Noktalar
+- [ ] **Gerçek yat fotoğrafları ve galeri görselleri.** Şu an geçici Unsplash
+      görselleri var — sadece tasarımın nasıl durduğunu göstermek için;
+      hiçbiri MiMarine'e ait değil.
+- [ ] **TR ve EN gerçek metinler** (Ana Sayfa, Our World, yat açıklamaları,
+      haber/etkinlik metinleri) — ya da mevcut taslakları onayla.
+- [ ] **Bayi ve Servis Ağı gerçek listesi**: firma adı, adres, telefon,
+      e-posta, koordinat, yetki tipi (bayi / servis / ikisi).
+- [ ] `src/content/sample-data.ts` içindeki yer tutucu içeriği gözden geçir.
+      Uydurulmayan alanlar `[KÖŞELİ PARANTEZ]` ya da `—` taşıyor; geri kalanı
+      düzeni göstermek için yazılmış örnek metin.
 
-- [ ] Yat teknik özellik alanlarının (uzunluk, genişlik, motor, kapasite vb.) kesin listesine karar verin.
-- [ ] Gizlilik Politikası / KVKK metni gerekip gerekmediğine karar verin; gerekiyorsa metni sağlayın.
-- [ ] News and Events'te ayrı bir "haber" (etkinlik olmayan duyuru) içerik tipine ihtiyaç olup olmadığına karar verin (şu an tek "event" tipiyle ilerleniyor).
+---
 
-## Yayına Alma Öncesi Son Kontrol
+## 4 · Deploy & Domain
 
-- [ ] Sanity Studio kullanım kılavuzunu/eğitimini alın (client kendi içerik ekleyip çıkarabilsin diye).
-- [ ] Canlıya almadan önce TR/EN tüm sayfaları son kez gözden geçirin.
+- [ ] Proje için **Git deposu** başlat (`git init`) ve GitHub'da repo aç.
+- [ ] **Vercel** hesabı aç, GitHub reposunu Vercel projesine bağla.
+- [ ] **Domain'e karar ver** (yoksa `.vercel.app` ile geçici devam edilebilir).
+- [ ] Domain alındıysa Vercel'e bağla (A / CNAME kaydı).
+- [ ] **`NEXT_PUBLIC_SITE_URL`'i Vercel'e gir** — canonical URL'ler, hreflang,
+      sitemap ve sosyal kart bunu kullanıyor. Girilmezse Vercel'in geçici
+      deployment adresi kullanılır, ki canlıda yanlış olur.
+- [ ] `.env.example`'daki tüm değişkenleri Vercel → Settings → Environment
+      Variables'a gir. **Production ve Preview için ayrı ayrı kontrol et.**
+- [ ] Vercel Analytics'i dashboard'dan aktif et (paket kuruldu, sayfaya
+      bağlandı — sadece dashboard'da açman gerekiyor).
+
+---
+
+## 5 · Karar Gerektirenler
+
+- [ ] Yat teknik özellik alanlarının kesin listesi. Şu an: tam boy, genişlik,
+      su çekimi, tekne malzemesi, tahrik, misafir/mürettebat, menzil, teslim.
+      Eklenecek/çıkarılacak var mı?
+- [ ] **Gizlilik Politikası / KVKK** metni gerekiyor mu? İletişim formu, harita
+      ve analytics nedeniyle büyük olasılıkla gerekiyor. Gerekiyorsa metni ver.
+- [ ] News and Events'te ayrı bir **"haber"** (etkinlik olmayan duyuru) içerik
+      tipi gerekiyor mu? Şu an tek "event" tipiyle ilerleniyor ve
+      yaklaşan/geçmiş ayrımı tarihten otomatik hesaplanıyor.
+- [ ] Footer'daki **sosyal medya linkleri** (Instagram / LinkedIn / YouTube)
+      şu an tıklanmıyor — hesap adreslerini ver ya da kaldıralım.
+
+---
+
+## 6 · Yayına Alma Öncesi Son Kontrol
+
+- [ ] Resend gerçek key ile ilk test gönderimi yapıldı mı?
+- [ ] Sanity Studio kullanım eğitimi (client kendi içeriğini girebilsin diye).
+- [ ] TR/EN tüm sayfaları son kez gözden geçir.
+- [ ] `sample-data.ts` silindi mi, sitede hiç `[KÖŞELİ PARANTEZ]` kaldı mı?

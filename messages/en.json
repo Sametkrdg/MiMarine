@@ -94,7 +94,15 @@
       "message": "Message",
       "messagePlaceholder": "A few lines about the yacht, the cruising ground, the timeline.",
       "submit": "Send enquiry",
-      "note": "We answer every enquiry personally, usually within two working days."
+      "note": "We answer every enquiry personally, usually within two working days.",
+      "sent": "Thank you — we will be in touch",
+      "errors": {
+        "invalid_json": "The form could not be submitted. Please try again.",
+        "missing_fields": "Name and email are required.",
+        "invalid_email": "That email address does not look right.",
+        "not_configured": "The contact form is not live yet. Please write to us directly in the meantime.",
+        "send_failed": "Could not send the enquiry. Please try again."
+      }
     },
     "officesLabel": "Offices"
   },
@@ -125,5 +133,18 @@
     "share": "Share",
     "copyLink": "Copy link",
     "backToNews": "News and Events"
+  },
+  "notFound": {
+    "title": "That page is not here.",
+    "body": "The link may be out of date, or the address mistyped. Carry on from here.",
+    "home": "Home",
+    "fleet": "See the fleet"
+  },
+  "errorPage": {
+    "eyebrow": "Error",
+    "title": "Something went wrong.",
+    "body": "An unexpected error occurred. Trying again may clear it; if it persists, let us know.",
+    "reference": "Reference",
+    "retry": "Try again"
   }
 }

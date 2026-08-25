@@ -94,7 +94,15 @@
       "message": "Mesaj",
       "messagePlaceholder": "Tekne, seyir bölgesi ve zaman planı hakkında birkaç satır.",
       "submit": "Talebi gönder",
-      "note": "Her talebi bizzat yanıtlıyoruz, genellikle iki iş günü içinde."
+      "note": "Her talebi bizzat yanıtlıyoruz, genellikle iki iş günü içinde.",
+      "sent": "Teşekkürler — en kısa sürede dönüş yapacağız",
+      "errors": {
+        "invalid_json": "Form gönderilemedi. Lütfen tekrar deneyin.",
+        "missing_fields": "Ad ve e-posta zorunlu.",
+        "invalid_email": "E-posta adresi geçerli görünmüyor.",
+        "not_configured": "İletişim formu henüz yayında değil. Bu arada bize doğrudan yazabilirsiniz.",
+        "send_failed": "Talep gönderilemedi. Lütfen tekrar deneyin."
+      }
     },
     "officesLabel": "Ofisler"
   },
@@ -125,5 +133,18 @@
     "share": "Paylaş",
     "copyLink": "Bağlantıyı kopyala",
     "backToNews": "Haberler ve Etkinlikler"
+  },
+  "notFound": {
+    "title": "Aradığınız sayfa burada değil.",
+    "body": "Bağlantı eskimiş ya da adres yanlış yazılmış olabilir. Buradan devam edebilirsiniz.",
+    "home": "Ana sayfa",
+    "fleet": "Filoyu gör"
+  },
+  "errorPage": {
+    "eyebrow": "Hata",
+    "title": "Bir şeyler ters gitti.",
+    "body": "Beklenmedik bir hata oluştu. Tekrar denemek sorunu çözebilir; sürerse bize bildirin.",
+    "reference": "Referans",
+    "retry": "Tekrar dene"
   }
 }

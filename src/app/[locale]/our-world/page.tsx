@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import ImagePlaceholder from "@/components/site/ImagePlaceholder";
+import Figure from "@/components/site/Figure";
 import PageHeader from "@/components/site/PageHeader";
 import { getOurWorldContent, pick, type Locale } from "@/content";
 import { Link } from "@/i18n/navigation";
@@ -9,7 +9,7 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  return pageMetadata(locale, "nav", "ourWorld");
+  return pageMetadata(locale, "nav", "ourWorld", "/our-world");
 }
 
 export default async function OurWorldPage({ params }: Props) {
@@ -26,7 +26,14 @@ export default async function OurWorldPage({ params }: Props) {
       <PageHeader eyebrow={t("eyebrow")} title={pick(content.title, l)} />
 
       <section className="shell pt-20">
-        <ImagePlaceholder label="Yard interior" className="h-[380px] lg:h-[620px]" />
+        <Figure
+          image={content.heroImage}
+          locale={l}
+          fallbackLabel="Yard interior"
+          className="h-[380px] lg:h-[620px]"
+          priority
+          sizes="(min-width: 1600px) 1560px, 100vw"
+        />
       </section>
 
       {/* ── Statement ─────────────────────────────────────────────────── */}
@@ -47,9 +54,12 @@ export default async function OurWorldPage({ params }: Props) {
         {content.pillars.map((pillar) => {
           const inner = (
             <>
-              <ImagePlaceholder
-                label={pillar.imageLabel}
+              <Figure
+                image={pillar.image}
+                locale={l}
+                fallbackLabel={pick(pillar.title, l)}
                 className="mb-7 h-[320px] lg:h-[420px]"
+                sizes="(min-width: 1025px) 33vw, 100vw"
               />
               <div className="text-[10px] tracking-label text-accent uppercase">
                 {pillar.kicker}

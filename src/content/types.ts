@@ -11,6 +11,18 @@ export type Locale = "tr" | "en";
 /** A field that Sanity will hold as a localised object. */
 export type L10n<T = string> = Record<Locale, T>;
 
+/**
+ * An image slot.
+ *
+ * `src` is an absolute URL. Today these are Unsplash placeholders; in phase 2
+ * they become Sanity CDN URLs produced by `urlFor()`, so the shape does not
+ * change. `alt` is localised because alt text is content, not chrome.
+ */
+export type SiteImage = {
+  src: string;
+  alt: L10n;
+};
+
 export type YachtStatus = "delivered" | "ready-for-delivery" | "in-production";
 
 export type SpecRow = {
@@ -35,9 +47,8 @@ export type Yacht = {
   lede: L10n;
   body: L10n<string[]>;
   specs: SpecRow[];
-  /** Describes what the cover image will show, until real photography exists. */
-  coverLabel: string;
-  galleryLabels: string[];
+  cover: SiteImage;
+  gallery: SiteImage[];
 };
 
 export type EventItem = {
@@ -50,7 +61,7 @@ export type EventItem = {
   title: L10n;
   excerpt: L10n;
   body: L10n<string[]>;
-  coverLabel: string;
+  cover: SiteImage;
 };
 
 export type DealerRegion = "mediterranean" | "northern-europe" | "americas" | "asia-pacific";
@@ -84,22 +95,30 @@ export type Office = {
 
 /** Home page singleton. */
 export type HomeContent = {
+  heroImage: SiteImage;
   heroEyebrow: L10n;
   heroTitle: L10n;
   statement: L10n;
   statementBody: L10n;
   figures: { value: string; label: L10n; note: L10n }[];
-  tiles: { href: string; kicker: L10n; title: L10n; body: L10n; imageLabel: string }[];
+  tiles: { href: string; kicker: L10n; title: L10n; body: L10n; image: SiteImage }[];
   closing: L10n;
 };
 
 /** Our World page singleton. */
 export type OurWorldContent = {
   title: L10n;
+  heroImage: SiteImage;
   statement: L10n;
   statementBody: L10n;
-  pillars: { id: string; kicker: string; title: L10n; body: L10n; imageLabel: string; href?: string }[];
+  pillars: { id: string; kicker: string; title: L10n; body: L10n; image: SiteImage; href?: string }[];
   commitments: { no: string; title: L10n; body: L10n }[];
+};
+
+/** Map imagery, used by the network and contact pages. */
+export type MapImages = {
+  network: SiteImage;
+  contact: SiteImage;
 };
 
 /** Resolves a localised field. Named `pick` so it never shadows next-intl's `t`. */

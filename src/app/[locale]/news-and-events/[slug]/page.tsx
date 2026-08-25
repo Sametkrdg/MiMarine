@@ -1,9 +1,10 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import ImagePlaceholder from "@/components/site/ImagePlaceholder";
+import Figure from "@/components/site/Figure";
 import { getAllEventSlugs, getEventOrNotFound, pick, type Locale } from "@/content";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { formatEventDate } from "@/lib/format";
+import { contentMetadata } from "@/lib/metadata";
 import { primaryRoutes } from "@/lib/site-nav";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -16,7 +17,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
   const event = await getEventOrNotFound(slug);
-  return { title: pick(event.title, locale as Locale) };
+  const l = locale as Locale;
+  return contentMetadata(
+    locale,
+    pick(event.title, l),
+    `/news-and-events/${slug}`,
+    pick(event.excerpt, l),
+  );
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -46,7 +53,14 @@ export default async function ArticlePage({ params }: Props) {
       </section>
 
       <section className="shell pt-[72px]">
-        <ImagePlaceholder label={event.coverLabel} className="h-[360px] lg:h-[600px]" />
+        <Figure
+          image={event.cover}
+          locale={l}
+          fallbackLabel={pick(event.title, l)}
+          className="h-[360px] lg:h-[600px]"
+          priority
+          sizes="(min-width: 1600px) 1560px, 100vw"
+        />
       </section>
 
       <section className="mx-auto max-w-[1100px] px-6 pt-[86px] pb-[180px] lg:px-12">

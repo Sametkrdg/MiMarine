@@ -1,10 +1,16 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import ImagePlaceholder from "@/components/site/ImagePlaceholder";
+import { alternates } from "@/lib/metadata";
+import Figure from "@/components/site/Figure";
 import { getFeaturedYacht, getHomeContent, pick, type Locale } from "@/content";
 import { Link } from "@/i18n/navigation";
 import { primaryRoutes } from "@/lib/site-nav";
 
 type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  return { alternates: alternates(locale, "/") };
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
@@ -20,7 +26,14 @@ export default async function HomePage({ params }: Props) {
     <>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative min-h-[620px] overflow-hidden lg:h-[calc(100vh-86px)]">
-        <ImagePlaceholder label="Hero" className="absolute inset-0" />
+        <Figure
+          image={home.heroImage}
+          locale={l}
+          fallbackLabel="Hero"
+          className="absolute inset-0"
+          priority
+          sizes="100vw"
+        />
         <div className="pointer-events-none absolute inset-0 bg-ink/45" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 pb-[68px]">
           <div className="shell">
@@ -93,7 +106,13 @@ export default async function HomePage({ params }: Props) {
             </Link>
           </div>
           <Link href={`/fleet/${featured.slug}`} className="group block">
-            <ImagePlaceholder label={featured.coverLabel} className="h-[420px] lg:h-[640px]" />
+            <Figure
+              image={featured.cover}
+              locale={l}
+              fallbackLabel={featured.name}
+              className="h-[420px] lg:h-[640px]"
+              sizes="(min-width: 1600px) 1560px, 100vw"
+            />
             <div className="grid grid-cols-1 gap-8 pt-[38px] lg:grid-cols-2 lg:gap-[120px]">
               <div>
                 <div className="text-[30px] font-extralight text-ink transition-colors group-hover:text-accent lg:text-[38px]">
@@ -115,7 +134,13 @@ export default async function HomePage({ params }: Props) {
       <section className="shell grid grid-cols-1 gap-8 pt-[150px] pb-[30px] lg:grid-cols-3 lg:gap-12">
         {home.tiles.map((tile) => (
           <Link key={tile.title.en} href={tile.href} className="group block">
-            <ImagePlaceholder label={tile.imageLabel} className="h-[380px]" />
+            <Figure
+              image={tile.image}
+              locale={l}
+              fallbackLabel={pick(tile.title, l)}
+              className="h-[380px]"
+              sizes="(min-width: 1025px) 33vw, 100vw"
+            />
             <div className="mt-[26px] text-[10px] tracking-label text-accent uppercase">
               {pick(tile.kicker, l)}
             </div>

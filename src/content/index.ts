@@ -7,12 +7,13 @@
  */
 
 import { notFound } from "next/navigation";
-import { dealers, events, home, offices, ourWorld, yachts } from "./sample-data";
+import { dealers, events, home, maps, offices, ourWorld, yachts } from "./sample-data";
 import type {
   Dealer,
   DealerRegion,
   EventItem,
   HomeContent,
+  MapImages,
   Office,
   OurWorldContent,
   Yacht,
@@ -134,6 +135,11 @@ export async function getHomeContent(): Promise<HomeContent> {
 
 export async function getOurWorldContent(): Promise<OurWorldContent> {
   return ourWorld;
+}
+
+/** Placeholder map imagery, until Mapbox is wired up. */
+export async function getMaps(): Promise<MapImages> {
+  return maps;
 }
 
 export * from "./types";
