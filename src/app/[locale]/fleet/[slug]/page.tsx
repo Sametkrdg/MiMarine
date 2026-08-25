@@ -76,7 +76,7 @@ export default async function YachtDetailPage({ params }: Props) {
               {yacht.name}
             </h1>
             <div className="mt-4 text-[12px] tracking-nav text-paper/75 uppercase">
-              {pick(yacht.subtitle, l)} · {yacht.loa}
+              {pick(yacht.subtitle, l)} · {pick(yacht.loa, l)}
             </div>
           </div>
         </div>
@@ -111,12 +111,17 @@ export default async function YachtDetailPage({ params }: Props) {
                 {pick(spec.key, l)}
               </div>
               <div className="mt-3 text-[22px] font-extralight text-ink">
-                {spec.value}
+                {pick(spec.value, l)}
               </div>
             </div>
           ))}
         </div>
         <div className="h-px bg-ink" />
+        {/* The definitive field list is not settled; say so rather than let
+            provisional numbers read as confirmed. */}
+        <p className="mt-5 text-[11px] tracking-[0.14em] text-muted">
+          {t("specsProvisional")}
+        </p>
       </section>
 
       {/* ── Gallery ───────────────────────────────────────────────────── */}

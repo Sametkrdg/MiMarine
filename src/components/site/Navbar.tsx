@@ -14,7 +14,7 @@ function Chevron() {
   return (
     <span
       aria-hidden
-      className="block h-[5px] w-[5px] -translate-y-[2px] rotate-45 border-b border-r border-muted"
+      className="block h-[6px] w-[6px] -translate-y-[2px] rotate-45 border-b border-r border-ink"
     />
   );
 }
@@ -171,7 +171,7 @@ export default function Navbar({
                 onClick={closeAll}
                 key={link.href}
                 href={link.href}
-                className="border-b border-ink py-[15px] text-[19px] font-extralight text-ink"
+                className="border-b border-ink py-[15px] text-[19px] font-light text-ink"
               >
                 {link.ns === "fleetTabs" ? tFleet(link.key) : t(link.key)}
               </Link>

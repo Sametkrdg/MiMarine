@@ -24,13 +24,10 @@ export default async function OpenGraphImage() {
           border: "1px solid #171717",
         }}
       >
-        <div style={{ fontSize: 84, letterSpacing: 40, color: "#171717" }}>
+        <div style={{ fontSize: 62, letterSpacing: 26, color: "#171717" }}>
           {brand.wordmark}
         </div>
-        <div style={{ fontSize: 24, letterSpacing: 18, color: "#737373", marginTop: 28 }}>
-          {brand.wordmarkSub}
-        </div>
-        <div style={{ width: 120, height: 1, background: "#5B54A6", marginTop: 56 }} />
+        <div style={{ width: 120, height: 1, background: "#5B54A6", marginTop: 52 }} />
       </div>
     ),
     size,

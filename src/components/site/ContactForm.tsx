@@ -10,7 +10,7 @@ const fieldClass =
 const labelClass =
   "mb-3 block text-[10px] tracking-[0.24em] text-muted uppercase";
 
-export default function ContactForm() {
+export default function ContactForm({ enabled }: { enabled: boolean }) {
   const t = useTranslations("contact.form");
   const tErrors = useTranslations("contact.form.errors");
   const [status, setStatus] = useState<Status>("idle");
@@ -63,6 +63,12 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit}>
+      {!enabled && (
+        <p className="mb-10 border border-accent bg-surface-alt px-7 py-5 text-[15px] leading-[1.8] text-body">
+          {t("comingSoon")}
+        </p>
+      )}
+
       <div className="grid grid-cols-1 gap-11 sm:grid-cols-2 sm:gap-y-11 sm:gap-x-10">
         {fields.map((f) => (
           <div key={f.name}>
@@ -75,7 +81,8 @@ export default function ContactForm() {
               type={f.type}
               required={f.name === "name" || f.name === "email"}
               placeholder={f.placeholder}
-              className={fieldClass}
+              disabled={!enabled}
+              className={`${fieldClass} disabled:opacity-50`}
             />
           </div>
         ))}
@@ -88,7 +95,8 @@ export default function ContactForm() {
             name="message"
             rows={4}
             placeholder={t("messagePlaceholder")}
-            className={`${fieldClass} resize-none`}
+            disabled={!enabled}
+            className={`${fieldClass} resize-none disabled:opacity-50`}
           />
         </div>
       </div>
@@ -96,7 +104,7 @@ export default function ContactForm() {
       <div className="mt-[52px] flex flex-wrap items-center gap-[30px]">
         <button
           type="submit"
-          disabled={status === "sending" || status === "sent"}
+          disabled={!enabled || status === "sending" || status === "sent"}
           className="cursor-pointer border border-ink px-[42px] py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper disabled:cursor-default disabled:opacity-60"
         >
           {status === "sent" ? t("sent") : t("submit")}

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "titleTemplate": "%s · MiMarine Yacht",
-    "defaultTitle": "MiMarine Yacht",
+    "titleTemplate": "%s · Mimarine Yacht",
+    "defaultTitle": "Mimarine Yacht",
     "defaultDescription": "Ege kıyısında el işçiliğiyle üretilen sürdürülebilir alüminyum yatlar."
   },
   "nav": {
@@ -24,7 +24,7 @@
     "past": "Geçmiş Etkinlikler"
   },
   "home": {
-    "eyebrow": "MiMarine Yacht",
+    "eyebrow": "Mimarine Yacht",
     "title": "Sakin su, kalıcı yapı.",
     "sectionHouse": "01 — Tersane",
     "sectionFeatured": "02 — Öne çıkan",
@@ -102,7 +102,8 @@
         "invalid_email": "E-posta adresi geçerli görünmüyor.",
         "not_configured": "İletişim formu henüz yayında değil. Bu arada bize doğrudan yazabilirsiniz.",
         "send_failed": "Talep gönderilemedi. Lütfen tekrar deneyin."
-      }
+      },
+      "comingSoon": "İletişim formu yakında aktif olacak. Bu arada bize doğrudan e-posta ile ulaşabilirsiniz."
     },
     "officesLabel": "Ofisler"
   },
@@ -127,7 +128,8 @@
     "gallery": "Galeri",
     "closing": "Tam spesifikasyon ve genel yerleşim planını talep edin.",
     "enquire": "Talep gönder",
-    "backToFleet": "Filo"
+    "backToFleet": "Filo",
+    "specsProvisional": "Teknik özellikler placeholder — gerçek verilerle değiştirilecek."
   },
   "article": {
     "share": "Paylaş",
@@ -146,5 +148,10 @@
     "body": "Beklenmedik bir hata oluştu. Tekrar denemek sorunu çözebilir; sürerse bize bildirin.",
     "reference": "Referans",
     "retry": "Tekrar dene"
+  },
+  "legal": {
+    "eyebrow": "Hukuki",
+    "draftLabel": "Taslak — hukuki inceleme bekliyor",
+    "lastUpdated": "Son güncelleme"
   }
 }

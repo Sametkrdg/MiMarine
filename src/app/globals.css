@@ -71,7 +71,9 @@
 }
 
 @utility nav-link {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 400;
   letter-spacing: var(--tracking-nav);
   text-transform: uppercase;
+  color: var(--color-ink);
 }

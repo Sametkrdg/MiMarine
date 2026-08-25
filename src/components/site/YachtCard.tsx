@@ -28,7 +28,7 @@ export default function YachtCard({
           </div>
         </div>
         <div className="shrink-0 text-[12px] tracking-[0.16em] text-accent">
-          {yacht.loa}
+          {pick(yacht.loa, locale)}
         </div>
       </div>
     </Link>

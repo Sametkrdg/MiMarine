@@ -28,8 +28,11 @@ export type YachtStatus = "delivered" | "ready-for-delivery" | "in-production";
 export type SpecRow = {
   /** Label, translated. */
   key: L10n;
-  /** Value — usually a number with a unit, so not translated. */
-  value: string;
+  /**
+   * Value, translated too — Turkish and English disagree on decimal and
+   * thousands separators ("34,0 m" vs "34.0 m"), and some values are words.
+   */
+  value: L10n;
 };
 
 export type Yacht = {
@@ -42,8 +45,8 @@ export type Yacht = {
   featured: boolean;
   /** Small line under the name on cards, e.g. "Delivered 2024 · Aegean". */
   subtitle: L10n;
-  /** Length overall, shown on cards. */
-  loa: string;
+  /** Length overall, shown on cards. Localised for the decimal separator. */
+  loa: L10n;
   lede: L10n;
   body: L10n<string[]>;
   specs: SpecRow[];
@@ -113,6 +116,28 @@ export type OurWorldContent = {
   statementBody: L10n;
   pillars: { id: string; kicker: string; title: L10n; body: L10n; image: SiteImage; href?: string }[];
   commitments: { no: string; title: L10n; body: L10n }[];
+};
+
+/** One heading + body block inside a legal document. */
+export type LegalSection = {
+  heading: L10n;
+  body: L10n<string[]>;
+};
+
+/**
+ * A legal page (privacy policy / KVKK aydınlatma metni).
+ *
+ * `notice` is rendered as a banner above the text. It exists because this
+ * document is a DRAFT: it was written from what the site actually does, not
+ * by a lawyer, and must be reviewed before launch.
+ */
+export type LegalDocument = {
+  title: L10n;
+  /** ISO date, formatted per locale at render time. */
+  lastUpdated: string;
+  notice: L10n;
+  intro: L10n;
+  sections: LegalSection[];
 };
 
 /** Map imagery, used by the network and contact pages. */

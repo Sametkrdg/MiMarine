@@ -74,10 +74,22 @@ export default async function Footer() {
             © {new Date().getFullYear()} {brand.legalName} · {t("rights")}
           </span>
           <span className="flex gap-7">
-            <span>Instagram</span>
-            <span>LinkedIn</span>
-            <span>YouTube</span>
-            <span>{t("privacy")}</span>
+            {/* Social handles are not known yet; a dead link reads worse than
+                no link, so the row stays empty until brand.social is filled. */}
+            {brand.social.map((account) => (
+              <a
+                key={account.href}
+                href={account.href}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-paper"
+              >
+                {account.label}
+              </a>
+            ))}
+            <Link href="/privacy-policy" className="transition-colors hover:text-paper">
+              {t("privacy")}
+            </Link>
           </span>
         </div>
       </div>

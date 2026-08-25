@@ -119,7 +119,7 @@ export default async function HomePage({ params }: Props) {
                   {featured.name}
                 </div>
                 <div className="mt-3 text-[12px] tracking-[0.2em] text-muted uppercase">
-                  {featured.loa} · {pick(featured.subtitle, l)}
+                  {pick(featured.loa, l)} · {pick(featured.subtitle, l)}
                 </div>
               </div>
               <p className="max-w-[50ch] text-[16px] leading-[2] text-pretty text-body">

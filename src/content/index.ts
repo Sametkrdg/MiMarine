@@ -7,12 +7,14 @@
  */
 
 import { notFound } from "next/navigation";
+import { privacyPolicy } from "./legal";
 import { dealers, events, home, maps, offices, ourWorld, yachts } from "./sample-data";
 import type {
   Dealer,
   DealerRegion,
   EventItem,
   HomeContent,
+  LegalDocument,
   MapImages,
   Office,
   OurWorldContent,
@@ -125,6 +127,15 @@ export async function getDealerRegionCounts(): Promise<{
   };
 }
 
+/**
+ * Dealers that have coordinates, i.e. the ones the map can plot. Empty until
+ * the real lat/lng list arrives, which is what keeps the map off the live site
+ * rather than showing an empty world.
+ */
+export async function getMappableDealers(): Promise<Dealer[]> {
+  return dealers.filter((d) => d.coordinates);
+}
+
 export async function getOffices(): Promise<Office[]> {
   return offices;
 }
@@ -137,7 +148,12 @@ export async function getOurWorldContent(): Promise<OurWorldContent> {
   return ourWorld;
 }
 
-/** Placeholder map imagery, until Mapbox is wired up. */
+/** Privacy policy / KVKK text. Still a legal DRAFT — see `legal.ts`. */
+export async function getPrivacyPolicy(): Promise<LegalDocument> {
+  return privacyPolicy;
+}
+
+/** Placeholder map imagery, until the dealer coordinates arrive. */
 export async function getMaps(): Promise<MapImages> {
   return maps;
 }

@@ -13,6 +13,7 @@ const staticPaths = [
   "/news-and-events",
   "/dealer-and-services-network",
   "/contact",
+  "/privacy-policy",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

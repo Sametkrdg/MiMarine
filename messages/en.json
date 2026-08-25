@@ -1,7 +1,7 @@
 {
   "meta": {
-    "titleTemplate": "%s · MiMarine Yacht",
-    "defaultTitle": "MiMarine Yacht",
+    "titleTemplate": "%s · Mimarine Yacht",
+    "defaultTitle": "Mimarine Yacht",
     "defaultDescription": "Sustainable aluminium yachts, built by hand on the Aegean coast."
   },
   "nav": {
@@ -24,7 +24,7 @@
     "past": "Past / Held Events"
   },
   "home": {
-    "eyebrow": "MiMarine Yacht",
+    "eyebrow": "Mimarine Yacht",
     "title": "Quiet water, built to last.",
     "sectionHouse": "01 — The yard",
     "sectionFeatured": "02 — Featured",
@@ -102,7 +102,8 @@
         "invalid_email": "That email address does not look right.",
         "not_configured": "The contact form is not live yet. Please write to us directly in the meantime.",
         "send_failed": "Could not send the enquiry. Please try again."
-      }
+      },
+      "comingSoon": "The contact form will be live shortly. In the meantime, please reach us directly by email."
     },
     "officesLabel": "Offices"
   },
@@ -127,7 +128,8 @@
     "gallery": "Gallery",
     "closing": "Request the full specification and general arrangement.",
     "enquire": "Enquire",
-    "backToFleet": "Fleet"
+    "backToFleet": "Fleet",
+    "specsProvisional": "Specifications are placeholders — to be replaced with real data."
   },
   "article": {
     "share": "Share",
@@ -146,5 +148,10 @@
     "body": "An unexpected error occurred. Trying again may clear it; if it persists, let us know.",
     "reference": "Reference",
     "retry": "Try again"
+  },
+  "legal": {
+    "eyebrow": "Legal",
+    "draftLabel": "Draft — pending legal review",
+    "lastUpdated": "Last updated"
   }
 }

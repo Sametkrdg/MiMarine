@@ -3,6 +3,7 @@ import ContactForm from "@/components/site/ContactForm";
 import Figure from "@/components/site/Figure";
 import PageHeader from "@/components/site/PageHeader";
 import { getMaps, getOffices, pick, type Locale } from "@/content";
+import { isContactFormConfigured } from "@/lib/integrations";
 import { pageMetadata } from "@/lib/metadata";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -27,7 +28,7 @@ export default async function ContactPage({ params }: Props) {
       <PageHeader eyebrow={t("eyebrow")} title={t("title")} />
 
       <section className="shell grid grid-cols-1 items-start gap-12 pt-[90px] lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-[120px]">
-        <ContactForm />
+        <ContactForm enabled={isContactFormConfigured()} />
 
         <div>
           {offices.map((office) => (

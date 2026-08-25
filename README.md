@@ -1,4 +1,4 @@
-# MiMarine Yacht — Kurumsal Web Sitesi
+# Mimarine Yacht — Kurumsal Web Sitesi
 
 Çok dilli (TR/EN), çok sayfalı yat markası kurumsal sitesi.
 
@@ -32,6 +32,7 @@ src/
       news-and-events/   liste + [slug]
       dealer-and-services-network/
       contact/
+    privacy-policy/      Gizlilik Politikası / KVKK (TASLAK)
     error.tsx            Çalışma zamanı hata sınırı
     not-found.tsx        404
     opengraph-image.tsx  Sosyal kart (next/og ile üretilir)
@@ -42,9 +43,10 @@ src/
     robots.ts            /robots.txt
     sitemap.ts           /sitemap.xml (TR+EN, hreflang'li)
   components/site/       Navbar, Footer, Wordmark, kartlar, form, yer tutucular
-  content/               types.ts · sample-data.ts · index.ts (içerik katmanı)
+  content/               types.ts · sample-data.ts · legal.ts · index.ts
   i18n/                  next-intl routing / navigation / request
-  lib/                   brand, site-nav, metadata, format, site-url, placeholder
+  lib/                   brand, site-nav, metadata, format, site-url,
+                         integrations, placeholder
   proxy.ts               locale yönlendirmesi (Next 16'da "middleware"nin yeni adı)
 messages/                tr.json · en.json — sabit arayüz metinleri
 ```
@@ -68,8 +70,20 @@ Tipografi: **Jost** (200 / 300 / 400), `next/font/google` üzerinden self-host e
 
 ## Marka Adı
 
-Marka metinleri tek yerden gelir: [`src/lib/brand.ts`](./src/lib/brand.ts).
-Logo/wordmark değişirse orayı düzenlemek yeterlidir.
+Marka metinleri tek yerden gelir: [`src/lib/brand.ts`](./src/lib/brand.ts) —
+wordmark (tek satır `MIMARINE YACHT`), tam ad, tescilli unvan ve sosyal medya
+hesapları. `social` boş olduğu sürece footer'daki sosyal satır hiç
+render edilmez; ölü link göstermektense hiç göstermemek daha iyi.
+
+## Harita
+
+Leaflet + OpenStreetMap. Hesap, API key ve kredi kartı gerektirmez.
+OSM'in tile kullanım politikası **atıf zorunlu** kılar; atıf tile katmanının
+kendisi tarafından basılır, kaldırmayın. Yoğun trafikte kendi tile
+sağlayıcınıza geçmek gerekebilir.
+
+Harita yalnızca koordinatı olan bayiler varsa çizilir
+(`getMappableDealers()`), yoksa yer tutucu görsel gösterilir.
 
 ## İçerik Katmanı — Sanity'ye Geçiş
 
@@ -132,7 +146,14 @@ eksik olduğunu yazar.
 - `/api/revalidate` hâlâ stub — Sanity bağlanınca doldurulacak.
 - İletişim formu Resend'e bağlı ama **gerçek bir key ile hiç denenmedi**;
   geçersiz key ile hata yolu doğrulandı (401 → 502), başarılı gönderim değil.
-- **Harita yok.** Mapbox ne token'a ne de koordinata sahip; bkz. MANUEL.md.
+- **Harita kodu hazır ama görünmüyor.** Leaflet + OpenStreetMap ile kuruldu
+  (hesap/API key/kart gerektirmez). Bayilerin koordinatı olmadığı için
+  `getMappableDealers()` boş dönüyor ve yer tutucu görsel gösteriliyor.
+  Koordinat girilir girilmez harita kendiliğinden devreye girer.
+- **İletişim formu kapalı.** Resend key var ama gönderici/alıcı adresi ve
+  domain doğrulaması yok; form alanları pasif ve "yakında aktif" notu var.
+- **Gizlilik Politikası bir TASLAK** — hukuki incelemeden geçmedi, sayfanın
+  üstünde bunu söyleyen bir uyarı var.
 - İletişim bilgileri `src/lib/placeholder.ts` içinde `[ADDRESS LINE 1]` gibi
   köşeli parantezli yer tutucular. Prototipteki uydurma adres/telefon/e-posta
   bilinçli olarak taşınmadı.

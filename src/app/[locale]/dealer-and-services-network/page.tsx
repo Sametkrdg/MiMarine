@@ -1,10 +1,12 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import DealerMap from "@/components/site/DealerMap";
 import Figure from "@/components/site/Figure";
 import PageHeader from "@/components/site/PageHeader";
 import {
   dealerRegions,
   getDealerRegionCounts,
   getDealers,
+  getMappableDealers,
   getMaps,
   pick,
   type DealerRegion,
@@ -42,6 +44,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
   const dealers = await getDealers(active);
   const counts = await getDealerRegionCounts();
   const maps = await getMaps();
+  const mappable = await getMappableDealers();
   const l = locale as Locale;
 
   return (
@@ -50,15 +53,28 @@ export default async function NetworkPage({ params, searchParams }: Props) {
 
       <section className="shell pt-[76px]">
         <div className="relative">
-          <Figure
-            image={maps.network}
-            locale={l}
-            fallbackLabel={t("mapLabel")}
-            className="h-[320px] lg:h-[520px]"
-            priority
-            sizes="(min-width: 1600px) 1560px, 100vw"
-          />
-          <div className="absolute bottom-7 left-7 bg-paper/90 px-6 py-[18px] text-[10px] tracking-nav text-body uppercase">
+          {mappable.length > 0 ? (
+            <DealerMap
+              markers={mappable.map((d) => ({
+                id: d.id,
+                lat: d.coordinates!.lat,
+                lng: d.coordinates!.lng,
+                city: d.city,
+                role: t(`roles.${d.type}`),
+              }))}
+            />
+          ) : (
+            // No coordinates yet, so an empty world map would say nothing.
+            <Figure
+              image={maps.network}
+              locale={l}
+              fallbackLabel={t("mapLabel")}
+              className="h-[320px] lg:h-[520px]"
+              priority
+              sizes="(min-width: 1600px) 1560px, 100vw"
+            />
+          )}
+          <div className="absolute bottom-7 left-7 z-[500] bg-paper/90 px-6 py-[18px] text-[10px] tracking-nav text-body uppercase">
             {t("summary", {
               dealers: counts.dealers,
               services: counts.services,
