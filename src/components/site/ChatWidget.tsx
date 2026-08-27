@@ -131,7 +131,12 @@ export default function ChatWidget() {
             <p className="mt-2 text-[13px] leading-[1.6] text-muted">{t("intro")}</p>
           </header>
 
-          <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 py-5">
+          <div
+            ref={scrollRef}
+            aria-live="polite"
+            aria-atomic="false"
+            className="flex-1 overflow-y-auto px-6 py-5"
+          >
             {messages.length === 0 && (
               <div className="flex flex-col gap-2">
                 {[t("suggest1"), t("suggest2"), t("suggest3")].map((s) => (
@@ -177,7 +182,7 @@ export default function ChatWidget() {
                 maxLength={1000}
                 disabled={busy}
                 aria-label={t("placeholder")}
-                className="w-full border-b border-ink bg-transparent pb-2 font-sans text-[15px] font-light text-ink outline-none placeholder:text-muted disabled:opacity-50"
+                className="w-full border-b border-ink bg-transparent pb-2 font-sans text-[15px] font-light text-ink outline-none focus:border-accent placeholder:text-muted disabled:opacity-50"
               />
               <button
                 type="submit"

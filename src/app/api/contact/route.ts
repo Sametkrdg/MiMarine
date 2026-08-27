@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { fetchContactRecipient } from "@/sanity/queries";
 import { brand } from "@/lib/brand";
 
 /**
@@ -10,8 +11,9 @@ import { brand } from "@/lib/brand";
  * a build failure — see MANUEL.md for what has to be set up:
  *
  *   RESEND_API_KEY      Resend account key
- *   CONTACT_EMAIL_TO    where enquiries land
- *   CONTACT_EMAIL_FROM  a sender on a Resend-verified domain
+ *   CONTACT_EMAIL_TO    fallback recipient; Sanity's siteSettings wins
+ *   CONTACT_EMAIL_FROM  a sender on a Resend-verified domain — NOT an
+ *                       outlook/gmail address, Resend rejects those
  *
  * NOTE: never exercised against a live Resend account — the wiring is written
  * to their documented API but is unverified until a key exists.
@@ -124,7 +126,8 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_EMAIL_TO;
+  // The recipient is editable in the Studio; the env var is the fallback.
+  const to = (await fetchContactRecipient()) ?? process.env.CONTACT_EMAIL_TO;
   const from = process.env.CONTACT_EMAIL_FROM;
 
   if (!apiKey || !to || !from) {

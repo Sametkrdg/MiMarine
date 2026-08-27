@@ -2,7 +2,7 @@
   "meta": {
     "titleTemplate": "%s · Mimarine Yacht",
     "defaultTitle": "Mimarine Yacht",
-    "defaultDescription": "Sustainable aluminium yachts, built by hand. Trabzon, Türkiye."
+    "defaultDescription": "Shipbuilding, naval architecture and engineering in Of, Trabzon. Fishing vessels, commercial work boats and private yachts."
   },
   "nav": {
     "fleet": "Fleet",
@@ -12,7 +12,8 @@
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "languageLabel": "Language"
+    "languageLabel": "Language",
+    "skipToContent": "Skip to content"
   },
   "fleetTabs": {
     "delivered": "Delivered Yachts",
@@ -77,7 +78,14 @@
       "dealer": "Dealer",
       "service": "Service",
       "both": "Dealer · Service"
-    }
+    },
+    "cta": {
+      "eyebrow": "Partnership",
+      "title": "Represent us in your region.",
+      "body": "If you would like to represent Mimarine Yacht for sales or service in your region, we would like to hear from you. Send us your enquiry and we will be in touch.",
+      "action": "Apply for a dealership"
+    },
+    "emptyTitle": "Our dealer and service network is being built."
   },
   "contact": {
     "eyebrow": "Contact",
@@ -151,7 +159,6 @@
   },
   "legal": {
     "eyebrow": "Legal",
-    "draftLabel": "Draft — pending legal review",
     "lastUpdated": "Last updated"
   },
   "chat": {

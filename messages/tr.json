@@ -2,7 +2,7 @@
   "meta": {
     "titleTemplate": "%s · Mimarine Yacht",
     "defaultTitle": "Mimarine Yacht",
-    "defaultDescription": "El işçiliğiyle üretilen sürdürülebilir alüminyum yatlar. Trabzon, Türkiye."
+    "defaultDescription": "Trabzon Of'ta gemi inşası, deniz mimarisi ve mühendislik. Balıkçı gemileri, ticari iş tekneleri ve özel yatlar."
   },
   "nav": {
     "fleet": "Filo",
@@ -12,7 +12,8 @@
     "contact": "İletişim",
     "openMenu": "Menüyü aç",
     "closeMenu": "Menüyü kapat",
-    "languageLabel": "Dil"
+    "languageLabel": "Dil",
+    "skipToContent": "İçeriğe geç"
   },
   "fleetTabs": {
     "delivered": "Teslim Edilen Yatlar",
@@ -77,7 +78,14 @@
       "dealer": "Bayi",
       "service": "Servis",
       "both": "Bayi · Servis"
-    }
+    },
+    "cta": {
+      "eyebrow": "Bayilik",
+      "title": "Bölgenizde bizi temsil edin.",
+      "body": "Mimarine Yacht teknelerinin satışı ve servisi için bölgenizde temsilcilik almak istiyorsanız, sizinle konuşmak isteriz. Talebinizi iletin, dönüş yapalım.",
+      "action": "Bayilik başvurusu"
+    },
+    "emptyTitle": "Bayi ve servis ağımız kuruluyor."
   },
   "contact": {
     "eyebrow": "İletişim",
@@ -151,7 +159,6 @@
   },
   "legal": {
     "eyebrow": "Hukuki",
-    "draftLabel": "Taslak — hukuki inceleme bekliyor",
     "lastUpdated": "Son güncelleme"
   },
   "chat": {

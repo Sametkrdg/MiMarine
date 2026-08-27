@@ -48,6 +48,35 @@
     display: block;
     max-width: 100%;
   }
+
+  /*
+   * Keyboard focus must always be visible (WCAG 2.4.7). `:focus-visible` keeps
+   * the ring off mouse clicks, so this costs the design nothing. Components
+   * that set `outline-none` for their own look are overridden here on purpose.
+   */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+/* Visually hidden until focused — the skip link. */
+@utility skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-ink);
+  padding: 14px 24px;
+  font-size: 12px;
+  letter-spacing: var(--tracking-nav);
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
 }
 
 @utility shell {

@@ -28,17 +28,7 @@ export default async function PrivacyPolicyPage({ params }: Props) {
       </div>
 
       <div className="mx-auto max-w-[820px] px-6 pt-12 lg:px-12">
-        {/* The document has not been through legal review; say so up front. */}
-        <div className="border border-accent bg-surface-alt px-7 py-6">
-          <p className="text-[10px] tracking-label text-accent uppercase">
-            {t("draftLabel")}
-          </p>
-          <p className="mt-3 text-[15px] leading-[1.8] text-body">
-            {pick(doc.notice, l)}
-          </p>
-        </div>
-
-        <p className="mt-10 text-[11px] tracking-[0.16em] text-muted uppercase">
+        <p className="text-[11px] tracking-[0.16em] text-muted uppercase">
           {t("lastUpdated")}:{" "}
           {format.dateTime(new Date(doc.lastUpdated), {
             day: "numeric",

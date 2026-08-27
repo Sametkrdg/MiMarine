@@ -38,42 +38,46 @@ Kod ile otomatikleştirilemeyen, senin yapman gereken adımlar (bkz. `CLAUDE.md`
 
 ---
 
-## 2 · İletişim Formunu Açacaklar
+## 2 · İletişim Formu — bir engel var
 
-Resend key'i var, form kodu hazır — ama gönderim yapılamıyor.
+**Alıcı adresi tamam ve panelden yönetiliyor.** `mimarineyacht@outlook.com`
+artık **Sanity Studio → Site Ayarları → "İletişim formu alıcı adresi"**
+alanından değiştirilebiliyor; kod ya da deploy gerekmiyor. (Sorduğun buydu.)
 
-- [ ] **Domain'e karar ver.** Resend'de kök domain yerine alt domain öneriliyor
-      (örn. `mail.mimarineyacht.com`).
-- [ ] Resend → Domains → Add Domain, sonra verdiği **SPF (TXT) ve DKIM**
-      kayıtlarını DNS sağlayıcına ekle, **Verify**'a bas.
-- [ ] (Önerilir) Aynı yerden bir **DMARC** kaydı ekle.
-- [ ] **Gönderici adresi** (örn. `iletisim@mail.mimarineyacht.com`)
-      → `CONTACT_EMAIL_FROM`
-- [ ] **Taleplerin düşeceği adres** (örn. `info@mimarineyacht.com`)
-      → `CONTACT_EMAIL_TO`
+**Gönderici adresi olmuyor.** Resend, `from` adresinin **kendi doğrulattığın
+bir domainde** olmasını şart koşuyor. `outlook.com` sana ait olmadığı için
+doğrulanamaz — Resend bu adresle gönderimi reddediyor.
 
-> **Şu anki davranış:** üç env değişkeni tamam olmadıkça form alanları pasif ve
-> üstünde "İletişim formu yakında aktif olacak" notu var. Kırık bir gönder
-> butonu göstermiyor. Değişkenler girilir girilmez kendiliğinden aktifleşir.
+İki seçenek:
+
+- [ ] **Kalıcı çözüm — domain al ve doğrula.** Resend → Domains → Add Domain
+      (kök yerine alt domain öneriliyor, örn. `mail.mimarineyacht.com`),
+      verdiği **SPF (TXT) + DKIM** kayıtlarını DNS'e ekle, Verify'a bas. Sonra
+      `CONTACT_EMAIL_FROM=iletisim@mail.mimarineyacht.com`. Önerilir: aynı
+      yerden bir DMARC kaydı da ekle.
+- [ ] **Geçici çözüm — Resend'in test göndericisi.**
+      `CONTACT_EMAIL_FROM=onboarding@resend.dev`. Uyarı: bu gönderici
+      **yalnızca Resend hesabının kendi e-posta adresine** mail atabilir.
+      Resend hesabını `mimarineyacht@outlook.com` ile açtıysan çalışır.
+
+> **Şu anki davranış:** `RESEND_API_KEY` ve `CONTACT_EMAIL_FROM` birlikte tamam
+> olmadıkça form alanları pasif ve üstünde "yakında aktif olacak" notu var.
 
 ---
 
-## 3 · Bayi Haritası: Koordinatlar
+## 3 · Bayi Ağı — şimdilik CTA
 
-- [x] ~~Tersane konumu~~ — `40.968312, 40.305812` onaylandı ve **iletişim
-      sayfasındaki harita çalışıyor.**
+- [x] ~~Tersane konumu~~ — onaylandı, **iletişim sayfasındaki harita çalışıyor.**
+- [x] ~~Uydurma bayi listesi~~ — silindi. Bayi sayfası artık boş kart yerine
+      **büyük bir "Bölgenizde bizi temsil edin" çağrısı** gösteriyor; harita ve
+      bölge sekmeleri gizli (bayi yokken ikisi de bir şey anlatmıyor).
 
 **Mapbox iptal edildi.** Harita **Leaflet + OpenStreetMap** ile kuruldu —
-hesap, API key ve kredi kartı gerektirmez. Kod hazır ve test edildi (gerçek
-tile'lar, pin'ler, atıf çalışıyor).
+hesap, API key ve kredi kartı gerektirmez. Test edildi.
 
-Eksik olan tek şey veri:
-
-- [ ] **Her bayi/servis için enlem-boylam.** Google Maps'te noktaya sağ tık →
-      koordinatları kopyala. Firma adı / şehir eşleşmesiyle birlikte gönder.
-
-> **Şu anki davranış:** koordinatı olan bayi yoksa harita hiç çizilmiyor, yerine
-> yer tutucu görsel duruyor. İlk koordinat girildiği anda harita devreye girer.
+- [ ] **Bayiler geldiğinde** Sanity Studio → "Bayi ve Servis Ağı"ndan ekle.
+      Konum alanını doldurursan harita otomatik devreye girer ve CTA yerini
+      bayi listesine bırakır.
 >
 > **Not:** OSM'in ücretsiz tile sunucusu atıf zorunlu kılar (kodda var) ve çok
 > yüksek trafikte kendi tile sağlayıcına geçmen gerekebilir. Bugünkü hacim için
@@ -100,20 +104,27 @@ Gemini ile kuruldu ve test edildi. Sağ altta "Asistan" balonu.
 
 ---
 
-## 5 · Marka Kimliği — hâlâ placeholder
+## 5 · Marka Kimliği
 
-Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
+- [x] ~~Tescilli unvan~~ — `MimarineYacht Yatçılık San. Tic. Ltd. Şti.`
+- [x] ~~Kuruluş yılı~~ — 2021, ana sayfadaki rakam şeridinde.
+- [x] ~~Adres, telefon, e-posta~~ — hepsi girildi.
+- [x] ~~Şirket anlatımı~~ — verdiğin metin Ana Sayfa ve Dünyamız sayfalarına
+      işlendi. Önceki uydurma iddialar (hibrit dizel-elektrik, geri
+      dönüştürülmüş alüminyum, malzeme pasaportu, güneş paneli, "Ege kıyısı")
+      **tamamen silindi** — chatbot da bunları okuyup gerçekmiş gibi söylüyordu.
 
-- [ ] **Tescilli şirket unvanı** → footer telif satırı. Şu an "Mimarine Yacht".
-- [ ] **Kuruluş yılı** kullanılacak mı? Kullanılacaksa yıl.
-- [ ] **Tersane nasıl anlatılacak?** Adres Karadeniz'de (Of/Trabzon) ama örnek
-      metinler "Ege kıyısında" diyordu — meta açıklamasını bölge belirtmeyecek
-      şekilde düzelttim. Yat açıklamalarındaki "Ege" ifadeleri seyir bölgesini
-      anlatıyor, onlara dokunmadım; gerçek metinler gelince netleşecek.
-- [x] ~~Gerçek adres~~ — `Kıyıcık, Trabzon Rize Yolu, 61830 Of / Trabzon`
-      girildi (footer, iletişim sayfası, KVKK metni).
-- [ ] **Telefon ve e-posta** — hâlâ `[TELEFON]` / `[E-POSTA]`.
-- [ ] **Ana sayfadaki üç rakam** — şu an `[00]`.
+Karar bekleyen üç küçük nokta:
+
+- [ ] **Marka yazımı.** Daha önce "Mimarine Yacht" (boşluklu) demiştin, ama
+      gönderdiğin şirket metni ve unvan "MimarineYacht" (bitişik) yazıyor.
+      Sitede görünen ad "Mimarine Yacht" olarak kaldı; unvan ise birebir
+      `MimarineYacht Yatçılık San. Tic. Ltd. Şti.` yazılıyor. Hangisi doğruysa
+      söyle — `src/lib/brand.ts` içinde tek satır.
+- [ ] **Zafer Dinç ismi sitede görünsün mü?** Şu an telefon ve e-posta var,
+      isim yok. İstersen iletişim sayfasına ekleyebilirim.
+- [ ] **Üçüncü rakam.** Ana sayfada iki rakam doldu (2021 · 3 uzmanlık alanı),
+      üçüncüsü hâlâ `[00]`. Örn. teslim edilen tekne sayısı ya da yerlilik oranı.
 - [ ] **Logo dosyası** (SVG) ve **marka renk kodları**. Şu an prototipin paleti:
       mor aksan `#5B54A6`, kağıt `#FBFAF8`, mürekkep `#171717` —
       `src/app/globals.css` içindeki `@theme` bloğunda, tek yerden değişir.
@@ -138,19 +149,20 @@ Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 ---
 
-## 7 · Gizlilik Politikası / KVKK — TASLAK, hukuki onay bekliyor
+## 7 · Gizlilik Politikası / KVKK
 
-`/tr/privacy-policy` ve `/en/privacy-policy` adreslerinde yayında. Sayfanın
-üstünde "hukuki incelemeden geçmemiştir" uyarısı var.
+- [x] ~~Taslak uyarısı~~ — senin talimatınla kaldırıldı.
+- [x] ~~Şirket bilgileri~~ — unvan, adres, telefon, e-posta metne işlendi.
 
-- [ ] **Bir hukuk danışmanına inceletin.** Özellikle şu iki nokta:
-      yurt dışına veri aktarımı (Vercel, Resend, Sanity, OpenStreetMap sunucuları
-      yurt dışında — KVKK m.9) ve **VERBIS kayıt yükümlülüğü**.
-- [ ] Metindeki `[ŞİRKET UNVANI]`, `[ADRES]`, `[TELEFON]`, `[E-POSTA]`
-      alanlarını doldur (madde 4'teki bilgilerle aynı).
-- [ ] Saklama sürelerini şirketin saklama ve imha politikasıyla netleştir.
-- [ ] Onaylandıktan sonra `src/content/legal.ts` üstündeki TASLAK uyarısını ve
-      sayfadaki uyarı kutusunu kaldırmamı söyle.
+Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
+
+- [ ] **Yurt dışına veri aktarımı (KVKK m.9)** — Vercel, Resend, Sanity, Google
+      (Gemini) ve OpenStreetMap sunucuları yurt dışında. Metinde belirtildi ama
+      gerekli şartların sağlanıp sağlanmadığına hukukçu karar vermeli.
+- [ ] **VERBIS kayıt yükümlülüğü** — doğuyorsa numara, metinde
+      `[VERBIS NUMARASI]` yazan yere eklenecek.
+- [ ] **Saklama süreleri** — metinde "makul süre" deniyor; şirketin saklama ve
+      imha politikasıyla netleştirilmeli.
 
 ---
 
@@ -166,7 +178,16 @@ Bunlar gelene kadar mevcut placeholder'lara dokunmuyorum (senin talimatın).
 
 ---
 
-## 9 · Yayına Alma Öncesi Son Kontrol
+## 9 · Karar Bekleyen (acil değil)
+
+- [ ] **CSP `script-src`** eklensin mi? Şu an güvenlik başlıkları var ama script
+      politikası yok — Next'in satır içi script'leri ve Sanity Studio'nun
+      `unsafe-eval` ihtiyacı yüzünden istek başına nonce üretmek gerekiyor.
+      İstenirse ayrı bir iş olarak yapılabilir.
+
+---
+
+## 10 · Yayına Alma Öncesi Son Kontrol
 
 - [ ] Sitede hiç `[KÖŞELİ PARANTEZ]` veya `[00]` kaldı mı?
 - [ ] `src/content/sample-data.ts` silindi mi (Sanity'ye geçince silinecek)?

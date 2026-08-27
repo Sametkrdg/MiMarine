@@ -1,19 +1,14 @@
 /**
- * ╔══════════════════════════════════════════════════════════════════════╗
- * ║  TASLAK — HUKUKİ İNCELEMEDEN GEÇMEDİ. YAYINA ALMADAN ÖNCE OKUTUN.    ║
- * ╚══════════════════════════════════════════════════════════════════════╝
- *
  * Privacy policy / KVKK aydınlatma metni.
  *
- * This was written from what the site *actually does* — the contact form, the
- * hosting, the analytics, the map — and not by a lawyer. It is deliberately
- * specific about the third parties in use so a solicitor can check it against
- * the real data flows quickly.
+ * Written from what the site actually does — the contact form, the hosting,
+ * the analytics, the map, the assistant — and deliberately specific about the
+ * third parties involved, so a solicitor can check it against the real data
+ * flows quickly. It has NOT been through legal review; the client is taking it
+ * to their advisers, which is why the on-page draft banner was removed at
+ * their request.
  *
- * Company identity (unvan, adres, telefon, e-posta, VERBIS kaydı) is still
- * unknown, so those slots carry the same bracketed placeholders used elsewhere
- * on the site. The document renders with a visible draft banner until it is
- * reviewed.
+ * Still open, and marked in the text: the VERBIS registration number.
  */
 
 import type { LegalDocument } from "./types";
@@ -25,16 +20,11 @@ export const privacyPolicy: LegalDocument = {
   },
 
   // Bumped by hand whenever the text below changes.
-  lastUpdated: "2026-08-26",
-
-  notice: {
-    tr: "Bu metin bir taslaktır ve hukuki incelemeden geçmemiştir. Sitenin fiilen ne yaptığı esas alınarak hazırlandı; yayına almadan önce bir hukuk danışmanına inceletmenizi öneririz.",
-    en: "This text is a draft and has not been reviewed by a lawyer. It was written from what the site actually does; we recommend a legal review before publication.",
-  },
+  lastUpdated: "2026-08-27",
 
   intro: {
-    tr: "Bu metin, [ŞİRKET UNVANI] tarafından işletilen bu web sitesini ziyaret ettiğinizde kişisel verilerinizin nasıl işlendiğini açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında hazırlanmıştır.",
-    en: "This text explains how your personal data is handled when you visit this website, operated by [COMPANY NAME]. It is written with reference to Turkish Law No. 6698 on the Protection of Personal Data (KVKK).",
+    tr: "Bu metin, MimarineYacht Yatçılık San. Tic. Ltd. Şti. tarafından işletilen bu web sitesini ziyaret ettiğinizde kişisel verilerinizin nasıl işlendiğini açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında hazırlanmıştır.",
+    en: "This text explains how your personal data is handled when you visit this website, operated by MimarineYacht Yatçılık San. Tic. Ltd. Şti. It is written with reference to Turkish Law No. 6698 on the Protection of Personal Data (KVKK).",
   },
 
   sections: [
@@ -42,16 +32,16 @@ export const privacyPolicy: LegalDocument = {
       heading: { tr: "Veri sorumlusu", en: "Data controller" },
       body: {
         tr: [
-          "Veri sorumlusu: [ŞİRKET UNVANI]",
-          "Adres: [ADRES SATIRI 1], [POSTA KODU / ŞEHİR]",
-          "Telefon: [TELEFON] · E-posta: [E-POSTA]",
-          "Bu bilgiler tamamlanmadan metin yayına alınmamalıdır. Şirketin VERBIS kaydı gerekiyorsa kayıt numarası da burada belirtilmelidir.",
+          "Veri sorumlusu: MimarineYacht Yatçılık San. Tic. Ltd. Şti.",
+          "Adres: Alparslan Türkeş Bulvarı No: 200, Kıyıcık, 61830 Of / Trabzon",
+          "Telefon: +90 505 817 07 88 · E-posta: mimarineyacht@outlook.com",
+          "VERBIS kayıt yükümlülüğü doğuyorsa kayıt numarası bu bölüme eklenmelidir. [VERBIS NUMARASI — varsa eklenecek]",
         ],
         en: [
-          "Data controller: [COMPANY NAME]",
-          "Address: [ADDRESS LINE 1], [POSTCODE / CITY]",
-          "Phone: [PHONE] · Email: [EMAIL]",
-          "The document should not be published before these details are filled in. If the company is required to register with VERBIS, the registration number belongs here as well.",
+          "Data controller: MimarineYacht Yatçılık San. Tic. Ltd. Şti.",
+          "Address: Alparslan Türkeş Bulvarı No: 200, Kıyıcık, 61830 Of / Trabzon",
+          "Phone: +90 505 817 07 88 · Email: mimarineyacht@outlook.com",
+          "If the company falls under the VERBIS registration requirement, the registration number belongs in this section. [VERBIS NUMBER — to be added if applicable]",
         ],
       },
     },
@@ -164,11 +154,11 @@ export const privacyPolicy: LegalDocument = {
       body: {
         tr: [
           "KVKK m.11 uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini isteme, silinmesini veya yok edilmesini isteme, bu işlemlerin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme, münhasıran otomatik sistemlerle analiz edilmesi suretiyle aleyhinize bir sonuç doğmasına itiraz etme ve zarara uğramanız hâlinde zararın giderilmesini talep etme haklarına sahipsiniz.",
-          "Bu haklarınızı kullanmak için [E-POSTA] adresine yazabilir veya yukarıdaki posta adresine başvurabilirsiniz. Başvurunuz en geç otuz gün içinde sonuçlandırılır.",
+          "Bu haklarınızı kullanmak için mimarineyacht@outlook.com adresine yazabilir veya yukarıdaki posta adresine başvurabilirsiniz. Başvurunuz en geç otuz gün içinde sonuçlandırılır.",
         ],
         en: [
           "Under KVKK Art. 11 you have the right to learn whether your personal data is being processed, to request information if it is, to learn the purpose of processing and whether the data is used accordingly, to know the third parties to whom it is transferred at home or abroad, to request correction if it is incomplete or inaccurate, to request erasure or destruction, to request that such actions be notified to third parties the data was transferred to, to object to an adverse outcome arising solely from automated analysis, and to claim compensation if you suffer loss.",
-          "To exercise these rights, write to [EMAIL] or to the postal address above. Applications are answered within thirty days at the latest.",
+          "To exercise these rights, write to mimarineyacht@outlook.com or to the postal address above. Applications are answered within thirty days at the latest.",
         ],
       },
     },

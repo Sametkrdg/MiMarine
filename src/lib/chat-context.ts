@@ -2,7 +2,9 @@ import { cache } from "react";
 import {
   getDealers,
   getEvents,
+  getHomeContent,
   getOffices,
+  getOurWorldContent,
   getYachts,
   pick,
   type Locale,
@@ -20,12 +22,15 @@ import { brand } from "./brand";
 
 /** One Sanity round trip per request even if several turns arrive together. */
 export const buildSiteContext = cache(async (locale: Locale): Promise<string> => {
-  const [yachts, { upcoming, past }, dealers, offices] = await Promise.all([
-    getYachts(),
-    getEvents(),
-    getDealers(),
-    getOffices(),
-  ]);
+  const [yachts, { upcoming, past }, dealers, offices, home, world] =
+    await Promise.all([
+      getYachts(),
+      getEvents(),
+      getDealers(),
+      getOffices(),
+      getHomeContent(),
+      getOurWorldContent(),
+    ]);
 
   const statusLabel: Record<string, string> = {
     delivered: locale === "tr" ? "Teslim edildi" : "Delivered",
@@ -36,6 +41,24 @@ export const buildSiteContext = cache(async (locale: Locale): Promise<string> =>
   const lines: string[] = [];
 
   lines.push(`# ${brand.fullName}`);
+  lines.push("");
+
+  lines.push(locale === "tr" ? "## Şirket" : "## The company");
+  lines.push(`- ${pick(home.statement, locale)}`);
+  lines.push(`- ${pick(home.statementBody, locale)}`);
+  lines.push(`- ${pick(world.statement, locale)}`);
+  lines.push(`- ${pick(world.statementBody, locale)}`);
+  for (const f of home.figures) {
+    // Bracketed values are unfilled placeholders; do not feed them to the model.
+    if (f.value.startsWith("[")) continue;
+    lines.push(`- ${pick(f.label, locale)}: ${f.value} — ${pick(f.note, locale)}`);
+  }
+  for (const p of world.pillars) {
+    lines.push(`- ${pick(p.title, locale)}: ${pick(p.body, locale)}`);
+  }
+  for (const c of world.commitments) {
+    lines.push(`- ${pick(c.title, locale)}: ${pick(c.body, locale)}`);
+  }
   lines.push("");
 
   lines.push(locale === "tr" ? "## Filo" : "## Fleet");
@@ -70,6 +93,13 @@ export const buildSiteContext = cache(async (locale: Locale): Promise<string> =>
   lines.push("");
 
   lines.push(locale === "tr" ? "## Bayi ve servis ağı" : "## Dealer and service network");
+  if (dealers.length === 0) {
+    lines.push(
+      locale === "tr"
+        ? "- Bayi ve servis ağı henüz kurulmadı; şu an listelenmiş bayi yok. Bayilik almak isteyenler İletişim sayfası üzerinden başvurabilir."
+        : "- The dealer and service network is not established yet; no dealers are listed. Those interested in a dealership can apply through the Contact page.",
+    );
+  }
   for (const d of dealers) {
     lines.push(
       `- ${d.city}${d.company ? ` — ${d.company}` : ""} (${d.type}), ${pick(d.capabilities, locale)}`,

@@ -68,14 +68,20 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   // Opts every page under this layout into static rendering.
   setRequestLocale(locale);
 
+  const t = await getTranslations({ locale, namespace: "nav" });
   const fleetCounts = await getYachtCounts();
 
   return (
     <html lang={locale} className={jost.variable}>
       <body className="flex min-h-screen flex-col font-sans">
         <NextIntlClientProvider>
+          <a href="#main" className="skip-link">
+            {t("skipToContent")}
+          </a>
           <Navbar fleetCounts={fleetCounts} />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <Footer />
           {isChatConfigured() && <ChatWidget />}
         </NextIntlClientProvider>

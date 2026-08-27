@@ -172,6 +172,50 @@ Kurallar:
 - Hiçbir üçüncü taraf bayi/partner firma adı uydurulmadı.
 - Yatlar uydurma tekne adı yerine model/tekne numarası taşıyor.
 
+## Erişilebilirlik
+
+Ölçülerek doğrulandı, tahminle değil:
+
+- İlk Tab durağı **"İçeriğe geç"** bağlantısı; `<main id="main">`'e atlıyor.
+- Global `:focus-visible` halkası (2px aksan, 3px offset). `outline-none`
+  kullanan bileşenler bu kuralla bilinçli olarak eziliyor — klavye odağı her
+  yerde görünür (WCAG 2.4.7).
+- Sohbet paneli `aria-live="polite"` — akan yanıt ekran okuyucuya duyuruluyor.
+- Kontrast: tüm sayfalarda AA eşiğinin altında metin **yok** (hesaplanarak
+  ölçüldü, varsayılmadı).
+- `lang`, tek `h1`, atlanmış başlık seviyesi yok, tüm landmark'lar yerinde,
+  adsız buton/bağlantı yok, alt metni eksik görsel yok.
+
+## Performans
+
+Production build, sıcak önbellek:
+
+| | Ana sayfa | Filo |
+|---|---|---|
+| LCP | 612 ms | 876 ms |
+| CLS | 0 | 0 |
+| JS | 171 KB | 171 KB |
+| CSS | 9 KB | 9 KB |
+| Font | 43 KB | 43 KB |
+
+**Not:** Bir sayfaya ilk kez girildiğinde Unsplash görselinin indirilip
+dönüştürülmesi LCP'yi ~6 saniyeye çıkarıyor. Bu tek seferlik; Vercel'de edge
+önbelleğine giriyor ve gerçek görseller Sanity CDN'den geldiğinde tamamen
+ortadan kalkıyor.
+
+## Güvenlik Başlıkları
+
+`next.config.ts` içinde tanımlı ve doğrulandı:
+`X-Content-Type-Options` · `Referrer-Policy` · `Permissions-Policy` ·
+`Strict-Transport-Security` · `Content-Security-Policy`
+(`frame-ancestors` · `object-src` · `base-uri` · `form-action`).
+
+**Bilinçli eksik:** CSP'de `script-src` yok. Next satır içi bootstrap script'i
+enjekte ediyor ve Sanity Studio `unsafe-eval` istiyor; gerçek bir script
+politikası proxy üzerinden istek başına nonce üretmeyi gerektirir. Bu ayrı bir
+iş — yarım yapmaktansa yapılmadı. Mevcut başlıklar clickjacking, MIME sniffing,
+plugin içeriği ve base-tag enjeksiyonunu zaten kapatıyor.
+
 ## SEO
 
 - Her sayfa canonical + `hreflang` (tr / en / x-default) yayınlar.
@@ -202,14 +246,15 @@ eksik olduğunu yazar.
 
 - İletişim formu Resend'e bağlı ama **gerçek bir key ile hiç denenmedi**;
   geçersiz key ile hata yolu doğrulandı (401 → 502), başarılı gönderim değil.
-- **Bayi haritası boş.** Leaflet + OpenStreetMap kuruldu ve çalışıyor;
-  bayilerin koordinatı olmadığı için yer tutucu görsel gösteriliyor.
-  Koordinat girilir girilmez devreye girer. (İletişim sayfasındaki tersane
+- **Bayi ağı boş.** Sayfa, boş kart yerine bayilik çağrısı gösteriyor; harita
+  ve bölge sekmeleri gizli. Sanity'ye ilk bayi girildiğinde liste, koordinat
+  girildiğinde harita otomatik devreye girer. (İletişim sayfasındaki tersane
   haritası çalışıyor.)
-- **İletişim formu kapalı.** Resend key var ama gönderici/alıcı adresi ve
-  domain doğrulaması yok; form alanları pasif ve "yakında aktif" notu var.
-- **Gizlilik Politikası bir TASLAK** — hukuki incelemeden geçmedi, sayfanın
-  üstünde bunu söyleyen bir uyarı var.
+- **İletişim formu kapalı.** Alıcı adresi hazır ve Sanity'den yönetiliyor,
+  ama Resend gönderici adresi doğrulanmış bir domain istiyor; `outlook.com`
+  kullanılamıyor. Form alanları pasif ve "yakında aktif" notu var.
+- **Gizlilik Politikası hukuki incelemede** — taslak uyarısı client'ın
+  talebiyle kaldırıldı; metin hukuk danışmanlarına gidiyor.
 - İletişim bilgileri `src/lib/placeholder.ts` içinde `[ADDRESS LINE 1]` gibi
   köşeli parantezli yer tutucular. Prototipteki uydurma adres/telefon/e-posta
   bilinçli olarak taşınmadı.

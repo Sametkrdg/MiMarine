@@ -14,7 +14,7 @@ import {
 } from "@/content";
 import { Link } from "@/i18n/navigation";
 import { pageMetadata } from "@/lib/metadata";
-import { regionHref } from "@/lib/site-nav";
+import { primaryRoutes, regionHref } from "@/lib/site-nav";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -49,8 +49,13 @@ export default async function NetworkPage({ params, searchParams }: Props) {
 
   return (
     <>
-      <PageHeader eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} />
+      <PageHeader
+        eyebrow={t("eyebrow")}
+        title={dealers.length === 0 ? t("emptyTitle") : t("title")}
+        intro={dealers.length === 0 ? undefined : t("intro")}
+      />
 
+      {dealers.length > 0 && (
       <section className="shell pt-[76px]">
         <div className="relative">
           {mappable.length > 0 ? (
@@ -83,7 +88,27 @@ export default async function NetworkPage({ params, searchParams }: Props) {
           </div>
         </div>
       </section>
+      )}
 
+      {dealers.length === 0 ? (
+        <section className="shell pt-24 pb-4">
+          <div className="border border-ink bg-surface-alt px-8 py-16 text-center lg:px-16 lg:py-24">
+            <p className="eyebrow">{t("cta.eyebrow")}</p>
+            <h2 className="mx-auto mt-7 max-w-[20ch] text-[32px] leading-[1.15] font-extralight text-pretty text-ink lg:text-[52px]">
+              {t("cta.title")}
+            </h2>
+            <p className="mx-auto mt-7 max-w-[56ch] text-[17px] leading-[2] text-pretty text-body">
+              {t("cta.body")}
+            </p>
+            <Link
+              href={primaryRoutes.contact}
+              className="mt-12 inline-block border border-ink px-12 py-5 text-[12px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+            >
+              {t("cta.action")}
+            </Link>
+          </div>
+        </section>
+      ) : (
       <section className="shell pt-16">
         <div className="flex flex-wrap gap-x-9 border-b border-ink">
           {dealerRegions.map((region) => {
@@ -132,6 +157,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
         </div>
         <div className="h-px bg-ink" />
       </section>
+      )}
 
       <div className="h-[170px]" />
     </>

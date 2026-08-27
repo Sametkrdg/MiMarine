@@ -6,6 +6,7 @@ import type {
   EventItem,
   HomeContent,
   L10n,
+  MapImages,
   Office,
   OurWorldContent,
   SiteImage,
@@ -111,12 +112,23 @@ const DEALER_REGIONS: DealerRegion[] = [
 ];
 const DEALER_TYPES: DealerType[] = ["dealer", "service", "both"];
 
-/** Runs `fn`, logging and swallowing anything that goes wrong. */
+/**
+ * Runs `fn`, logging and swallowing anything that goes wrong.
+ *
+ * Only a short summary is logged. The client's error objects carry the whole
+ * request, including the `Authorization: Bearer <token>` header — logging them
+ * verbatim would write the API token into the log stream.
+ */
 async function safely<T>(label: string, fn: () => Promise<T>): Promise<T | null> {
   try {
     return await fn();
   } catch (error) {
-    console.error(`[sanity] ${label} failed:`, error);
+    const cause = (error as { cause?: { code?: string } })?.cause;
+    const raw = cause?.code ?? (error instanceof Error ? error.message : String(error));
+    // Sanity puts the whole query URL in its timeout messages; keep the log to
+    // the first line and a sane length.
+    const detail = raw.split(" on request to ")[0].trim().slice(0, 120);
+    console.error(`[sanity] ${label} failed: ${detail} — falling back to sample data`);
     return null;
   }
 }
@@ -405,4 +417,46 @@ export async function fetchOffices(): Promise<Office[] | null> {
         ? { lat: o.coordinates.lat, lng: o.coordinates.lng }
         : undefined,
   }));
+}
+
+export async function fetchMaps(): Promise<MapImages | null> {
+  const client = getClient();
+  if (!client) return null;
+
+  const raw = await safely("fetchMaps", () =>
+    client.fetch<{ networkMap?: RawImage; contactMap?: RawImage } | null>(
+      groq`*[_type == "siteSettings"][0]{
+        networkMap ${IMAGE_PROJECTION},
+        contactMap ${IMAGE_PROJECTION}
+      }`,
+    ),
+  );
+
+  const network = image(raw?.networkMap ?? null);
+  const contact = image(raw?.contactMap ?? null);
+  // Both are placeholders for a map; one without the other is not useful.
+  if (!network || !contact) return null;
+
+  return { network, contact };
+}
+
+/**
+ * Where contact form enquiries should be delivered, as set in Sanity.
+ *
+ * Editable from the Studio so the recipient can change without a deploy. The
+ * sender address stays in the environment: it must match a domain verified
+ * with Resend, so it is not something an editor can safely change.
+ */
+export async function fetchContactRecipient(): Promise<string | null> {
+  const client = getClient();
+  if (!client) return null;
+
+  const raw = await safely("fetchContactRecipient", () =>
+    client.fetch<{ contactEmailTo?: string | null } | null>(
+      groq`*[_type == "siteSettings"][0]{ contactEmailTo }`,
+    ),
+  );
+
+  const value = raw?.contactEmailTo?.trim();
+  return value ? value : null;
 }

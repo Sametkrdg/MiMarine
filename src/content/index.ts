@@ -15,6 +15,7 @@ import {
   fetchDealers,
   fetchEvents,
   fetchHomeContent,
+  fetchMaps,
   fetchOffices,
   fetchOurWorldContent,
   fetchYachts,
@@ -196,9 +197,9 @@ export async function getPrivacyPolicy(): Promise<LegalDocument> {
   return privacyPolicy;
 }
 
-/** Placeholder map imagery, until the dealer coordinates arrive. */
+/** Placeholder map imagery, shown where a live map has no coordinates yet. */
 export async function getMaps(): Promise<MapImages> {
-  return sampleMaps;
+  return (await fetchMaps()) ?? sampleMaps;
 }
 
 export * from "./types";

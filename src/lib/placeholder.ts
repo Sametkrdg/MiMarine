@@ -1,15 +1,15 @@
 /**
- * Contact details.
+ * Contact details, as supplied by the client.
  *
- * The address below is real, supplied by the client. Phone and e-mail are
- * still bracketed placeholders — nobody can be misdirected by a marker, but a
- * wrong number would send enquiries to a stranger. Tracked in MANUEL.md.
+ * Kept in one place so the footer, the contact page and the legal texts cannot
+ * drift apart. In Sanity these live on the `siteSettings` singleton; this file
+ * is the fallback used until that document exists.
  */
 export const placeholderContact = {
   addressLines: [
-    "Kıyıcık, Trabzon Rize Yolu",
-    "61830 Of / Trabzon",
+    "Alparslan Türkeş Bulvarı No: 200",
+    "Kıyıcık, 61830 Of / Trabzon",
   ],
-  phone: "[TELEFON]",
-  email: "[E-POSTA]",
+  phone: "+90 505 817 07 88",
+  email: "mimarineyacht@outlook.com",
 } as const;

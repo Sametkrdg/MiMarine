@@ -91,7 +91,7 @@ function v(tr: string, en: string): L10n {
   return { tr, en };
 }
 
-const ALUMINIUM = v("Geri dönüştürülmüş alüminyum", "Recycled aluminium");
+const TBC = v("[BELİRTİLECEK]", "[TO BE CONFIRMED]");
 
 export const yachts: Yacht[] = [
   {
@@ -100,30 +100,30 @@ export const yachts: Yacht[] = [
     status: "delivered",
     order: 1,
     featured: false,
-    subtitle: { tr: "Teslim edildi · Ege", en: "Delivered · Aegean" },
+    subtitle: { tr: "Teslim edildi", en: "Delivered" },
     loa: v("34,0 m", "34.0 m"),
     lede: {
-      tr: "Yaz boyunca Ege'de seyreden, kışı kendi limanında geçiren bir aile için dört kabinli explorer.",
-      en: "A four-cabin explorer for a family who cruise the Aegean through the summer and winter the boat at home.",
+      tr: "Uzun mesafe seyir için tasarlanmış, dört kabinli bir tekne.",
+      en: "A four-cabin vessel drawn for long-range cruising.",
     },
     body: {
       tr: [
-        "Hibrit paketi, jeneratör çalışmadan demirde tam bir gece geçirmeye yetecek batarya kapasitesiyle kuruldu.",
-        "İç mekân yağlanmış sert ağaç ve yerel dokuma kumaşlarla tamamlandı; bütün marangoz işi tersanede yapıldı.",
+        "Gövde, bölgenin deniz ve iklim koşulları gözetilerek boyutlandırıldı.",
+        "İç mekân ve donanım müşteri talebine göre projelendirildi.",
       ],
       en: [
-        "The hybrid package was sized to spend a full night at anchor with no generator running.",
-        "The interior is oiled hardwood with locally woven textiles, and all joinery was made in-house.",
+        "The hull was sized with the region's sea and weather in mind.",
+        "Interior and outfitting were specified to the customer's brief.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("34,0 m", "34.0 m") },
       { key: specKeys.beam, value: v("7,6 m", "7.6 m") },
       { key: specKeys.draught, value: v("2,1 m", "2.1 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 1.150 hp hibrit dizel-elektrik",
-        "2 × 1,150 hp hybrid diesel-electric",
+        "2 × 1.150 hp",
+        "2 × 1,150 hp",
       ) },
       { key: specKeys.fuel, value: v("18.000 L", "18,000 L") },
       { key: specKeys.guests, value: v("8 misafir · 4 mürettebat", "8 guests · 4 crew") },
@@ -138,30 +138,30 @@ export const yachts: Yacht[] = [
     status: "delivered",
     order: 2,
     featured: false,
-    subtitle: { tr: "Teslim edildi · Batı Akdeniz", en: "Delivered · Western Med" },
+    subtitle: { tr: "Teslim edildi", en: "Delivered" },
     loa: v("28,4 m", "28.4 m"),
     lede: {
-      tr: "Tek misafir güvertesi ve alışılmadık ölçüde geniş kıç platformu olan, armatörün kendi kullanacağı kompakt bir tekne.",
-      en: "A compact owner-operator yacht with a single guest deck and an unusually large aft platform.",
+      tr: "Tek güverteli, armatörün kendi kullanımı için kompakt bir tekne.",
+      en: "A compact single-deck vessel for owner operation.",
     },
     body: {
       tr: [
-        "Mürettebat iki kişi olduğu için her sistem, gerekirse elle çalıştırılabilecek kadar sadeleştirildi.",
-        "Flybridge'den kullanım için tasarlandı; köprüüstü yerleşimi buna göre kuruldu.",
+        "Mürettebat sayısı düşük tutulduğu için sistemler sadeleştirildi.",
+        "Kıç platformu, günlük kullanım düşünülerek geniş tutuldu.",
       ],
       en: [
-        "The crew is two, so every system was simplified until it could be run by hand if needed.",
-        "She is drawn to be driven from the flybridge, and the bridge layout follows from that.",
+        "Systems were simplified because the vessel runs with a small crew.",
+        "The aft platform was kept generous with day use in mind.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("28,4 m", "28.4 m") },
       { key: specKeys.beam, value: v("6,9 m", "6.9 m") },
       { key: specKeys.draught, value: v("1,8 m", "1.8 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 900 hp hibrit dizel-elektrik",
-        "2 × 900 hp hybrid diesel-electric",
+        "2 × 900 hp",
+        "2 × 900 hp",
       ) },
       { key: specKeys.fuel, value: v("12.000 L", "12,000 L") },
       { key: specKeys.guests, value: v("6 misafir · 2 mürettebat", "6 guests · 2 crew") },
@@ -176,30 +176,30 @@ export const yachts: Yacht[] = [
     status: "delivered",
     order: 3,
     featured: false,
-    subtitle: { tr: "Teslim edildi · Adriyatik", en: "Delivered · Adriatic" },
+    subtitle: { tr: "Teslim edildi", en: "Delivered" },
     loa: v("42,0 m", "42.0 m"),
     lede: {
-      tr: "Bugüne kadarki en büyük teslimatımız; her bileşeni için malzeme kaydı tutulan ilk tekne.",
-      en: "Our largest delivery to date, and the first hull with a material record kept for every component.",
+      tr: "Bugüne kadarki en büyük teslimatımız.",
+      en: "Our largest delivery to date.",
     },
     body: {
       tr: [
-        "Yapının önemli bir bölümü geri dönüştürülmüş alüminyum; marangoz işinin tamamı sertifikalı ahşaptan.",
-        "Armatör, teknenin tüketimini tasarım hedefiyle karşılaştıran yıllık bir rapor alıyor.",
+        "Proje, tasarım aşamasından anahtar teslimine kadar tersane bünyesinde yürütüldü.",
+        "Malzeme ve donanım seçimleri çözüm ortaklarımızla koordinasyon içinde yapıldı.",
       ],
       en: [
-        "A large share of her structure is recycled aluminium, and the joinery is entirely certified timber.",
-        "The owner receives an annual account of the yacht's consumption against her design case.",
+        "The project ran in-house from the design stage through to handover.",
+        "Materials and equipment were selected in coordination with our partners.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("42,0 m", "42.0 m") },
       { key: specKeys.beam, value: v("8,4 m", "8.4 m") },
       { key: specKeys.draught, value: v("2,4 m", "2.4 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 1.450 hp hibrit dizel-elektrik",
-        "2 × 1,450 hp hybrid diesel-electric",
+        "2 × 1.450 hp",
+        "2 × 1,450 hp",
       ) },
       { key: specKeys.fuel, value: v("32.000 L", "32,000 L") },
       { key: specKeys.guests, value: v("10 misafir · 6 mürettebat", "10 guests · 6 crew") },
@@ -214,30 +214,30 @@ export const yachts: Yacht[] = [
     status: "delivered",
     order: 4,
     featured: false,
-    subtitle: { tr: "Teslim edildi · Ege", en: "Delivered · Aegean" },
+    subtitle: { tr: "Teslim edildi", en: "Delivered" },
     loa: v("24,2 m", "24.2 m"),
     lede: {
       tr: "Yaptığımız en küçük tekne ve en çok sorulan model.",
-      en: "The smallest hull we build, and the one we are asked for most often.",
+      en: "The smallest vessel we build, and the one we are asked for most often.",
     },
     body: {
       tr: [
-        "Üç kabin, kokpite açılan bir mutfak ve 4,5 metrelik bir bota yer açan tender garajı.",
-        "Her seyrin ilk saatleri tamamen elektrikle yapılabiliyor.",
+        "Üç kabin ve kokpite açılan bir mutfak.",
+        "Günlük ve haftalık kullanım için boyutlandırıldı.",
       ],
       en: [
-        "Three cabins, a galley that opens to the cockpit, and a tender garage that swallows a 4.5 m RIB.",
-        "The opening hours of any passage can be run on electric drive alone.",
+        "Three cabins and a galley that opens to the cockpit.",
+        "Sized for day and week-long use.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("24,2 m", "24.2 m") },
       { key: specKeys.beam, value: v("6,2 m", "6.2 m") },
       { key: specKeys.draught, value: v("1,6 m", "1.6 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 715 hp hibrit dizel-elektrik",
-        "2 × 715 hp hybrid diesel-electric",
+        "2 × 715 hp",
+        "2 × 715 hp",
       ) },
       { key: specKeys.fuel, value: v("9.000 L", "9,000 L") },
       { key: specKeys.guests, value: v("6 misafir · 2 mürettebat", "6 guests · 2 crew") },
@@ -260,22 +260,22 @@ export const yachts: Yacht[] = [
     },
     body: {
       tr: [
-        "Standart spesifikasyonla ve nötr bir palette inşa edildi; kumaş ve sanat eseri seçimi bir sonraki armatöre bırakıldı.",
-        "Denemeler tersane açıklarında tamamlandı.",
+        "Standart spesifikasyonla ve nötr bir palette inşa edildi.",
+        "Kumaş ve donanım seçimleri bir sonraki armatöre bırakıldı.",
       ],
       en: [
-        "Built to our standard specification with a neutral palette, leaving textiles and artwork to the next owner.",
-        "Trials were completed off the yard.",
+        "Built to our standard specification with a neutral palette.",
+        "Textile and equipment choices were left to the next owner.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("30,6 m", "30.6 m") },
       { key: specKeys.beam, value: v("7,2 m", "7.2 m") },
       { key: specKeys.draught, value: v("1,9 m", "1.9 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 1.000 hp hibrit dizel-elektrik",
-        "2 × 1,000 hp hybrid diesel-electric",
+        "2 × 1.000 hp",
+        "2 × 1,000 hp",
       ) },
       { key: specKeys.fuel, value: v("15.000 L", "15,000 L") },
       { key: specKeys.guests, value: v("8 misafir · 3 mürettebat", "8 guests · 3 crew") },
@@ -293,27 +293,27 @@ export const yachts: Yacht[] = [
     subtitle: { tr: "Teslime hazır", en: "Ready for delivery" },
     loa: v("38,0 m", "38.0 m"),
     lede: {
-      tr: "İç donanım tamamlanıyor; iki misafir kabini hâlâ spesifikasyona açık.",
-      en: "Fitting out is completing; two guest cabins are still open to specification.",
+      tr: "İç donanım tamamlanıyor; iki kabin hâlâ spesifikasyona açık.",
+      en: "Fitting out is completing; two cabins are still open to specification.",
     },
     body: {
       tr: [
-        "Üst güverte kapalı bir salon olarak bitirilebilir ya da gölgelikli teras olarak açık bırakılabilir.",
-        "Her iki çizim de hazır tutuluyor; devirden on iki hafta öncesine kadar karar verilebilir.",
+        "Üst güverte kapalı salon ya da gölgelikli teras olarak bitirilebilir.",
+        "Her iki çizim de hazır tutuluyor.",
       ],
       en: [
-        "The upper deck can be finished as a skylounge or left open as a shaded terrace.",
-        "We hold both drawings and can commit either way up to twelve weeks before handover.",
+        "The upper deck can be finished as an enclosed lounge or a shaded terrace.",
+        "Both drawings are held ready.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("38,0 m", "38.0 m") },
       { key: specKeys.beam, value: v("8,0 m", "8.0 m") },
       { key: specKeys.draught, value: v("2,2 m", "2.2 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 1.300 hp hibrit dizel-elektrik",
-        "2 × 1,300 hp hybrid diesel-electric",
+        "2 × 1.300 hp",
+        "2 × 1,300 hp",
       ) },
       { key: specKeys.fuel, value: v("26.000 L", "26,000 L") },
       { key: specKeys.guests, value: v("10 misafir · 5 mürettebat", "10 guests · 5 crew") },
@@ -335,27 +335,27 @@ export const yachts: Yacht[] = [
     subtitle: { tr: "Teslime hazır", en: "Ready for delivery" },
     loa: v("24,2 m", "24.2 m"),
     lede: {
-      tr: "Taş ve meşe tonlarında bitmiş bir Mimarine 24; hemen müsait.",
-      en: "A finished Mimarine 24 in stone and oak, available immediately.",
+      tr: "Bitmiş bir Mimarine 24; hemen müsait.",
+      en: "A finished Mimarine 24, available immediately.",
     },
     body: {
       tr: [
-        "Sipariş beklemeden inşa edildi ve tamamlandı.",
-        "Şu anda tersanede bağlı; iki gün önceden haber verilerek gezilebilir.",
+        "Sipariş beklenmeden inşa edildi ve tamamlandı.",
+        "Şu anda tersanede bağlı; önceden haber verilerek gezilebilir.",
       ],
       en: [
-        "Built on speculation and completed without a contract.",
-        "Currently berthed at the yard and available to view with two days' notice.",
+        "Built and completed without a contract in place.",
+        "Currently berthed at the yard and available to view by arrangement.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("24,2 m", "24.2 m") },
       { key: specKeys.beam, value: v("6,2 m", "6.2 m") },
       { key: specKeys.draught, value: v("1,6 m", "1.6 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 715 hp hibrit dizel-elektrik",
-        "2 × 715 hp hybrid diesel-electric",
+        "2 × 715 hp",
+        "2 × 715 hp",
       ) },
       { key: specKeys.fuel, value: v("9.000 L", "9,000 L") },
       { key: specKeys.guests, value: v("6 misafir · 2 mürettebat", "6 guests · 2 crew") },
@@ -373,27 +373,27 @@ export const yachts: Yacht[] = [
     subtitle: { tr: "Üretimde", en: "In production" },
     loa: v("46,2 m", "46.2 m"),
     lede: {
-      tr: "Bugüne kadarki en büyük teknemiz ve demirde bütün bir geceyi yalnızca bataryayla sessiz geçirebilecek ilk model.",
-      en: "Our largest hull to date, and the first to run silent at anchor for a full night on battery alone.",
+      tr: "Bugüne kadar tezgâha koyduğumuz en büyük tekne.",
+      en: "The largest vessel we have laid down to date.",
     },
     body: {
       tr: [
-        "Güneş güvertesinin üzerine yayılan bir güneş paneli örtüsü ve 16 knot yerine 11 knota göre optimize edilmiş bir tekne formu taşıyor.",
-        "Batarya odası tam ölçekli olarak maketlendi ve inşaata öyle başlandı.",
+        "Gövde formu, uzun mesafe seyirde verimlilik gözetilerek çalışıldı.",
+        "Yerleşim planı armatörle birlikte geliştirildi.",
       ],
       en: [
-        "She carries a solar canopy over the sundeck and a hull form optimised for 11 knots rather than 16.",
-        "The battery room was mocked up at full scale before the build began.",
+        "The hull form was worked for efficiency on long passages.",
+        "The general arrangement was developed together with the owner.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("46,2 m", "46.2 m") },
       { key: specKeys.beam, value: v("9,1 m", "9.1 m") },
       { key: specKeys.draught, value: v("2,6 m", "2.6 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 1.600 hp hibrit dizel-elektrik",
-        "2 × 1,600 hp hybrid diesel-electric",
+        "2 × 1.600 hp",
+        "2 × 1,600 hp",
       ) },
       { key: specKeys.fuel, value: v("38.000 L", "38,000 L") },
       { key: specKeys.guests, value: v("12 misafir · 7 mürettebat", "12 guests · 7 crew") },
@@ -411,27 +411,27 @@ export const yachts: Yacht[] = [
     subtitle: { tr: "Üretimde", en: "In production" },
     loa: v("34,0 m", "34.0 m"),
     lede: {
-      tr: "Dördüncü Mimarine 34; yıllar sonra geri dönen bir armatör için inşa ediliyor.",
-      en: "The fourth Mimarine 34, in build for an owner returning after many years.",
+      tr: "Dördüncü Mimarine 34; yıllar sonra geri dönen bir armatör için.",
+      en: "The fourth Mimarine 34, for an owner returning after several years.",
     },
     body: {
       tr: [
-        "Bu tekne uzatılmış bir tender garajı ve Türkiye'nin güney kıyısı için sığ su çekimli bir omurga taşıyor.",
+        "Uzatılmış bir tender garajı ve sığ su çekimli bir omurga taşıyor.",
         "Yapı kapatıldı; iç donanım aşamasına geçildi.",
       ],
       en: [
-        "This hull carries a lengthened tender garage and a shallow-draught keel for the Turkish south coast.",
-        "The structure is closed and she has moved into fitting out.",
+        "It carries a lengthened tender garage and a shallow-draught keel.",
+        "The structure is closed and it has moved into fitting out.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("34,0 m", "34.0 m") },
       { key: specKeys.beam, value: v("7,6 m", "7.6 m") },
       { key: specKeys.draught, value: v("1,95 m", "1.95 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "2 × 1.150 hp hibrit dizel-elektrik",
-        "2 × 1,150 hp hybrid diesel-electric",
+        "2 × 1.150 hp",
+        "2 × 1,150 hp",
       ) },
       { key: specKeys.fuel, value: v("18.000 L", "18,000 L") },
       { key: specKeys.guests, value: v("8 misafir · 4 mürettebat", "8 guests · 4 crew") },
@@ -449,27 +449,27 @@ export const yachts: Yacht[] = [
     subtitle: { tr: "Tasarım aşaması", en: "Design phase" },
     loa: v("52,0 m", "52.0 m"),
     lede: {
-      tr: "Metanole hazır 52 metrelik bir çalışma; ilk sipariş için açık.",
-      en: "A study for a methanol-ready 52 metre, open for a first commission.",
+      tr: "52 metrelik bir tasarım çalışması; ilk sipariş için açık.",
+      en: "A 52-metre design study, open for a first commission.",
     },
     body: {
       tr: [
-        "52, Akdeniz'de ikmal imkânı doğduğunda sonradan takılabilecek bir yakıt hücresi ve metanol tankı etrafında çizildi.",
-        "Genel yerleşim planı gizlilik sözleşmesiyle paylaşılıyor.",
+        "Tasarım aşamasında; genel yerleşim planı görüşme üzerine paylaşılıyor.",
+        "Tahrik ve donanım seçimleri projeye göre belirlenecek.",
       ],
       en: [
-        "The 52 is drawn around a fuel cell and a methanol tank we can retrofit as bunkering appears in the Mediterranean.",
-        "The general arrangement is available under NDA.",
+        "At design stage; the general arrangement is shared on request.",
+        "Propulsion and equipment will be specified per project.",
       ],
     },
     specs: [
       { key: specKeys.loa, value: v("52,0 m", "52.0 m") },
       { key: specKeys.beam, value: v("9,8 m", "9.8 m") },
       { key: specKeys.draught, value: v("2,8 m", "2.8 m") },
-      { key: specKeys.hull, value: ALUMINIUM },
+      { key: specKeys.hull, value: TBC },
       { key: specKeys.engine, value: v(
-        "Metanole hazır hibrit",
-        "Methanol-ready hybrid",
+        "[BELİRTİLECEK]",
+        "[TO BE CONFIRMED]",
       ) },
       { key: specKeys.fuel, value: v("44.000 L", "44,000 L") },
       { key: specKeys.guests, value: v("12 misafir · 9 mürettebat", "12 guests · 9 crew") },
@@ -502,11 +502,11 @@ export const events: EventItem[] = [
     body: {
       tr: [
         "Gezme randevuları sabah saatlerinde veriliyor; öğleden sonralar armatörler ve kaptanları için ayrı tutuluyor.",
-        "Mühendislik ekibimiz hibrit paketi ve teslimatla birlikte verdiğimiz malzeme kaydını anlatmak üzere teknede olacak.",
+        "Mühendislik ekibimiz, proje süreci ve teknik seçenekler hakkında soruları yanıtlamak üzere teknede olacak.",
       ],
       en: [
         "Viewings are by appointment through the morning; afternoons are kept open for owners and their captains.",
-        "Our engineering team will be aboard to talk through the hybrid package and the material record issued with every delivery.",
+        "Our engineering team will be aboard to answer questions about the project process and the technical options.",
       ],
     },
     cover: img("1777557215949-192a8c51862a", "Akdeniz limanı", "Mediterranean harbour"),
@@ -522,11 +522,11 @@ export const events: EventItem[] = [
     },
     body: {
       tr: [
-        "Konuklar proje yöneticileriyle tekneyi geziyor, tam ölçekli maketlenmiş batarya odasını görüyor ve önümüzdeki iki yılı bu teknede geçirecek kaynakçılarla tanışıyor.",
+        "Konuklar proje yöneticileriyle tekneyi geziyor ve inşayı yürütecek ekiple tanışıyor.",
         "Kontenjan sınırlı. Kayıt bayiniz üzerinden ya da doğrudan tersaneden yapılabilir.",
       ],
       en: [
-        "Guests walk the hull with the project managers, see the battery room mocked up at full scale, and meet the welders who will spend the next two years on this boat.",
+        "Guests walk the hull with the project managers and meet the team who will carry out the build.",
         "Places are limited. Registration through your dealer or the yard.",
       ],
     },
@@ -559,17 +559,17 @@ export const events: EventItem[] = [
     location: { tr: "[TERSANE ŞEHRİ]", en: "[YARD CITY]" },
     title: { tr: "Mimarine 42 teslim edildi", en: "Mimarine 42 delivered" },
     excerpt: {
-      tr: "Uzun bir inşa süresinin sonunda, malzeme kaydı eksiksiz tutulan ilk teknemiz suya indi.",
-      en: "After a long build, the first hull with a complete material record left the yard.",
+      tr: "Uzun bir inşa süresinin sonunda tekne tersaneden ayrıldı.",
+      en: "After a long build, the vessel left the yard.",
     },
     body: {
       tr: [
         "Tekne, bütün teknelerimiz gibi sabahın erken saatinde sessizce ayrıldı. Armatör tören ve basın istemedi.",
-        "Kayda değer olan evrak: bu teknedeki her bileşen menşei, kütlesi ve geri dönüştürülebilirliğiyle belgelendi.",
+        "Teslimat öncesi son denemeler tersane açıklarında tamamlandı.",
       ],
       en: [
         "She left quietly early in the morning, as all our boats do. Her owner asked for no ceremony and no press.",
-        "What is worth recording is the paperwork: every component on this yacht is documented by origin, mass and recyclability.",
+        "Final trials before handover were completed off the yard.",
       ],
     },
     cover: img(
@@ -600,57 +600,37 @@ export const events: EventItem[] = [
     cover: img("1779159945563-7b914280471a", "Alacakaranlıkta liman", "Harbour at dusk"),
   },
   {
-    slug: "yard-roof-solar",
+    slug: "yard-workshop",
     date: inDays(-420),
     location: { tr: "[TESİS ŞEHRİ]", en: "[FACILITY CITY]" },
     title: {
-      tr: "Tersane kendi çatısından besleniyor",
-      en: "The yard runs on its own roof",
+      tr: "Atölye kapasitesi genişletildi",
+      en: "Workshop capacity expanded",
     },
     excerpt: {
-      tr: "İnşa salonlarının çatısına kurulan panel dizisi devreye alındı.",
-      en: "The array over the build sheds is now in service.",
+      tr: "İnşa alanındaki çalışma kapasitesi artırıldı.",
+      en: "Working capacity in the build area has been increased.",
     },
     body: {
       tr: [
-        "Kurulum üretimi durdurmadan, hafta hafta ilerledi. Kalan talep sertifikalı yenilenebilir enerji sözleşmesiyle karşılanıyor.",
-        "Sırada boya kabini var; tersanedeki tek en büyük yük ısrarla orası.",
+        "Düzenleme üretimi durdurmadan, hafta hafta ilerledi.",
+        "[BU HABERİN GERÇEK METNİ CLIENT TARAFINDAN VERİLECEK.]",
       ],
       en: [
-        "The array went up week by week without stopping production. Remaining demand is covered by a certified renewable contract.",
-        "Next: the paint shed, which is stubbornly the largest single load in the yard.",
+        "The work went ahead week by week without stopping production.",
+        "[REAL COPY FOR THIS ITEM TO BE SUPPLIED BY THE CLIENT.]",
       ],
     },
-    cover: img(
-      "1786913508480-2dcec035a84a",
-      "Tesis çatısındaki güneş panelleri",
-      "Solar array on the facility roof",
-    ),
+    cover: img("1561702469-c4239ced3f47", "Tersane atölyesi", "The yard workshop"),
   },
 ];
 
-/** PLACEHOLDER network — company names and contact details are markers only. */
-const marker = {
-  company: "[FİRMA ADI]",
-  address: "[ADRES]",
-  phone: "[TELEFON]",
-  email: "[E-POSTA]",
-};
-
-export const dealers: Dealer[] = [
-  { id: "d1", region: "mediterranean", type: "both", city: "[ŞEHİR 1]", ...marker, capabilities: { tr: "Yeni inşa · Refit · Tam servis", en: "New build · Refit · Full service" } },
-  { id: "d2", region: "mediterranean", type: "dealer", city: "[ŞEHİR 2]", ...marker, capabilities: { tr: "Satış · Garanti · Bağlama", en: "Sales · Warranty · Berthing" } },
-  { id: "d3", region: "mediterranean", type: "service", city: "[ŞEHİR 3]", ...marker, capabilities: { tr: "Servis · Kış bakımı", en: "Service · Winter storage" } },
-  { id: "d4", region: "northern-europe", type: "both", city: "[ŞEHİR 4]", ...marker, capabilities: { tr: "Satış · Refit · Sistemler", en: "Sales · Refit · Systems" } },
-  { id: "d5", region: "northern-europe", type: "service", city: "[ŞEHİR 5]", ...marker, capabilities: { tr: "Garanti · Kışlatma", en: "Warranty · Winterisation" } },
-  { id: "d6", region: "northern-europe", type: "dealer", city: "[ŞEHİR 6]", ...marker, capabilities: { tr: "Satış · Sörvey", en: "Sales · Survey" } },
-  { id: "d7", region: "americas", type: "both", city: "[ŞEHİR 7]", ...marker, capabilities: { tr: "Satış · Refit · Garanti", en: "Sales · Refit · Warranty" } },
-  { id: "d8", region: "americas", type: "service", city: "[ŞEHİR 8]", ...marker, capabilities: { tr: "Garanti · Karaya alma", en: "Warranty · Haul-out" } },
-  { id: "d9", region: "americas", type: "dealer", city: "[ŞEHİR 9]", ...marker, capabilities: { tr: "Satış · Charter yönetimi", en: "Sales · Charter management" } },
-  { id: "d10", region: "asia-pacific", type: "both", city: "[ŞEHİR 10]", ...marker, capabilities: { tr: "Satış · Refit · Garanti", en: "Sales · Refit · Warranty" } },
-  { id: "d11", region: "asia-pacific", type: "service", city: "[ŞEHİR 11]", ...marker, capabilities: { tr: "Refit · Direk · Boya", en: "Refit · Rig · Paint" } },
-  { id: "d12", region: "asia-pacific", type: "dealer", city: "[ŞEHİR 12]", ...marker, capabilities: { tr: "Satış · Sörvey", en: "Sales · Survey" } },
-];
+/**
+ * The dealer and service network is not built yet. An empty list is the honest
+ * state — the network page shows a recruitment call to action instead of
+ * fabricated representatives.
+ */
+export const dealers: Dealer[] = [];
 
 /** PLACEHOLDER offices. */
 export const offices: Office[] = [
@@ -658,10 +638,9 @@ export const offices: Office[] = [
     id: "hq",
     role: { tr: "Merkez · Tersane", en: "Headquarters · Yard" },
     city: "Of / Trabzon",
-    // Real address, supplied by the client. Phone and e-mail are still unknown.
-    addressLines: ["Kıyıcık, Trabzon Rize Yolu", "61830 Of / Trabzon"],
-    phone: "[TELEFON]",
-    email: "[E-POSTA]",
+    addressLines: ["Alparslan Türkeş Bulvarı No: 200", "Kıyıcık, 61830 Of / Trabzon"],
+    phone: "+90 505 817 07 88",
+    email: "mimarineyacht@outlook.com",
     // Derived from the plus code the client supplied, and confirmed by them.
     coordinates: { lat: 40.968312, lng: 40.305812 },
   },
@@ -674,38 +653,41 @@ export const home: HomeContent = {
     "A yacht at anchor on calm water",
   ),
   heroEyebrow: { tr: "Of · Trabzon · Türkiye", en: "Of · Trabzon · Türkiye" },
-  heroTitle: { tr: "Sakin su, kalıcı yapı.", en: "Quiet water, built to last." },
+  heroTitle: {
+    tr: "Köklü gemi inşa kültürü, modern mühendislik.",
+    en: "A long shipbuilding tradition, modern engineering.",
+  },
   statement: {
-    tr: "Her yıl az sayıda alüminyum yatı elle inşa ediyoruz. Yavaş üretim, uzun servis ömrü ve hesabını verebildiğimiz malzemeler.",
-    en: "We build a small number of aluminium yachts each year, by hand. Slow production, long service life, and materials we can account for.",
+    tr: "Doğu Karadeniz'in köklü gemi inşa kültürünü modern mühendislik yaklaşımlarıyla birleştiriyor, müşteri taleplerine göre özelleştirilmiş tekne ve gemi projeleri üretiyoruz.",
+    en: "We combine the Eastern Black Sea's long shipbuilding tradition with modern engineering, building vessels tailored to each customer's requirements.",
   },
   statementBody: {
-    tr: "Her tekne tersaneden hibrit dizel-elektrik tahrik, geri dönüştürülmüş alüminyum yapı ve belgelenmiş bir malzeme kaydıyla ayrılır.",
-    en: "Every hull leaves the yard with a hybrid diesel-electric driveline, a recycled aluminium structure, and a documented material record.",
+    tr: "Balıkçı gemileri, ticari iş tekneleri ve konfor odaklı özel yatların tasarım ve inşasında uzmanlaştık. Üretim, tasarım aşamasından anahtar teslimine kadar kendi bünyemizde ve çözüm ortaklarımızla koordinasyon içinde yürütülüyor.",
+    en: "We specialise in the design and construction of fishing vessels, commercial work boats and comfort-focused private yachts. Production runs in-house and in coordination with our partners, from design through to handover.",
   },
   figures: [
     {
-      value: "[00]",
-      label: { tr: "[RAKAM BAŞLIĞI]", en: "[FIGURE LABEL]" },
+      value: "2021",
+      label: { tr: "Kuruluş", en: "Founded" },
       note: {
-        tr: "Bu üç rakam client tarafından verilecek — örn. kuruluş yılı, yıllık üretim adedi, geri dönüştürülmüş malzeme oranı.",
-        en: "These three figures are to be supplied by the client — e.g. year founded, yachts per year, recycled material share.",
+        tr: "Trabzon'un Of ilçesinde kuruldu; tersane Kıyıcık'taki sahil alanında.",
+        en: "Founded in the Of district of Trabzon; the yard sits on the shore at Kıyıcık.",
+      },
+    },
+    {
+      value: "3",
+      label: { tr: "Uzmanlık alanı", en: "Areas of expertise" },
+      note: {
+        tr: "Balıkçı gemileri, ticari iş tekneleri ve konfor odaklı özel yatlar.",
+        en: "Fishing vessels, commercial work boats and comfort-focused private yachts.",
       },
     },
     {
       value: "[00]",
       label: { tr: "[RAKAM BAŞLIĞI]", en: "[FIGURE LABEL]" },
       note: {
-        tr: "Yer tutucu. Doğrulanmamış hiçbir sayı siteye yazılmadı.",
-        en: "Placeholder. No unverified number has been written into the site.",
-      },
-    },
-    {
-      value: "[00]",
-      label: { tr: "[RAKAM BAŞLIĞI]", en: "[FIGURE LABEL]" },
-      note: {
-        tr: "Yer tutucu. Bkz. MANUEL.md → Marka Kimliği.",
-        en: "Placeholder. See MANUEL.md → Marka Kimliği.",
+        tr: "Üçüncü rakam client tarafından verilecek — örn. teslim edilen tekne sayısı ya da yerlilik oranı.",
+        en: "The third figure is still to be supplied — e.g. vessels delivered, or domestic content share.",
       },
     },
   ],
@@ -713,24 +695,24 @@ export const home: HomeContent = {
     {
       href: "/our-world",
       kicker: { tr: "Dünyamız", en: "Our world" },
-      title: { tr: "Sürdürülebilirlik", en: "Sustainability" },
+      title: { tr: "Gövde mühendisliği", en: "Hull engineering" },
       body: {
-        tr: "Malzeme kaydı, hibrit tahrik ve kendi çatısından beslenen bir tersane.",
-        en: "Material records, hybrid drivelines, and a yard that runs on its own roof.",
+        tr: "Karadeniz'in zorlu deniz ve iklim koşullarına uygun gövde yaklaşımı.",
+        en: "A hull approach suited to the Black Sea's demanding sea and weather.",
       },
       image: img(
-        "1613665813446-82a78c468a1d",
-        "İnşa salonunun çatısındaki güneş paneli örtüsü",
-        "Solar canopy over the build shed",
+        "1785038481404-4bd44c535e81",
+        "Tersanede tekne inşası",
+        "Building a hull at the yard",
       ),
     },
     {
       href: "/our-world",
       kicker: { tr: "Dünyamız", en: "Our world" },
-      title: { tr: "El işçiliği", en: "Craftsmanship" },
+      title: { tr: "Yerel üretim", en: "Local production" },
       body: {
-        tr: "Alüminyum tersanede kesilir, marangoz işi yakındaki atölyeden gelir.",
-        en: "Aluminium is cut in-house, and joinery comes from a workshop nearby.",
+        tr: "Yerel iş gücü ve bölgesel yan sanayi ile yüksek yerlilik oranı.",
+        en: "Local labour and regional suppliers, for a high domestic content ratio.",
       },
       image: img("1611021061285-16c871740efa", "Ahşap işleyen eller", "Hands working timber"),
     },
@@ -746,15 +728,15 @@ export const home: HomeContent = {
     },
   ],
   closing: {
-    tr: "Sipariş görüşmeleri sözleşmeden çok önce başlar.",
-    en: "Conversations about a commission begin long before a contract.",
+    tr: "Projenizi konuşalım — tasarımdan anahtar teslimine.",
+    en: "Let us talk about your project — from design through to handover.",
   },
 };
 
 export const ourWorld: OurWorldContent = {
   title: {
-    tr: "Küçük bir tersane, uzun bir ufuk.",
-    en: "A small yard, a long horizon.",
+    tr: "Karadeniz kıyısında bir tersane.",
+    en: "A yard on the Black Sea coast.",
   },
   heroImage: img(
     "1785038481404-4bd44c535e81",
@@ -762,46 +744,42 @@ export const ourWorld: OurWorldContent = {
     "Building a hull at the yard",
   ),
   statement: {
-    tr: "Bir yılı, hangardan çıkan tekne sayısıyla ölçüyoruz — hiçbir zaman bir avuçtan fazla değil.",
-    en: "We measure a year by the number of hulls that leave the shed — never more than a handful.",
+    tr: "2021'de Trabzon'un Of ilçesinde kurulduk. Gemi inşası, deniz mimarisi ve mühendislik hizmetleri alanlarında faaliyet gösteriyoruz.",
+    en: "We were founded in 2021 in the Of district of Trabzon, working in shipbuilding, naval architecture and engineering services.",
   },
   statementBody: {
-    tr: "İş bilinçli olarak acelesiz. Alüminyum tersanede kesilip kaynaklanıyor, marangoz işi yakındaki bir atölyeden geliyor ve teslim ettiğimiz her tekne servis kaydımızda kalıyor.",
-    en: "The work is unhurried on purpose. Aluminium is cut and welded in-house, joinery comes from a workshop nearby, and every yacht we have delivered stays on our service register.",
+    tr: "Tersane Kıyıcık bölgesindeki sahil alanında konumlanıyor. Hem yerel hem uluslararası pazara yönelik, sağlamlık ve operasyonel verimlilik odaklı projeler üzerinde çalışıyoruz.",
+    en: "The yard is located on the shore at Kıyıcık. We work on projects for both local and international markets, focused on durability and operational efficiency.",
   },
   pillars: [
     {
       id: "sustainability",
       kicker: "01",
-      title: { tr: "Sürdürülebilirlik", en: "Sustainability" },
+      title: { tr: "Gövde mühendisliği", en: "Hull engineering" },
       body: {
-        tr: "Her bileşen için malzeme kaydı ve her tekne için tasarım hedefiyle karşılaştırmalı yıllık rapor.",
-        en: "A material record for every component, and an annual account of each yacht against her design case.",
+        tr: "Karadeniz'in zorlu deniz ve iklim koşullarına uygun gövde mühendisliği, üretim anlayışımızın temel unsurlarından biri.",
+        en: "Hull engineering suited to the Black Sea's demanding sea and climate is a cornerstone of how we build.",
       },
-      image: img(
-        "1786913508115-51748da1339b",
-        "Tersane çatısındaki güneş panelleri",
-        "Solar array over the yard roofs",
-      ),
-      href: "/news-and-events/yard-roof-solar",
+      image: img("1772550834175-734b417deb42", "Karada bekleyen tekne", "A hull on the hard"),
+      href: "/news-and-events/yard-workshop",
     },
     {
       id: "craft",
       kicker: "02",
-      title: { tr: "El işçiliği", en: "Craftsmanship" },
+      title: { tr: "Tasarımdan anahtar teslimine", en: "Design to handover" },
       body: {
-        tr: "Kaynak, marangozluk ve boya tek çatı altında. Yapısal hiçbir parça bitirilmek üzere tersaneden çıkmaz.",
-        en: "Welding, joinery and paint under one roof. Nothing structural leaves the yard for finishing.",
+        tr: "Üretim süreci, tasarım aşamasından anahtar teslimine kadar kendi bünyemizde ve çözüm ortaklarımızla koordinasyon içinde yürütülüyor.",
+        en: "Production runs from the design stage through to handover, in-house and in coordination with our partners.",
       },
       image: img("1631396326646-c06a935ff3a6", "Atölyede marangoz", "Joiner at the bench"),
     },
     {
       id: "history",
       kicker: "03",
-      title: { tr: "Geçmiş", en: "History" },
+      title: { tr: "Yerlilik", en: "Domestic content" },
       body: {
-        tr: "[BU BÖLÜMÜN METNİ CLIENT TARAFINDAN VERİLECEK — tersanenin gerçek geçmişi.]",
-        en: "[COPY TO BE SUPPLIED BY THE CLIENT — the yard's actual history.]",
+        tr: "Yerel iş gücünü ve bölgesel yan sanayi imkânlarını kullanarak yüksek yerlilik oranına sahip projeler geliştiriyoruz.",
+        en: "We draw on local labour and regional suppliers to develop projects with a high domestic content ratio.",
       },
       image: img("1509295433237-4b4851f2ab67", "Arşiv görüntüsü", "Archive photograph"),
     },
@@ -809,34 +787,34 @@ export const ourWorld: OurWorldContent = {
   commitments: [
     {
       no: "01",
-      title: { tr: "Standart hibrit", en: "Hybrid as standard" },
+      title: { tr: "Müşteriye özel projeler", en: "Projects built to order" },
       body: {
-        tr: "Her tekne dizel-elektrik tahrikle ve demirde bütün bir gece sessiz kalabilecek kapasiteyle teslim edilir.",
-        en: "Every hull is delivered with a diesel-electric driveline and a full night of silent capability at anchor.",
+        tr: "Tekne ve gemi projeleri müşteri taleplerine göre özelleştirilerek üretilir.",
+        en: "Vessels are built to each customer's own requirements.",
       },
     },
     {
       no: "02",
-      title: { tr: "Belgelenmiş malzeme", en: "Documented materials" },
+      title: { tr: "Karadeniz koşullarına göre gövde", en: "Hulls for Black Sea conditions" },
       body: {
-        tr: "Bileşenlerin menşei, kütlesi ve geri dönüştürülebilirliği kaydedilir ve tekneyle birlikte devredilir.",
-        en: "Origin, mass and recyclability recorded for components, and handed over with the yacht.",
+        tr: "Bölgenin zorlu deniz ve iklim koşullarına uygun gövde mühendisliği yaklaşımı.",
+        en: "A hull engineering approach matched to the region's demanding sea and climate.",
       },
     },
     {
       no: "03",
-      title: { tr: "Değiştirmeden önce onar", en: "Repair before replacement" },
+      title: { tr: "Yüksek yerlilik oranı", en: "High domestic content" },
       body: {
-        tr: "Her tekne için ömür boyu servis dosyası; tersanede tutulur ve en yakın yetkili serviste yansılanır.",
-        en: "A lifetime service file per hull, held at the yard and mirrored at the nearest authorised yard.",
+        tr: "Yerel iş gücü ve bölgesel yan sanayi imkânlarıyla geliştirilen projeler.",
+        en: "Projects developed with local labour and regional suppliers.",
       },
     },
     {
       no: "04",
-      title: { tr: "Kendi çatısından enerji", en: "Own-roof energy" },
+      title: { tr: "Sağlamlık ve verimlilik", en: "Durability and efficiency" },
       body: {
-        tr: "Tesislerin çatısına kurulan güneş panelleri yıllık elektrik talebinin önemli bölümünü karşılar.",
-        en: "Solar across the facilities covers a significant share of annual electricity demand.",
+        tr: "Hem yerel hem uluslararası pazara yönelik, sağlamlık ve operasyonel verimlilik odaklı üretim.",
+        en: "Production aimed at both local and international markets, focused on durability and operational efficiency.",
       },
     },
   ],

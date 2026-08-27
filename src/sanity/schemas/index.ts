@@ -368,6 +368,14 @@ const siteSettings = defineType({
       type: "array",
       of: [defineArrayMember({ type: "office" })],
     }),
+    defineField({
+      name: "contactEmailTo",
+      title: "İletişim formu alıcı adresi",
+      type: "string",
+      description:
+        "Formdan gelen talepler bu adrese düşer. Buradan değiştirebilirsiniz — kod değişikliği gerekmez. Boş bırakılırsa CONTACT_EMAIL_TO ortam değişkeni kullanılır.",
+      validation: (r) => r.email(),
+    }),
     defineField({ name: "networkMap", title: "Harita yer tutucu görseli", type: "siteImage" }),
     defineField({ name: "contactMap", title: "İletişim harita görseli", type: "siteImage" }),
   ],

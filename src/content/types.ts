@@ -125,18 +125,11 @@ export type LegalSection = {
   body: L10n<string[]>;
 };
 
-/**
- * A legal page (privacy policy / KVKK aydınlatma metni).
- *
- * `notice` is rendered as a banner above the text. It exists because this
- * document is a DRAFT: it was written from what the site actually does, not
- * by a lawyer, and must be reviewed before launch.
- */
+/** A legal page (privacy policy / KVKK aydınlatma metni). */
 export type LegalDocument = {
   title: L10n;
   /** ISO date, formatted per locale at render time. */
   lastUpdated: string;
-  notice: L10n;
   intro: L10n;
   sections: LegalSection[];
 };
