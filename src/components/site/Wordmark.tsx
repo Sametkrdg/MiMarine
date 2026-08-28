@@ -27,7 +27,7 @@ export default function Wordmark({ variant = "header" }: Props) {
 
   return (
     <Link href="/" className="block px-5 text-center">
-      <span className="block text-[20px] font-extralight tracking-[0.34em] indent-[0.34em] whitespace-nowrap text-ink">
+      <span className="block text-[19px] font-extralight tracking-[0.28em] indent-[0.28em] whitespace-nowrap text-ink">
         {brand.wordmark}
       </span>
     </Link>

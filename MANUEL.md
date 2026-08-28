@@ -30,7 +30,8 @@ Kod ile otomatikleştirilemeyen, senin yapman gereken adımlar (bkz. `CLAUDE.md`
       - Trigger on: create · update · delete
       - Secret: `SANITY_REVALIDATE_SECRET` ile **aynı** değer
       - HTTP method: POST
-- [ ] İçerik girecek kişiye Sanity'de rol ata / davet gönder.
+- [ ] İçerik girecek kişiye Sanity'de rol ata / davet gönder ve
+      `SANITY_KILAVUZU.md` dosyasını ilet.
 
 > **Not:** Dataset şu an boş. Site, bir tipte hiç doküman yoksa otomatik olarak
 > `sample-data.ts`'e düşüyor. İçerik girdikçe koleksiyon koleksiyon Sanity'ye
@@ -104,7 +105,40 @@ Gemini ile kuruldu ve test edildi. Sağ altta "Asistan" balonu.
 
 ---
 
-## 5 · Marka Kimliği
+## 5 · İçerik Brifingi — işlendi, doğrulanacak birkaç nokta
+
+İki PDF'teki metinler siteye işlendi: kuruluş hikayesi, çelik gövde
+mühendisliği, terzi usulü konumlandırma, %20-50 maliyet avantajı, gerçek
+projeler ve Ön Sipariş sayfası.
+
+- [x] ~~Ön Sipariş sayfası~~ — `/tr/pre-order` · `/en/pre-order`. Brief'teki
+      başlık, motto, davet metni ve form alanlarının tamamı kuruldu.
+- [x] ~~Palet~~ — brief "denizci laciverti ve antrasit" istiyordu. Mürekkep
+      zaten antrasit; mor aksan **lacivert `#2C5A87`** oldu (kağıtta 6.9
+      kontrast, AA geçiyor). Beğenmezsen tek token.
+- [x] ~~Filo~~ — uydurma 10 tekne silindi, gerçek dört proje girildi.
+
+**Doğrulaman gerekenler:**
+
+- [ ] **Proje durumları doğru mu?** Brief "üstlendiğimiz Cihangir S, Zenday" ve
+      "pazarın yeni gözdeleri olacak KTÜ 35 FEET ve PTTRA 42.5m" diyordu.
+      Buna göre yerleştirdim:
+      Cihangir S · Zenday → **Teslim Edilen** ·
+      KTÜ 35 FEET · PTTRA 42.5m → **Üretimde**.
+      Yanlışsa söyle, tek alan.
+- [ ] **"Teslime Hazır" sekmesi boş** — o kategoride tekne yok. Şu an boş kart
+      yerine "aklınızdaki projeyi paylaşın" + Ön Sipariş butonu gösteriyor.
+- [ ] **Teknik özellikler.** Yalnızca boy ve tekne malzemesi (çelik) girildi;
+      genişlik, su çekimi, motor, yakıt, kapasite, menzil `[BELİRTİLECEK]`
+      durumda. Gerçek değerleri ver.
+- [ ] **Proje görselleri** — dördü de hâlâ Unsplash. Gerçek fotoğraflar gelince
+      Sanity'den değişecek.
+- [x] ~~Maliyet avantajı ifadesi~~ — **%20-50** olarak onaylandı (client teyit
+      etti: tipik aralık %20-30, bazı projelerde %50'ye çıkıyor).
+
+---
+
+## 6 · Marka Kimliği
 
 - [x] ~~Tescilli unvan~~ — `MimarineYacht Yatçılık San. Tic. Ltd. Şti.`
 - [x] ~~Kuruluş yılı~~ — 2021, ana sayfadaki rakam şeridinde.
@@ -116,11 +150,9 @@ Gemini ile kuruldu ve test edildi. Sağ altta "Asistan" balonu.
 
 Karar bekleyen üç küçük nokta:
 
-- [ ] **Marka yazımı.** Daha önce "Mimarine Yacht" (boşluklu) demiştin, ama
-      gönderdiğin şirket metni ve unvan "MimarineYacht" (bitişik) yazıyor.
-      Sitede görünen ad "Mimarine Yacht" olarak kaldı; unvan ise birebir
-      `MimarineYacht Yatçılık San. Tic. Ltd. Şti.` yazılıyor. Hangisi doğruysa
-      söyle — `src/lib/brand.ts` içinde tek satır.
+- [x] ~~Marka yazımı~~ — **MimarineYacht** (bitişik) olarak sabitlendi.
+      Wordmark `MIMARINEYACHT`, tam ad `MimarineYacht`, unvan
+      `MimarineYacht Yatçılık San. Tic. Ltd. Şti.`
 - [ ] **Zafer Dinç ismi sitede görünsün mü?** Şu an telefon ve e-posta var,
       isim yok. İstersen iletişim sayfasına ekleyebilirim.
 - [ ] **Üçüncü rakam.** Ana sayfada iki rakam doldu (2021 · 3 uzmanlık alanı),
@@ -134,7 +166,7 @@ Karar bekleyen üç küçük nokta:
 
 ---
 
-## 6 · İçerik & Görsel
+## 7 · İçerik & Görsel
 
 - [ ] **Gerçek yat fotoğrafları ve galeri görselleri.** Şu an geçici Unsplash
       görselleri — sadece tasarımı göstermek için, hiçbiri Mimarine'e ait değil.
@@ -149,7 +181,7 @@ Karar bekleyen üç küçük nokta:
 
 ---
 
-## 7 · Gizlilik Politikası / KVKK
+## 8 · Gizlilik Politikası / KVKK
 
 - [x] ~~Taslak uyarısı~~ — senin talimatınla kaldırıldı.
 - [x] ~~Şirket bilgileri~~ — unvan, adres, telefon, e-posta metne işlendi.
@@ -166,7 +198,7 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 8 · Deploy'da Kalan
+## 9 · Deploy'da Kalan
 
 - [ ] **`NEXT_PUBLIC_SITE_URL`'i canlı domainle doldur** (örn.
       `https://mimarineyacht.com`). Boş kalırsa canonical / sitemap / OG kartı
@@ -178,20 +210,20 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 9 · Karar Bekleyen (acil değil)
+## 10 · Karar Bekleyen (acil değil)
 
-- [ ] **CSP `script-src`** eklensin mi? Şu an güvenlik başlıkları var ama script
-      politikası yok — Next'in satır içi script'leri ve Sanity Studio'nun
-      `unsafe-eval` ihtiyacı yüzünden istek başına nonce üretmek gerekiyor.
-      İstenirse ayrı bir iş olarak yapılabilir.
+- [x] ~~CSP~~ — tam politika kuruldu (site + `/studio` için ayrı ayrı),
+      tarayıcıda sıfır ihlalle doğrulandı. Nonce'a **geçilmedi**: nonce tüm
+      statik sayfaları dinamik render'a zorlardı. Ayrıntı README'de.
 
 ---
 
-## 10 · Yayına Alma Öncesi Son Kontrol
+## 11 · Yayına Alma Öncesi Son Kontrol
 
 - [ ] Sitede hiç `[KÖŞELİ PARANTEZ]` veya `[00]` kaldı mı?
 - [ ] `src/content/sample-data.ts` silindi mi (Sanity'ye geçince silinecek)?
-- [ ] Gizlilik Politikası'ndaki TASLAK uyarısı kaldırıldı mı?
+- [x] ~~Gizlilik Politikası'ndaki TASLAK uyarısı~~ — kaldırıldı.
 - [ ] Yat detay sayfasındaki "teknik özellikler placeholder" notu kaldırıldı mı?
-- [ ] Sanity Studio kullanım eğitimi (client kendi içeriğini girebilsin diye).
+- [x] ~~Sanity Studio kullanım kılavuzu~~ — `SANITY_KILAVUZU.md`. İçerik
+      girecek kişiye bu dosyayı verin.
 - [ ] TR/EN tüm sayfaları son kez gözden geçir.

@@ -31,6 +31,7 @@ export const primaryRoutes = {
   ourWorld: "/our-world",
   news: "/news-and-events",
   network: "/dealer-and-services-network",
+  preOrder: "/pre-order",
   contact: "/contact",
 } as const;
 
@@ -47,5 +48,6 @@ export const mobileLinks = [
   { href: primaryRoutes.ourWorld, ns: "nav", key: "ourWorld" },
   { href: primaryRoutes.news, ns: "nav", key: "newsAndEvents" },
   { href: primaryRoutes.network, ns: "nav", key: "network" },
+  { href: primaryRoutes.preOrder, ns: "nav", key: "preOrder" },
   { href: primaryRoutes.contact, ns: "nav", key: "contact" },
 ] as const;

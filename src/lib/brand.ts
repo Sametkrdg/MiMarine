@@ -12,13 +12,18 @@ export type SocialLink = {
 
 export const brand = {
   /** Wordmark, rendered as a single line in the header and footer. */
-  wordmark: "MIMARINE YACHT",
+  wordmark: "MIMARINEYACHT",
   /** Display name used in <title>, metadata and body copy. */
-  fullName: "Mimarine Yacht",
+  fullName: "MimarineYacht",
   /** Registered company title, used in the footer copyright and legal texts. */
   legalName: "MimarineYacht Yatçılık San. Tic. Ltd. Şti.",
   /** Year the company was founded. */
   founded: 2021,
+  /** Positioning line from the client's content brief. */
+  motto: {
+    tr: "Terzi usulü deniz mimari atölyesi",
+    en: "A bespoke naval architecture atelier",
+  },
   /**
    * Social accounts. Empty until the real handles arrive, and the footer hides
    * the row entirely while it is — a dead link reads worse than no link.

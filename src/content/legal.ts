@@ -20,7 +20,7 @@ export const privacyPolicy: LegalDocument = {
   },
 
   // Bumped by hand whenever the text below changes.
-  lastUpdated: "2026-08-27",
+  lastUpdated: "2026-08-28",
 
   intro: {
     tr: "Bu metin, MimarineYacht Yatçılık San. Tic. Ltd. Şti. tarafından işletilen bu web sitesini ziyaret ettiğinizde kişisel verilerinizin nasıl işlendiğini açıklar. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında hazırlanmıştır.",
@@ -49,12 +49,12 @@ export const privacyPolicy: LegalDocument = {
       heading: { tr: "İşlenen kişisel veriler", en: "Personal data we process" },
       body: {
         tr: [
-          "İletişim formu: Formu doldurduğunuzda adınız, e-posta adresiniz, ülkeniz, ilgi alanınız ve mesajınızda yazdıklarınız işlenir. Bu alanlardan yalnızca ad ve e-posta zorunludur.",
+          "Formlar: Sitede iki form vardır — İletişim formu ve Ön Sipariş formu. Doldurduğunuzda adınız, e-posta adresiniz, telefon numaranız (verirseniz), ilgilendiğiniz model ve konsept ile mesajınızda yazdıklarınız işlenir. Bu alanlardan yalnızca ad ve e-posta zorunludur.",
           "Teknik veriler: Siteyi ziyaret ettiğinizde, barındırma altyapısı tarafından IP adresiniz, tarayıcı bilgileriniz ve ziyaret ettiğiniz sayfalar gibi teknik kayıtlar tutulur.",
           "Ölçümleme: Sitede Vercel Analytics kullanılmaktadır. Bu araç sayfa görüntülemelerini toplar; çerez kullanmaz ve ziyaretçileri kişi bazında tanımlamayı amaçlamaz.",
         ],
         en: [
-          "Contact form: When you submit the form we process your name, email address, country, area of interest, and whatever you write in the message. Only name and email are required.",
+          "Forms: The site has two forms — Contact and Pre-Order. When you submit one, we process your name, email address, phone number (if given), the model and concept you are interested in, and whatever you write in the message. Only name and email are required.",
           "Technical data: When you visit the site, the hosting infrastructure records technical information such as your IP address, browser details, and the pages you visit.",
           "Analytics: The site uses Vercel Analytics. It aggregates page views; it does not use cookies and is not intended to identify individual visitors.",
         ],
@@ -67,13 +67,13 @@ export const privacyPolicy: LegalDocument = {
       },
       body: {
         tr: [
-          "İletişim formu verileri, yalnızca talebinize cevap verebilmek ve sizinle iletişim kurabilmek amacıyla işlenir. Hukuki sebep, KVKK m.5/2-(c) uyarınca bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması ve m.5/2-(f) uyarınca meşru menfaattir.",
+          "Form verileri, yalnızca talebinize cevap verebilmek ve sizinle iletişim kurabilmek amacıyla işlenir. Hukuki sebep, KVKK m.5/2-(c) uyarınca bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması ve m.5/2-(f) uyarınca meşru menfaattir.",
           "Teknik kayıtlar, sitenin güvenliğini sağlamak ve hatalarını gidermek amacıyla, meşru menfaat hukuki sebebine dayanarak işlenir.",
           "Ölçümleme verileri, sitenin kullanımını anlamak ve iyileştirmek amacıyla toplu (anonim) biçimde işlenir.",
           "Verileriniz pazarlama amacıyla kullanılmaz ve açık rızanız olmadan üçüncü taraflara pazarlama amacıyla aktarılmaz.",
         ],
         en: [
-          "Contact form data is processed solely to answer your enquiry and to correspond with you. The legal basis is that processing is directly related to the conclusion or performance of a contract, and legitimate interest.",
+          "Form data is processed solely to answer your enquiry and to correspond with you. The legal basis is that processing is directly related to the conclusion or performance of a contract, and legitimate interest.",
           "Technical records are processed on the basis of legitimate interest, to keep the site secure and to diagnose faults.",
           "Analytics data is processed in aggregate form to understand and improve how the site is used.",
           "Your data is not used for marketing, and is not transferred to third parties for marketing purposes without your explicit consent.",
@@ -89,7 +89,7 @@ export const privacyPolicy: LegalDocument = {
         tr: [
           "Site, işleyişi için aşağıdaki hizmet sağlayıcılarını kullanır. Bu sağlayıcıların sunucuları yurt dışında bulunabilir; bu durumda KVKK m.9 kapsamında yurt dışına aktarım söz konusu olur ve gerekli şartların sağlanması gerekir. Bu nokta özellikle hukuki incelemeye tabi tutulmalıdır.",
           "Vercel — sitenin barındırılması ve ölçümleme.",
-          "Resend — iletişim formu mesajlarının e-posta olarak iletilmesi.",
+          "Resend — form mesajlarının e-posta olarak iletilmesi.",
           "Sanity — site içeriğinin yönetimi.",
           "OpenStreetMap — bayi ve servis ağı haritasının görüntülenmesi.",
           "Google (Gemini) — site asistanına yazdığınız mesajların yanıtlanması.",
@@ -98,7 +98,7 @@ export const privacyPolicy: LegalDocument = {
         en: [
           "The site relies on the following service providers. Their servers may be located outside Türkiye; where that is the case, a cross-border transfer arises under KVKK Art. 9 and the required conditions must be met. This point in particular should be checked in legal review.",
           "Vercel — hosting and analytics.",
-          "Resend — delivering contact form messages by email.",
+          "Resend — delivering form messages by email.",
           "Sanity — managing site content.",
           "OpenStreetMap — displaying the dealer and service network map.",
           "Google (Gemini) — answering messages typed into the site assistant.",
@@ -127,11 +127,11 @@ export const privacyPolicy: LegalDocument = {
       heading: { tr: "Saklama süresi", en: "Retention" },
       body: {
         tr: [
-          "İletişim formu üzerinden gelen mesajlar, talebinizin sonuçlanmasından sonra makul bir süre boyunca ve varsa ilgili mevzuatın öngördüğü saklama süreleri kadar tutulur; sonrasında silinir veya anonim hâle getirilir.",
+          "Formlar üzerinden gelen mesajlar, talebinizin sonuçlanmasından sonra makul bir süre boyunca ve varsa ilgili mevzuatın öngördüğü saklama süreleri kadar tutulur; sonrasında silinir veya anonim hâle getirilir.",
           "Kesin saklama süreleri şirketin saklama ve imha politikasıyla birlikte belirlenmelidir.",
         ],
         en: [
-          "Messages received through the contact form are kept for a reasonable period after your enquiry is closed, and for any retention period required by applicable law; after that they are deleted or anonymised.",
+          "Messages received through the forms are kept for a reasonable period after your enquiry is closed, and for any retention period required by applicable law; after that they are deleted or anonymised.",
           "Exact retention periods should be set alongside the company's retention and destruction policy.",
         ],
       },

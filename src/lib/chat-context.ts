@@ -41,6 +41,7 @@ export const buildSiteContext = cache(async (locale: Locale): Promise<string> =>
   const lines: string[] = [];
 
   lines.push(`# ${brand.fullName}`);
+  lines.push(`- ${brand.motto[locale]}`);
   lines.push("");
 
   lines.push(locale === "tr" ? "## Şirket" : "## The company");
@@ -136,6 +137,12 @@ export const buildSiteContext = cache(async (locale: Locale): Promise<string> =>
       locale === "tr" ? "Bayi ve Servis Ağı" : "Dealer and Services Network",
       "/dealer-and-services-network",
     ],
+    [
+      locale === "tr"
+        ? "Ön Sipariş — yat yaptırmak / proje başlatmak isteyenler buradan başlar"
+        : "Pre-Order — where to start a commission",
+      "/pre-order",
+    ],
     [locale === "tr" ? "İletişim" : "Contact", "/contact"],
     [locale === "tr" ? "Gizlilik Politikası" : "Privacy Policy", "/privacy-policy"],
   ]) {
@@ -166,7 +173,8 @@ KURALLAR:
 6. Kısa ve sade cevap ver — en fazla 3-4 cümle. Gerekirse ilgili sayfanın adresini ver.
 7. Yalnızca Türkçe cevap ver.
 8. Marka adını her zaman "${brand.fullName}" olarak yaz.
-9. Site dışı konulara (genel sohbet, başka markalar, siyaset vb.) girme; nazikçe konuyu siteye çevir.`
+9. Site dışı konulara (genel sohbet, başka markalar, siyaset vb.) girme; nazikçe konuyu siteye çevir.
+10. Yat yaptırmak, proje başlatmak, sipariş vermek ya da fiyat/yatırım konuşmak isteyenleri Ön Sipariş sayfasına yönlendir (/${locale}/pre-order). Genel sorular için İletişim sayfası.`
       : `You are the assistant for the ${brand.fullName} website.
 
 RULES:
@@ -178,7 +186,8 @@ RULES:
 6. Keep answers short and plain — at most 3-4 sentences. Give the relevant page path when useful.
 7. Answer only in English.
 8. Always write the brand as "${brand.fullName}".
-9. Stay on the subject of this site; politely decline unrelated topics.`;
+9. Stay on the subject of this site; politely decline unrelated topics.
+10. Anyone wanting to commission a vessel, start a project, place an order or discuss price and investment should be pointed to the Pre-Order page (/${locale}/pre-order). General questions go to Contact.`;
 
   return `${rules}
 

@@ -109,6 +109,10 @@ export async function POST(request: Request) {
     return fail("invalid_json", 400);
   }
 
+  // Both the contact form and the pre-order form post here; the subject line
+  // is what tells them apart in the inbox.
+  const subject = readField(body.subject).slice(0, 120);
+
   const payload: Payload = {
     name: readField(body.name),
     email: readField(body.email),
@@ -143,7 +147,9 @@ export async function POST(request: Request) {
       from,
       to: [to],
       replyTo: payload.email,
-      subject: `${brand.fullName} — enquiry from ${payload.name}`,
+      subject: subject
+        ? `${brand.fullName} — ${subject} — ${payload.name}`
+        : `${brand.fullName} — enquiry from ${payload.name}`,
       html: renderHtml(payload),
       text: renderText(payload),
     });

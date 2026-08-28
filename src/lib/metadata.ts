@@ -25,7 +25,7 @@ export function alternates(locale: string, path: string): Metadata["alternates"]
 
 /**
  * Builds a per-page `<title>` — which the locale layout feeds through the
- * `%s · Mimarine Yacht` template — plus its canonical and hreflang links.
+ * `%s · MimarineYacht` template — plus its canonical and hreflang links.
  */
 export async function pageMetadata(
   locale: string,

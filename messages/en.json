@@ -1,7 +1,7 @@
 {
   "meta": {
-    "titleTemplate": "%s · Mimarine Yacht",
-    "defaultTitle": "Mimarine Yacht",
+    "titleTemplate": "%s · MimarineYacht",
+    "defaultTitle": "MimarineYacht",
     "defaultDescription": "Shipbuilding, naval architecture and engineering in Of, Trabzon. Fishing vessels, commercial work boats and private yachts."
   },
   "nav": {
@@ -13,7 +13,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "languageLabel": "Language",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "preOrder": "Pre-Order"
   },
   "fleetTabs": {
     "delivered": "Delivered Yachts",
@@ -25,7 +26,7 @@
     "past": "Past / Held Events"
   },
   "home": {
-    "eyebrow": "Mimarine Yacht",
+    "eyebrow": "MimarineYacht",
     "title": "Quiet water, built to last.",
     "sectionHouse": "01 — The yard",
     "sectionFeatured": "02 — Featured",
@@ -37,18 +38,19 @@
   "fleet": {
     "eyebrow": "Fleet",
     "delivered": {
-      "title": "Finished, on the water, still on our register.",
-      "intro": "A record of every yacht we have handed over — each one stays on our service register and is visited by the yard once a year."
+      "title": "Projects we have undertaken.",
+      "intro": "Motor yacht projects run in-house from design through to handover."
     },
     "readyForDelivery": {
-      "title": "Finished, trialled, waiting for an owner.",
-      "intro": "Yachts completed on speculation or released from a contract. Specification is largely fixed; textiles, artwork and flag remain open."
+      "title": "Ready for delivery.",
+      "intro": "Completed vessels awaiting handover are listed here."
     },
     "inProduction": {
-      "title": "Currently in the sheds.",
-      "intro": "Hulls under construction and open build slots. Early commissions can still influence layout, propulsion and interior."
+      "title": "Currently under way.",
+      "intro": "Projects in build and at design stage. Early commissions can still shape layout and outfitting."
     },
-    "count": "{count} yachts"
+    "count": "{count} yachts",
+    "empty": "No vessels are listed in this category right now. Tell us about the project you have in mind."
   },
   "ourWorld": {
     "eyebrow": "Our World",
@@ -82,7 +84,7 @@
     "cta": {
       "eyebrow": "Partnership",
       "title": "Represent us in your region.",
-      "body": "If you would like to represent Mimarine Yacht for sales or service in your region, we would like to hear from you. Send us your enquiry and we will be in touch.",
+      "body": "If you would like to represent MimarineYacht for sales or service in your region, we would like to hear from you. Send us your enquiry and we will be in touch.",
       "action": "Apply for a dealership"
     },
     "emptyTitle": "Our dealer and service network is being built."
@@ -111,7 +113,7 @@
         "not_configured": "The contact form is not live yet. Please write to us directly in the meantime.",
         "send_failed": "Could not send the enquiry. Please try again."
       },
-      "comingSoon": "The contact form will be live shortly. In the meantime, please reach us directly by email."
+      "comingSoon": "The form will be live shortly. In the meantime you can reach us directly: mimarineyacht@outlook.com"
     },
     "officesLabel": "Offices"
   },
@@ -180,6 +182,42 @@
       "empty_message": "Please type a question.",
       "upstream_error": "No answer came back. Please try again.",
       "upstream_unreachable": "Could not connect. Please try again."
+    }
+  },
+  "preOrder": {
+    "eyebrow": "Pre-Order",
+    "title": "Draw the edges of what you imagine.",
+    "lede": "Owning a yacht is building your own free world on the water. We invite you on a journey shaped by your vision and made in your image.",
+    "body": "With our bespoke naval architecture approach, every fitting is worked to your character and every detail to your expectations. Let us design the legacy you will leave on the water — and build your own with the advantages we offer.",
+    "form": {
+      "subject": "Pre-order enquiry",
+      "name": "Name / Company",
+      "namePlaceholder": "The future owner",
+      "email": "Email",
+      "emailPlaceholder": "name@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+90",
+      "model": "Size / model of interest",
+      "concept": "The concept you have in mind",
+      "choose": "Choose",
+      "message": "Your expectations and notes",
+      "messagePlaceholder": "Tell us the details your project cannot do without…",
+      "wantsInfo": "I would like information about pre-orders and investor advantages.",
+      "wantsInfoSummary": "[Would like information about pre-orders and investor advantages.]",
+      "cta": "Begin the bespoke journey",
+      "models": {
+        "superyacht": "PTTRA 42.5m · Superyacht",
+        "explorer": "KTU 35 FEET · Explorer",
+        "motorYacht": "Custom motor yacht",
+        "commercial": "Commercial / work boat",
+        "custom": "Custom size"
+      },
+      "concepts": {
+        "minimalist": "Minimalist",
+        "family": "Large family",
+        "charter": "Commercial charter",
+        "explorer": "Long range / explorer"
+      }
     }
   }
 }

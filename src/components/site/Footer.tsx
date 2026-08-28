@@ -26,6 +26,7 @@ export default async function Footer() {
     {
       title: t("contact"),
       links: [
+        { href: primaryRoutes.preOrder, label: tNav("preOrder") },
         { href: primaryRoutes.contact, label: t("enquiries") },
         { href: primaryRoutes.network, label: t("ownerServices") },
         { href: primaryRoutes.contact, label: t("press") },

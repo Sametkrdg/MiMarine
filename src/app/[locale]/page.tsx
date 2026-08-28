@@ -161,10 +161,10 @@ export default async function HomePage({ params }: Props) {
           {pick(home.closing, l)}
         </p>
         <Link
-          href={primaryRoutes.contact}
+          href={primaryRoutes.preOrder}
           className="mt-[46px] inline-block border border-ink px-10 py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
         >
-          {t("speakWithUs")}
+          {tNav("preOrder")}
         </Link>
       </section>
     </>

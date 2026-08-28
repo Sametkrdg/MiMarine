@@ -8,7 +8,8 @@
 @theme {
   --color-paper: #fbfaf8;
   --color-ink: #171717;
-  --color-accent: #5b54a6;
+  /* Denizci laciverti. Kağıt üzerinde 6.9 kontrast (AA), mürekkepten ayırt edilebilir. */
+  --color-accent: #2c5a87;
   --color-muted: #737373;
   --color-body: #525252;
   --color-surface: #f0eeea;
@@ -104,5 +105,6 @@
   font-weight: 400;
   letter-spacing: var(--tracking-nav);
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--color-ink);
 }

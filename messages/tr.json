@@ -1,7 +1,7 @@
 {
   "meta": {
-    "titleTemplate": "%s · Mimarine Yacht",
-    "defaultTitle": "Mimarine Yacht",
+    "titleTemplate": "%s · MimarineYacht",
+    "defaultTitle": "MimarineYacht",
     "defaultDescription": "Trabzon Of'ta gemi inşası, deniz mimarisi ve mühendislik. Balıkçı gemileri, ticari iş tekneleri ve özel yatlar."
   },
   "nav": {
@@ -13,7 +13,8 @@
     "openMenu": "Menüyü aç",
     "closeMenu": "Menüyü kapat",
     "languageLabel": "Dil",
-    "skipToContent": "İçeriğe geç"
+    "skipToContent": "İçeriğe geç",
+    "preOrder": "Ön Sipariş"
   },
   "fleetTabs": {
     "delivered": "Teslim Edilen Yatlar",
@@ -25,7 +26,7 @@
     "past": "Geçmiş Etkinlikler"
   },
   "home": {
-    "eyebrow": "Mimarine Yacht",
+    "eyebrow": "MimarineYacht",
     "title": "Sakin su, kalıcı yapı.",
     "sectionHouse": "01 — Tersane",
     "sectionFeatured": "02 — Öne çıkan",
@@ -37,18 +38,19 @@
   "fleet": {
     "eyebrow": "Filo",
     "delivered": {
-      "title": "Teslim ettiğimiz her tekne hâlâ servis kaydımızda.",
-      "intro": "Devrettiğimiz yatların kaydı — her biri servis defterimizde kalır ve yılda bir kez tersane tarafından ziyaret edilir."
+      "title": "Üstlendiğimiz projeler.",
+      "intro": "Tasarımdan anahtar teslimine kendi bünyemizde yürüttüğümüz motoryat projeleri."
     },
     "readyForDelivery": {
-      "title": "Bitmiş, denenmiş, armatörünü bekliyor.",
-      "intro": "Tamamlanmış ya da sözleşmeden çıkmış tekneler. Spesifikasyon büyük ölçüde sabit; kumaş, sanat eseri ve bayrak açık kalır."
+      "title": "Teslime hazır tekneler.",
+      "intro": "Tamamlanmış ve devir için bekleyen tekneler burada listelenir."
     },
     "inProduction": {
       "title": "Şu an tezgâhta olanlar.",
-      "intro": "İnşa hâlindeki tekneler ve açık üretim slotları. Erken siparişler yerleşimi, tahrik sistemini ve iç mekânı hâlâ etkileyebilir."
+      "intro": "İnşa ve tasarım aşamasındaki projeler. Erken siparişler yerleşimi ve donanımı hâlâ etkileyebilir."
     },
-    "count": "{count} yat"
+    "count": "{count} yat",
+    "empty": "Bu kategoride şu an listelenen tekne yok. Aklınızdaki projeyi bizimle paylaşın."
   },
   "ourWorld": {
     "eyebrow": "Dünyamız",
@@ -82,7 +84,7 @@
     "cta": {
       "eyebrow": "Bayilik",
       "title": "Bölgenizde bizi temsil edin.",
-      "body": "Mimarine Yacht teknelerinin satışı ve servisi için bölgenizde temsilcilik almak istiyorsanız, sizinle konuşmak isteriz. Talebinizi iletin, dönüş yapalım.",
+      "body": "MimarineYacht teknelerinin satışı ve servisi için bölgenizde temsilcilik almak istiyorsanız, sizinle konuşmak isteriz. Talebinizi iletin, dönüş yapalım.",
       "action": "Bayilik başvurusu"
     },
     "emptyTitle": "Bayi ve servis ağımız kuruluyor."
@@ -111,7 +113,7 @@
         "not_configured": "İletişim formu henüz yayında değil. Bu arada bize doğrudan yazabilirsiniz.",
         "send_failed": "Talep gönderilemedi. Lütfen tekrar deneyin."
       },
-      "comingSoon": "İletişim formu yakında aktif olacak. Bu arada bize doğrudan e-posta ile ulaşabilirsiniz."
+      "comingSoon": "Form yakında aktif olacak. Bu arada bize doğrudan e-posta ile ulaşabilirsiniz: mimarineyacht@outlook.com"
     },
     "officesLabel": "Ofisler"
   },
@@ -180,6 +182,42 @@
       "empty_message": "Lütfen bir soru yazın.",
       "upstream_error": "Yanıt alınamadı. Lütfen tekrar deneyin.",
       "upstream_unreachable": "Bağlantı kurulamadı. Lütfen tekrar deneyin."
+    }
+  },
+  "preOrder": {
+    "eyebrow": "Ön Sipariş",
+    "title": "Hayallerinizin sınırlarını çizin.",
+    "lede": "Bir yata sahip olmak, denizin üzerinde kendi özgür dünyanızı inşa etmektir. Sizi, vizyonunuzla şekillenecek ve ruhunuzu yansıtacak eşsiz bir yolculuğa davet ediyoruz.",
+    "body": "Terzi usulü deniz mimari atölyesi yaklaşımımızla, her donanımı kişiliğinize, her detayı beklentilerinize göre özenle dokuyoruz. Gelin, sulara bırakacağınız o eşsiz mirası birlikte tasarlayalım; size özel avantajlarımızla kendi efsanenizi inşa edin.",
+    "form": {
+      "subject": "Ön sipariş talebi",
+      "name": "Ad Soyad / Firma unvanı",
+      "namePlaceholder": "Geleceğin yat sahibi",
+      "email": "E-posta",
+      "emailPlaceholder": "ad@sirket.com",
+      "phone": "Telefon",
+      "phonePlaceholder": "+90",
+      "model": "İlgilendiğiniz boyut / model",
+      "concept": "Hayalinizdeki konsept",
+      "choose": "Seçiniz",
+      "message": "Özel beklentileriniz ve notlarınız",
+      "messagePlaceholder": "Bize projenizdeki olmazsa olmaz detaylardan bahsedin…",
+      "wantsInfo": "Ön sipariş ve yatırımcı avantajları hakkında bilgi almak istiyorum.",
+      "wantsInfoSummary": "[Ön sipariş ve yatırımcı avantajları hakkında bilgi almak istiyor.]",
+      "cta": "Özel tasarım yolculuğuna başlayın",
+      "models": {
+        "superyacht": "PTTRA 42.5m · Süperyat",
+        "explorer": "KTÜ 35 FEET · Explorer",
+        "motorYacht": "Özel tasarım motoryat",
+        "commercial": "Ticari / iş teknesi",
+        "custom": "Özel boyut"
+      },
+      "concepts": {
+        "minimalist": "Minimalist",
+        "family": "Geniş aile tipi",
+        "charter": "Ticari charter",
+        "explorer": "Uzun seyir / keşif"
+      }
     }
   }
 }

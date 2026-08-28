@@ -12,6 +12,7 @@ const staticPaths = [
   "/our-world",
   "/news-and-events",
   "/dealer-and-services-network",
+  "/pre-order",
   "/contact",
   "/privacy-policy",
 ];

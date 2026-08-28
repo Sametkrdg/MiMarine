@@ -27,7 +27,7 @@ export default async function OpenGraphImage() {
         <div style={{ fontSize: 62, letterSpacing: 26, color: "#171717" }}>
           {brand.wordmark}
         </div>
-        <div style={{ width: 120, height: 1, background: "#5B54A6", marginTop: 52 }} />
+        <div style={{ width: 120, height: 1, background: "#2C5A87", marginTop: 52 }} />
       </div>
     ),
     size,

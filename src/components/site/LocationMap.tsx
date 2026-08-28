@@ -61,7 +61,7 @@ export default function LocationMap({
       // Brand-coloured pin, so no image asset has to resolve through the bundler.
       const icon = L.divIcon({
         className: "",
-        html: '<span style="display:block;width:12px;height:12px;border-radius:50%;background:#5B54A6;border:2px solid #FBFAF8;box-shadow:0 0 0 1px #171717"></span>',
+        html: '<span style="display:block;width:12px;height:12px;border-radius:50%;background:#2C5A87;border:2px solid #FBFAF8;box-shadow:0 0 0 1px #171717"></span>',
         iconSize: [12, 12],
         iconAnchor: [6, 6],
       });

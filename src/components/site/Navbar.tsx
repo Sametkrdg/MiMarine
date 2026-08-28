@@ -74,8 +74,8 @@ export default function Navbar({
       onMouseLeave={() => setOpenMenu(null)}
     >
       {/* ── Desktop bar ───────────────────────────────────────────────── */}
-      <div className="shell hidden h-[86px] grid-cols-[1fr_auto_1fr] items-center gap-6 lg:grid">
-        <nav className="flex items-center gap-[38px]">
+      <div className="shell hidden h-[86px] grid-cols-[1fr_auto_1fr] items-center gap-6 xl:grid">
+        <nav className="flex items-center gap-7 2xl:gap-[38px]">
           <div
             className="flex items-center gap-2 py-2"
             onMouseEnter={() => setOpenMenu("fleet")}
@@ -124,7 +124,7 @@ export default function Navbar({
 
         <Wordmark />
 
-        <nav className="flex items-center justify-end gap-[34px]">
+        <nav className="flex items-center justify-end gap-[22px] 2xl:gap-[26px]">
           <LanguageSwitcher />
           <Link
             onClick={closeAll}
@@ -137,16 +137,24 @@ export default function Navbar({
           <Link
             onClick={closeAll}
             href={primaryRoutes.contact}
-            className="nav-link border border-ink px-[22px] py-[11px] transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+            className="nav-link"
             onMouseEnter={() => setOpenMenu(null)}
           >
             {t("contact")}
+          </Link>
+          <Link
+            onClick={closeAll}
+            href={primaryRoutes.preOrder}
+            className="nav-link border border-ink px-[22px] py-[11px] transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+            onMouseEnter={() => setOpenMenu(null)}
+          >
+            {t("preOrder")}
           </Link>
         </nav>
       </div>
 
       {/* ── Mobile bar ────────────────────────────────────────────────── */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <div className="grid h-[70px] grid-cols-[40px_minmax(0,1fr)_62px] items-center gap-3 px-6">
           <button
             type="button"
@@ -182,7 +190,7 @@ export default function Navbar({
 
       {/* ── Desktop dropdown panel ────────────────────────────────────── */}
       {openMenu && (
-        <div className="hidden border-t border-ink bg-surface-alt lg:block">
+        <div className="hidden border-t border-ink bg-surface-alt xl:block">
           <div className="shell flex gap-24 pt-[38px] pb-[44px]">
             <div className="eyebrow w-[150px] pt-[6px] tracking-[0.3em]">
               {menus[openMenu].title}

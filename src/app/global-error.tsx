@@ -29,7 +29,7 @@ export default function GlobalError({
         }}
       >
         <p style={{ fontSize: 10, letterSpacing: "0.32em", textTransform: "uppercase", color: "#737373" }}>
-          Mimarine Yacht
+          MimarineYacht
         </p>
         <h1 style={{ margin: "26px 0 0", fontSize: 34, fontWeight: 200 }}>
           Bir şeyler ters gitti. · Something went wrong.

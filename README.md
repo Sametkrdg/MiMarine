@@ -1,10 +1,11 @@
-# Mimarine Yacht — Kurumsal Web Sitesi
+# MimarineYacht — Kurumsal Web Sitesi
 
 Çok dilli (TR/EN), çok sayfalı yat markası kurumsal sitesi.
 
 - Proje kuralları: [`CLAUDE.md`](./CLAUDE.md)
 - Teknik plan: [`PROJE_PLANI.md`](./PROJE_PLANI.md)
 - Senin yapman gereken adımlar: [`MANUEL.md`](./MANUEL.md)
+- İçerik girecek kişi için: [`SANITY_KILAVUZU.md`](./SANITY_KILAVUZU.md)
 - Tasarım referansı: [`design/tasarim-prototipi.html`](./design/tasarim-prototipi.html)
   (tarayıcıda aç — tüm sayfaların onaylı görsel tasarımı)
 
@@ -12,11 +13,18 @@
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000 → /tr adresine yönlenir
+npm run preview   # siteye BAKMAK için: bir kez derler, her sayfa ~7 ms
+npm run dev       # kod DÜZENLERKEN: ilk sayfa 2-5 dk derlenir, sonrası hızlı
 npm run build
 npm run lint
 npm run typecheck
 ```
+
+> **`npm run dev` neden yavaş açılıyor?** Bu projede ilk sayfa derlemesi
+> ölçülen sürelerle 2.5-5 dakika sürüyor; Next'in kendisi de "Slow filesystem
+> detected" uyarısı veriyor. Sunucu ayaktadır, sadece ilk isteği derliyordur —
+> kesip yeniden başlatmayın. İlk sayfadan sonra her istek 0.5 saniye.
+> Sadece siteye bakacaksanız `npm run preview` çok daha hızlı.
 
 `.env.example` dosyasını `.env.local` olarak kopyalayıp değerleri doldurun.
 Hiçbiri henüz zorunlu değil; eksik olanlar ilgili özelliği devre dışı bırakır.
@@ -32,7 +40,8 @@ src/
       news-and-events/   liste + [slug]
       dealer-and-services-network/
       contact/
-    privacy-policy/      Gizlilik Politikası / KVKK (TASLAK)
+    pre-order/           Ön Sipariş formu
+    privacy-policy/      Gizlilik Politikası / KVKK
     error.tsx            Çalışma zamanı hata sınırı
     not-found.tsx        404
     opengraph-image.tsx  Sosyal kart (next/og ile üretilir)
@@ -60,7 +69,7 @@ Gerçek marka renkleri geldiğinde **sadece burası** değişir.
 |---|---|---|
 | `paper` | `#FBFAF8` | Zemin |
 | `ink` | `#171717` | Metin, çizgiler, footer zemini |
-| `accent` | `#5B54A6` | Vurgu, hover, aktif durum |
+| `accent` | `#2C5A87` | Denizci laciverti — vurgu, hover, aktif durum |
 | `body` | `#525252` | Gövde metni |
 | `muted` | `#737373` | İkincil / etiket metni |
 | `surface` | `#F0EEEA` | Görsel yer tutucu zemini |
@@ -71,8 +80,8 @@ Tipografi: **Jost** (200 / 300 / 400), `next/font/google` üzerinden self-host e
 ## Marka Adı
 
 Marka metinleri tek yerden gelir: [`src/lib/brand.ts`](./src/lib/brand.ts) —
-wordmark (tek satır `MIMARINE YACHT`), tam ad, tescilli unvan ve sosyal medya
-hesapları. `social` boş olduğu sürece footer'daki sosyal satır hiç
+wordmark (`MIMARINEYACHT`), tam ad (`MimarineYacht`, bitişik), tescilli unvan,
+motto ve sosyal medya hesapları. `social` boş olduğu sürece footer'daki sosyal satır hiç
 render edilmez; ölü link göstermektense hiç göstermemek daha iyi.
 
 ## Site Asistanı (chatbot)
@@ -210,11 +219,26 @@ ortadan kalkıyor.
 `Strict-Transport-Security` · `Content-Security-Policy`
 (`frame-ancestors` · `object-src` · `base-uri` · `form-action`).
 
-**Bilinçli eksik:** CSP'de `script-src` yok. Next satır içi bootstrap script'i
-enjekte ediyor ve Sanity Studio `unsafe-eval` istiyor; gerçek bir script
-politikası proxy üzerinden istek başına nonce üretmeyi gerektirir. Bu ayrı bir
-iş — yarım yapmaktansa yapılmadı. Mevcut başlıklar clickjacking, MIME sniffing,
-plugin içeriği ve base-tag enjeksiyonunu zaten kapatıyor.
+CSP **origin tabanlı**, nonce tabanlı değil — bilinçli bir tercih. Next nonce'ı
+yalnızca sunucu render'ı sırasında enjekte edebiliyor; nonce'a geçmek 49 statik
+sayfayı istek başına render'a zorlar, ~7 ms'lik statik yanıtları kaybettirir ve
+her ziyarete bir fonksiyon çağrısı ekler. Kimlik doğrulamalı alanı olmayan bir
+tanıtım sitesinde kaynakların **nereden** gelebileceğini kısıtlamak, korumanın
+büyük kısmını bu bedel olmadan sağlıyor.
+
+İki ayrı politika var:
+
+- **Site** — `script-src 'self' 'unsafe-inline'`, görseller yalnızca Unsplash /
+  Sanity CDN / OpenStreetMap'ten, ağ çağrıları yalnızca Sanity'ye.
+- **`/studio`** — Sanity editörü çalışma anında kod değerlendirdiği için
+  `unsafe-eval`, blob ve ek Sanity host'ları açık. Yalnızca `/studio` yolunda.
+
+Tarayıcıda doğrulandı: ana sayfa, filo, ön sipariş, iletişim, Studio ve Leaflet
+haritası — **sıfır CSP ihlali**.
+
+**Hâlâ kapatmadığı şey:** enjekte edilmiş satır içi script. Nonce bunu kapatır;
+gerekirse Next'in CSP kılavuzundaki nonce tarifi uygulanır ve dinamik render
+kabul edilir.
 
 ## SEO
 
@@ -233,6 +257,17 @@ plugin içeriği ve base-tag enjeksiyonunu zaten kapatıyor.
 `send_failed`); metne çevirme işi istemcide, `messages/*.json` içindeki
 `contact.form.errors` altında. Env eksikse 503 döner ve sunucu log'una neyin
 eksik olduğunu yazar.
+
+## Formlar
+
+İki form var, ikisi de `POST /api/contact`'a gidiyor:
+
+- **İletişim** (`/contact`) — genel talepler
+- **Ön Sipariş** (`/pre-order`) — proje/sipariş talepleri; model ve konsept
+  seçimi, yatırımcı bilgisi onay kutusu
+
+Ayırt etmek için ön sipariş formu bir `subject` alanı gönderiyor; e-posta konu
+satırına yansıyor. Alıcı adresi Sanity Studio → Site Ayarları'ndan yönetiliyor.
 
 ## Bilinen Eksikler
 
