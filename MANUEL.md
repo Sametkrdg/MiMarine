@@ -113,9 +113,9 @@ projeler ve Ön Sipariş sayfası.
 
 - [x] ~~Ön Sipariş sayfası~~ — `/tr/pre-order` · `/en/pre-order`. Brief'teki
       başlık, motto, davet metni ve form alanlarının tamamı kuruldu.
-- [x] ~~Palet~~ — brief "denizci laciverti ve antrasit" istiyordu. Mürekkep
-      zaten antrasit; mor aksan **lacivert `#2C5A87`** oldu (kağıtta 6.9
-      kontrast, AA geçiyor). Beğenmezsen tek token.
+- [x] ~~Palet~~ — brief "denizci laciverti ve antrasit" istiyordu; sonrasında
+      gönderdiğin prototip dosyasıyla site **koyu laciverte** taşındı:
+      zemin `#12212F`, metin `#F2EFE8`, aksan `#7FA9C4`. Ayrıntı aşağıda.
 - [x] ~~Filo~~ — uydurma 10 tekne silindi, gerçek dört proje girildi.
 
 **Doğrulaman gerekenler:**
@@ -138,7 +138,40 @@ projeler ve Ön Sipariş sayfası.
 
 ---
 
-## 6 · Marka Kimliği
+## 6 · Tasarım Aktarımı — kararını bekleyen iki nokta
+
+Gönderdiğin `MimarineYacht (standalone).html` prototipindeki tasarım sisteminin
+tamamı siteye uygulandı (renk, tipografi, boşluk, bileşen görünümü). Metinler,
+veriler, görseller ve route yapısı ellenmedi. Prototip dosyası, istediğin gibi
+aktarım bittikten sonra silindi.
+
+İki yerde prototipteki değeri **birebir uygulayamadım**; ikisi de senin kararın:
+
+- [ ] **Bayi haritasındaki bilgi etiketi.** Prototipte etiket zemini açık
+      (`rgba(242,239,232,.92)`), metni `#A7B3BC`. Bu ikili ~2:1 kontrast veriyor
+      ve WCAG AA'yı geçmiyor — harita üzerinde okunmuyordu. Etiketi açık
+      bıraktım ama metni koyu laciverte (`#0C1620`) çevirdim. Tasarımdaki açık
+      etiket duruyor, yalnızca yazı okunur hâlde. İtiraz edersen geri alırım.
+- [ ] **Menü çubuğunun masaüstüne geçtiği genişlik: 1280px → 1400px.**
+      İngilizce menüde "DEALER AND SERVICES NETWORK" + "NEWS AND EVENTS" +
+      wordmark yan yana ~1266px yer kaplıyor (gerçek Jost metrikleriyle
+      ölçüldü). 1280px'lik bir ekranda kenar boşlukları ve kaydırma çubuğu
+      düşünce 1169px kalıyor — yani çubuk **zaten taşıyordu**, bu aktarımdan
+      önce de. Üç seçenek vardı: yazıyı prototiptekinden küçültmek, bir menü
+      maddesini atmak, ya da bu aralıkta hamburger menüye geçmek. İlk ikisi
+      senin "tasarımı ve içeriği değiştirme" talimatına aykırıydı, üçüncüsünü
+      seçtim: 1400px altında mobil çekmece açılıyor. 1280 ve 1366'lık dizüstü
+      ekranlar da çekmeceyi görecek. Bunun yerine yazıyı biraz küçültmemi
+      tercih edersen tek satır.
+
+Bilgi olsun diye: paletin tamamını kontrast açısından ölçtüm, tek zayıf nokta
+kart zemini üstündeki küçük gri etiketler (`#7C8B98` / `#1A2C3C` = 4.09; AA
+sınırı 4.5). İkisi de prototipten gelen değerler olduğu için dokunmadım —
+istersen etiket grisini bir tık açarım, tek token.
+
+---
+
+## 7 · Marka Kimliği
 
 - [x] ~~Tescilli unvan~~ — `MimarineYacht Yatçılık San. Tic. Ltd. Şti.`
 - [x] ~~Kuruluş yılı~~ — 2021, ana sayfadaki rakam şeridinde.
@@ -157,8 +190,8 @@ Karar bekleyen üç küçük nokta:
       isim yok. İstersen iletişim sayfasına ekleyebilirim.
 - [ ] **Üçüncü rakam.** Ana sayfada iki rakam doldu (2021 · 3 uzmanlık alanı),
       üçüncüsü hâlâ `[00]`. Örn. teslim edilen tekne sayısı ya da yerlilik oranı.
-- [ ] **Logo dosyası** (SVG) ve **marka renk kodları**. Şu an prototipin paleti:
-      mor aksan `#5B54A6`, kağıt `#FBFAF8`, mürekkep `#171717` —
+- [ ] **Logo dosyası** (SVG) ve **marka renk kodları**. Site artık koyu
+      paletle çalışıyor: zemin `#12212F`, metin `#F2EFE8`, aksan `#7FA9C4` —
       `src/app/globals.css` içindeki `@theme` bloğunda, tek yerden değişir.
 - [ ] **Wordmark'ın görsel onayı** — tek satır `MIMARINE YACHT` olarak uygulandı.
 - [ ] **Sosyal medya adresleri** (Instagram / LinkedIn / YouTube). Gelene kadar
@@ -166,7 +199,7 @@ Karar bekleyen üç küçük nokta:
 
 ---
 
-## 7 · İçerik & Görsel
+## 8 · İçerik & Görsel
 
 - [ ] **Gerçek yat fotoğrafları ve galeri görselleri.** Şu an geçici Unsplash
       görselleri — sadece tasarımı göstermek için, hiçbiri Mimarine'e ait değil.
@@ -181,7 +214,7 @@ Karar bekleyen üç küçük nokta:
 
 ---
 
-## 8 · Gizlilik Politikası / KVKK
+## 9 · Gizlilik Politikası / KVKK
 
 - [x] ~~Taslak uyarısı~~ — senin talimatınla kaldırıldı.
 - [x] ~~Şirket bilgileri~~ — unvan, adres, telefon, e-posta metne işlendi.
@@ -198,7 +231,7 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 9 · Deploy'da Kalan
+## 10 · Deploy'da Kalan
 
 - [ ] **`NEXT_PUBLIC_SITE_URL`'i canlı domainle doldur** (örn.
       `https://mimarineyacht.com`). Boş kalırsa canonical / sitemap / OG kartı
@@ -210,7 +243,7 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 10 · Karar Bekleyen (acil değil)
+## 11 · Karar Bekleyen (acil değil)
 
 - [x] ~~CSP~~ — tam politika kuruldu (site + `/studio` için ayrı ayrı),
       tarayıcıda sıfır ihlalle doğrulandı. Nonce'a **geçilmedi**: nonce tüm
@@ -218,7 +251,7 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 11 · Yayına Alma Öncesi Son Kontrol
+## 12 · Yayına Alma Öncesi Son Kontrol
 
 - [ ] Sitede hiç `[KÖŞELİ PARANTEZ]` veya `[00]` kaldı mı?
 - [ ] `src/content/sample-data.ts` silindi mi (Sanity'ye geçince silinecek)?

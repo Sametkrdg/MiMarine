@@ -15,13 +15,13 @@ export default async function NotFound() {
       <div className="mt-12 flex flex-wrap gap-8">
         <Link
           href={primaryRoutes.home}
-          className="border border-ink px-10 py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+          className="border border-ink/38 px-10 py-4 text-[11px] tracking-label text-ink uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep"
         >
           {t("home")}
         </Link>
         <Link
           href={primaryRoutes.fleet}
-          className="self-center border-b border-ink pb-[6px] text-[11px] tracking-label uppercase"
+          className="self-center border-b border-ink/34 pb-[6px] text-[11px] tracking-label text-ink uppercase transition-colors hover:border-accent hover:text-accent"
         >
           {t("fleet")}
         </Link>

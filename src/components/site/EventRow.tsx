@@ -15,7 +15,7 @@ export default function EventRow({
   return (
     <Link
       href={`/news-and-events/${event.slug}`}
-      className="grid grid-cols-1 items-center gap-8 border-b border-ink py-[34px] transition-colors hover:bg-surface-alt lg:grid-cols-[300px_minmax(0,1fr)_340px] lg:gap-14"
+      className="grid grid-cols-1 items-center gap-8 border-b border-rule py-[34px] transition-colors hover:bg-card lg:grid-cols-[300px_minmax(0,1fr)_340px] lg:gap-14"
     >
       <div>
         <div className="text-[11px] tracking-[0.24em] text-accent uppercase">

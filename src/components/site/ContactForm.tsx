@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "w-full border border-ink bg-paper px-[14px] py-[13px] font-sans text-[17px] font-light text-ink outline-none focus:border-accent";
+  "w-full border-0 border-b border-ink/30 bg-transparent px-0 pt-2 pb-[14px] font-sans text-[17px] font-light text-ink outline-none focus:border-accent placeholder:text-muted";
 const labelClass =
   "mb-3 block text-[10px] tracking-[0.24em] text-muted uppercase";
 
@@ -64,7 +64,7 @@ export default function ContactForm({ enabled }: { enabled: boolean }) {
   return (
     <form onSubmit={onSubmit}>
       {!enabled && (
-        <p className="mb-10 border border-accent bg-surface-alt px-7 py-5 text-[15px] leading-[1.8] text-body">
+        <p className="mb-10 border border-accent bg-card px-7 py-5 text-[15px] leading-[1.8] text-body">
           {t("comingSoon")}
         </p>
       )}
@@ -105,7 +105,7 @@ export default function ContactForm({ enabled }: { enabled: boolean }) {
         <button
           type="submit"
           disabled={!enabled || status === "sending" || status === "sent"}
-          className="cursor-pointer border border-ink px-[42px] py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper disabled:cursor-default disabled:opacity-60"
+          className="cursor-pointer border border-ink/38 px-[42px] py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep disabled:cursor-default disabled:opacity-60"
         >
           {status === "sent" ? t("sent") : t("submit")}
         </button>

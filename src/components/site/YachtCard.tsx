@@ -18,7 +18,7 @@ export default function YachtCard({
         className="h-[340px]"
         sizes="(min-width: 1025px) 33vw, 100vw"
       />
-      <div className="mt-6 flex items-baseline justify-between gap-6 border-b border-ink pb-4">
+      <div className="mt-6 flex items-baseline justify-between gap-6 border-b border-rule pb-4">
         <div>
           <div className="text-[24px] font-extralight text-ink transition-colors group-hover:text-accent">
             {yacht.name}

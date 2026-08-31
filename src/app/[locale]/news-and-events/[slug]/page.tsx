@@ -40,7 +40,7 @@ export default async function ArticlePage({ params }: Props) {
       <section className="mx-auto max-w-[1100px] px-6 pt-20 lg:px-12">
         <Link
           href={primaryRoutes.news}
-          className="eyebrow tracking-label transition-colors hover:text-ink"
+          className="eyebrow tracking-label transition-colors hover:text-accent"
         >
           ← {t("backToNews")}
         </Link>
@@ -76,11 +76,11 @@ export default async function ArticlePage({ params }: Props) {
           </p>
         ))}
 
-        <div className="mt-[70px] flex flex-wrap gap-9 border-t border-ink pt-[34px] text-[11px] tracking-[0.2em] text-muted uppercase">
+        <div className="mt-[70px] flex flex-wrap gap-9 border-t border-rule pt-[34px] text-[11px] tracking-[0.2em] text-muted uppercase">
           <span>{t("share")}</span>
-          <span className="text-ink">LinkedIn</span>
-          <span className="text-ink">Instagram</span>
-          <span className="text-ink">{t("copyLink")}</span>
+          <span className="cursor-pointer text-ink transition-colors hover:text-accent">LinkedIn</span>
+          <span className="cursor-pointer text-ink transition-colors hover:text-accent">Instagram</span>
+          <span className="cursor-pointer text-ink transition-colors hover:text-accent">{t("copyLink")}</span>
         </div>
       </section>
     </>

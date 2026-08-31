@@ -71,7 +71,7 @@ export default async function OurWorldPage({ params }: Props) {
                 {pick(pillar.body, l)}
               </p>
               {pillar.href && (
-                <span className="mt-6 inline-block border-b border-ink pb-[6px] text-[10px] tracking-label text-ink uppercase">
+                <span className="mt-6 inline-block border-b border-ink/20 pb-[6px] text-[10px] tracking-label text-ink uppercase">
                   {tCommon("readMore")}
                 </span>
               )}
@@ -82,12 +82,12 @@ export default async function OurWorldPage({ params }: Props) {
             <Link
               key={pillar.id}
               href={pillar.href}
-              className="block border-t border-ink pt-[30px]"
+              className="block border-t border-rule pt-[30px]"
             >
               {inner}
             </Link>
           ) : (
-            <div key={pillar.id} className="border-t border-ink pt-[30px]">
+            <div key={pillar.id} className="border-t border-rule pt-[30px]">
               {inner}
             </div>
           );
@@ -100,7 +100,7 @@ export default async function OurWorldPage({ params }: Props) {
         {content.commitments.map((commitment) => (
           <div
             key={commitment.no}
-            className="grid grid-cols-[48px_minmax(0,1fr)] items-baseline gap-x-8 gap-y-4 border-t border-ink py-9 lg:grid-cols-[80px_minmax(0,1fr)_minmax(0,1fr)] lg:gap-14"
+            className="grid grid-cols-[48px_minmax(0,1fr)] items-baseline gap-x-8 gap-y-4 border-t border-rule py-9 lg:grid-cols-[80px_minmax(0,1fr)_minmax(0,1fr)] lg:gap-14"
           >
             <div className="text-[12px] tracking-[0.16em] text-accent">
               {commitment.no}
@@ -113,7 +113,7 @@ export default async function OurWorldPage({ params }: Props) {
             </p>
           </div>
         ))}
-        <div className="h-px bg-ink" />
+        <div className="h-px bg-rule" />
       </section>
 
       <div className="h-[170px]" />

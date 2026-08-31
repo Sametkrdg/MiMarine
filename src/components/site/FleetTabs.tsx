@@ -8,7 +8,7 @@ export default async function FleetTabs({ active }: { active: YachtStatus }) {
   const counts = await getYachtCounts();
 
   return (
-    <div className="mt-[82px] flex overflow-x-auto border-b border-ink lg:overflow-x-visible">
+    <div className="mt-[82px] flex overflow-x-auto border-b border-rule lg:overflow-x-visible">
       {fleetTabs.map((tab) => {
         const isActive = tab.status === active;
         return (
@@ -18,7 +18,7 @@ export default async function FleetTabs({ active }: { active: YachtStatus }) {
             aria-current={isActive ? "page" : undefined}
             className={`-mb-px flex shrink-0 items-baseline gap-[10px] border-b pr-[34px] pb-5 text-[12px] tracking-nav whitespace-nowrap uppercase ${
               isActive
-                ? "border-ink text-ink"
+                ? "border-accent text-accent"
                 : "border-transparent text-muted hover:text-ink"
             }`}
           >

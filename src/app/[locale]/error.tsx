@@ -33,7 +33,7 @@ export default function ErrorBoundary({
       <button
         type="button"
         onClick={reset}
-        className="mt-12 w-fit cursor-pointer border border-ink px-10 py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+        className="mt-12 w-fit cursor-pointer border border-ink/38 px-10 py-4 text-[11px] tracking-label text-ink uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep"
       >
         {t("retry")}
       </button>

@@ -22,23 +22,23 @@ export default function GlobalError({
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 24px",
-          background: "#FBFAF8",
-          color: "#171717",
+          background: "#12212F",
+          color: "#F2EFE8",
           fontFamily: "system-ui, sans-serif",
           fontWeight: 300,
         }}
       >
-        <p style={{ fontSize: 10, letterSpacing: "0.32em", textTransform: "uppercase", color: "#737373" }}>
+        <p style={{ fontSize: 10, letterSpacing: "0.32em", textTransform: "uppercase", color: "#7C8B98" }}>
           MimarineYacht
         </p>
         <h1 style={{ margin: "26px 0 0", fontSize: 34, fontWeight: 200 }}>
           Bir şeyler ters gitti. · Something went wrong.
         </h1>
-        <p style={{ marginTop: 24, fontSize: 16, lineHeight: 2, color: "#525252", maxWidth: "48ch" }}>
+        <p style={{ marginTop: 24, fontSize: 16, lineHeight: 2, color: "#A7B3BC", maxWidth: "48ch" }}>
           Sayfa yüklenemedi. Lütfen tekrar deneyin. · The page could not be loaded. Please try again.
         </p>
         {error.digest && (
-          <p style={{ marginTop: 12, fontSize: 12, letterSpacing: "0.16em", color: "#737373" }}>
+          <p style={{ marginTop: 12, fontSize: 12, letterSpacing: "0.16em", color: "#7C8B98" }}>
             Ref: {error.digest}
           </p>
         )}
@@ -50,7 +50,8 @@ export default function GlobalError({
             width: "fit-content",
             cursor: "pointer",
             background: "transparent",
-            border: "1px solid #171717",
+            border: "1px solid rgba(242, 239, 232, 0.38)",
+            color: "#F2EFE8",
             padding: "16px 40px",
             fontSize: 11,
             letterSpacing: "0.26em",

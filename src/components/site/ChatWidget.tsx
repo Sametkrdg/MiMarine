@@ -111,7 +111,7 @@ export default function ChatWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="site-assistant"
-        className="fixed right-6 bottom-6 z-[900] cursor-pointer border border-ink bg-paper px-6 py-4 text-[11px] tracking-label uppercase shadow-[0_2px_16px_rgba(23,23,23,0.12)] transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+        className="fixed right-6 bottom-6 z-[900] cursor-pointer border border-ink/38 bg-card px-6 py-4 text-[11px] tracking-label text-ink uppercase shadow-[0_2px_16px_rgba(6,12,18,0.45)] transition-colors hover:border-accent hover:bg-accent hover:text-deep"
       >
         {open ? t("close") : t("launcher")}
       </button>
@@ -122,9 +122,9 @@ export default function ChatWidget() {
           id="site-assistant"
           role="dialog"
           aria-label={t("title")}
-          className="fixed right-6 bottom-24 z-[900] flex max-h-[min(560px,calc(100vh-8rem))] w-[calc(100vw-3rem)] max-w-[400px] flex-col border border-ink bg-paper shadow-[0_2px_28px_rgba(23,23,23,0.18)]"
+          className="fixed right-6 bottom-24 z-[900] flex max-h-[min(560px,calc(100vh-8rem))] w-[calc(100vw-3rem)] max-w-[400px] flex-col border border-rule bg-card shadow-[0_2px_28px_rgba(6,12,18,0.55)]"
         >
-          <header className="border-b border-ink px-6 py-5">
+          <header className="border-b border-rule px-6 py-5">
             <p className="text-[10px] tracking-label text-accent uppercase">
               {t("title")}
             </p>
@@ -144,7 +144,7 @@ export default function ChatWidget() {
                     key={s}
                     type="button"
                     onClick={() => setInput(s)}
-                    className="cursor-pointer border border-ink/25 px-4 py-3 text-left text-[14px] leading-[1.5] text-body transition-colors hover:border-ink hover:text-ink"
+                    className="cursor-pointer border border-ink/20 px-4 py-3 text-left text-[14px] leading-[1.5] text-body transition-colors hover:border-accent hover:text-ink"
                   >
                     {s}
                   </button>
@@ -172,7 +172,7 @@ export default function ChatWidget() {
             )}
           </div>
 
-          <form onSubmit={send} className="border-t border-ink px-6 py-5">
+          <form onSubmit={send} className="border-t border-rule px-6 py-5">
             <div className="flex items-center gap-3">
               <input
                 ref={inputRef}
@@ -182,7 +182,7 @@ export default function ChatWidget() {
                 maxLength={1000}
                 disabled={busy}
                 aria-label={t("placeholder")}
-                className="w-full border-b border-ink bg-transparent pb-2 font-sans text-[15px] font-light text-ink outline-none focus:border-accent placeholder:text-muted disabled:opacity-50"
+                className="w-full border-b border-ink/30 bg-transparent pb-2 font-sans text-[15px] font-light text-ink outline-none focus:border-accent placeholder:text-muted disabled:opacity-50"
               />
               <button
                 type="submit"

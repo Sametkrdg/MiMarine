@@ -79,7 +79,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
               sizes="(min-width: 1600px) 1560px, 100vw"
             />
           )}
-          <div className="absolute bottom-7 left-7 z-[500] bg-paper/90 px-6 py-[18px] text-[10px] tracking-nav text-body uppercase">
+          <div className="absolute bottom-7 left-7 z-[500] bg-ink/90 px-6 py-[18px] text-[10px] tracking-nav text-deep uppercase">
             {t("summary", {
               dealers: counts.dealers,
               services: counts.services,
@@ -92,7 +92,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
 
       {dealers.length === 0 ? (
         <section className="shell pt-24 pb-4">
-          <div className="border border-ink bg-surface-alt px-8 py-16 text-center lg:px-16 lg:py-24">
+          <div className="border border-rule bg-card px-8 py-16 text-center lg:px-16 lg:py-24">
             <p className="eyebrow">{t("cta.eyebrow")}</p>
             <h2 className="mx-auto mt-7 max-w-[20ch] text-[32px] leading-[1.15] font-extralight text-pretty text-ink lg:text-[52px]">
               {t("cta.title")}
@@ -102,7 +102,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
             </p>
             <Link
               href={primaryRoutes.contact}
-              className="mt-12 inline-block border border-ink px-12 py-5 text-[12px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+              className="mt-12 inline-block border border-ink/38 px-12 py-5 text-[12px] tracking-label text-ink uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep"
             >
               {t("cta.action")}
             </Link>
@@ -110,7 +110,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
         </section>
       ) : (
       <section className="shell pt-16">
-        <div className="flex flex-wrap gap-x-9 border-b border-ink">
+        <div className="flex flex-wrap gap-x-9 border-b border-rule">
           {dealerRegions.map((region) => {
             const isActive = region === active;
             return (
@@ -120,7 +120,7 @@ export default async function NetworkPage({ params, searchParams }: Props) {
                 aria-current={isActive ? "true" : undefined}
                 className={`-mb-px border-b pb-[18px] text-[12px] tracking-[0.2em] uppercase ${
                   isActive
-                    ? "border-ink text-ink"
+                    ? "border-accent text-accent"
                     : "border-transparent text-muted hover:text-ink"
                 }`}
               >
@@ -130,9 +130,9 @@ export default async function NetworkPage({ params, searchParams }: Props) {
           })}
         </div>
 
-        <div className="grid grid-cols-1 gap-px bg-ink lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px bg-rule-soft lg:grid-cols-3">
           {dealers.map((dealer) => (
-            <div key={dealer.id} className="bg-paper pt-11 pr-11 pb-12">
+            <div key={dealer.id} className="bg-card px-11 pt-11 pb-12">
               <div className="text-[10px] tracking-label text-accent uppercase">
                 {t(`roles.${dealer.type}`)}
               </div>
@@ -149,13 +149,13 @@ export default async function NetworkPage({ params, searchParams }: Props) {
                 <br />
                 {dealer.email}
               </div>
-              <div className="mt-5 border-t border-ink pt-4 text-[11px] tracking-[0.14em] text-muted">
+              <div className="mt-5 border-t border-rule pt-4 text-[11px] tracking-[0.14em] text-muted">
                 {pick(dealer.capabilities, l)}
               </div>
             </div>
           ))}
         </div>
-        <div className="h-px bg-ink" />
+        <div className="h-px bg-rule" />
       </section>
       )}
 

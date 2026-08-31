@@ -5,9 +5,9 @@
 export default function Loading() {
   return (
     <div className="shell pt-20">
-      <div className="h-3 w-24 animate-pulse bg-surface" />
-      <div className="mt-8 h-12 w-2/3 animate-pulse bg-surface" />
-      <div className="mt-16 h-[320px] animate-pulse bg-surface lg:h-[520px]" />
+      <div className="h-3 w-24 animate-pulse bg-card" />
+      <div className="mt-8 h-12 w-2/3 animate-pulse bg-card" />
+      <div className="mt-16 h-[320px] animate-pulse bg-card lg:h-[520px]" />
     </div>
   );
 }

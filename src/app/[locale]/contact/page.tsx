@@ -35,7 +35,7 @@ export default async function ContactPage({ params }: Props) {
 
         <div>
           {offices.map((office) => (
-            <div key={office.id} className="mb-8 border-b border-ink pb-8">
+            <div key={office.id} className="mb-8 border-b border-rule pb-8">
               <div className="text-[10px] tracking-label text-accent uppercase">
                 {pick(office.role, l)}
               </div>

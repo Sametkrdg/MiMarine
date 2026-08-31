@@ -34,25 +34,25 @@ export default async function HomePage({ params }: Props) {
           priority
           sizes="100vw"
         />
-        <div className="pointer-events-none absolute inset-0 bg-ink/45" />
+        <div className="hero-veil pointer-events-none absolute inset-0" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 pb-[68px]">
           <div className="shell">
-            <p className="text-[10px] tracking-[0.34em] text-paper/70 uppercase">
+            <p className="text-[10px] tracking-[0.34em] text-ink/70 uppercase">
               {pick(home.heroEyebrow, l)}
             </p>
-            <h1 className="mt-[26px] max-w-[16ch] text-[38px] leading-[1.08] font-extralight text-pretty text-paper lg:text-[64px]">
+            <h1 className="mt-[26px] max-w-[16ch] text-[38px] leading-[1.08] font-extralight text-pretty text-ink lg:text-[64px]">
               {pick(home.heroTitle, l)}
             </h1>
             <div className="pointer-events-auto mt-[38px] flex flex-wrap items-center gap-7">
               <Link
                 href={primaryRoutes.fleet}
-                className="border-b border-paper/50 pb-2 text-[11px] tracking-label text-paper uppercase"
+                className="border-b border-ink/50 pb-2 text-[11px] tracking-label text-ink uppercase"
               >
                 {t("exploreFleet")}
               </Link>
               <Link
                 href={primaryRoutes.ourWorld}
-                className="text-[11px] tracking-label text-paper/70 uppercase transition-colors hover:text-paper"
+                className="text-[11px] tracking-label text-ink/70 uppercase transition-colors hover:text-ink"
               >
                 {tNav("ourWorld")}
               </Link>
@@ -76,10 +76,10 @@ export default async function HomePage({ params }: Props) {
 
       {/* ── Figures ───────────────────────────────────────────────────── */}
       <section className="shell pt-20">
-        <div className="h-px bg-ink" />
-        <div className="grid grid-cols-1 gap-px bg-ink lg:grid-cols-3">
+        <div className="h-px bg-rule" />
+        <div className="grid grid-cols-1 gap-px bg-rule-soft lg:grid-cols-3">
           {home.figures.map((figure, i) => (
-            <div key={i} className="bg-paper pt-[52px] pr-10 pb-[58px]">
+            <div key={i} className="bg-card px-10 pt-[52px] pb-[58px]">
               <div className="text-[52px] font-extralight text-ink">{figure.value}</div>
               <div className="mt-[14px] text-[12px] tracking-[0.16em] text-accent uppercase">
                 {pick(figure.label, l)}
@@ -90,7 +90,7 @@ export default async function HomePage({ params }: Props) {
             </div>
           ))}
         </div>
-        <div className="h-px bg-ink" />
+        <div className="h-px bg-rule" />
       </section>
 
       {/* ── Featured yacht ────────────────────────────────────────────── */}
@@ -100,7 +100,7 @@ export default async function HomePage({ params }: Props) {
             <h2 className="eyebrow tracking-[0.3em]">{t("sectionFeatured")}</h2>
             <Link
               href={primaryRoutes.fleet}
-              className="shrink-0 border-b border-ink pb-[6px] text-[11px] tracking-nav text-ink uppercase"
+              className="shrink-0 border-b border-ink/34 pb-[6px] text-[11px] tracking-nav text-ink uppercase transition-colors hover:border-accent hover:text-accent"
             >
               {t("allModels")}
             </Link>
@@ -162,7 +162,7 @@ export default async function HomePage({ params }: Props) {
         </p>
         <Link
           href={primaryRoutes.preOrder}
-          className="mt-[46px] inline-block border border-ink px-10 py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+          className="mt-[46px] inline-block border border-ink/38 px-10 py-4 text-[11px] tracking-label text-ink uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep"
         >
           {tNav("preOrder")}
         </Link>

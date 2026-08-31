@@ -11,7 +11,7 @@ type Props = {
 export default function ImagePlaceholder({ label, className = "" }: Props) {
   return (
     <div
-      className={`flex items-center justify-center border border-ink bg-surface ${className}`}
+      className={`flex items-center justify-center bg-media ${className}`}
     >
       <span className="eyebrow max-w-[34ch] px-6 text-center leading-[2]">{label}</span>
     </div>

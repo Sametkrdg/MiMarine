@@ -14,7 +14,7 @@ type Status = "idle" | "sending" | "sent" | "error";
  */
 
 const fieldClass =
-  "w-full border-0 border-b border-ink bg-transparent px-0 pt-2 pb-3 font-sans text-[17px] font-light text-ink outline-none focus:border-accent placeholder:text-muted disabled:opacity-50";
+  "w-full border-0 border-b border-ink/30 bg-transparent px-0 pt-2 pb-3 font-sans text-[17px] font-light text-ink outline-none focus:border-accent placeholder:text-muted disabled:opacity-50 [&>option]:bg-card [&>option]:text-ink";
 const labelClass = "mb-2 block text-[10px] tracking-[0.24em] text-muted uppercase";
 
 export default function PreOrderForm({ enabled }: { enabled: boolean }) {
@@ -94,7 +94,7 @@ export default function PreOrderForm({ enabled }: { enabled: boolean }) {
   return (
     <form onSubmit={onSubmit} className="mt-16">
       {!enabled && (
-        <p className="mb-12 border border-accent bg-surface-alt px-7 py-5 text-[15px] leading-[1.8] text-body">
+        <p className="mb-12 border border-accent bg-card px-7 py-5 text-[15px] leading-[1.8] text-body">
           {tContact("comingSoon")}
         </p>
       )}
@@ -205,7 +205,7 @@ export default function PreOrderForm({ enabled }: { enabled: boolean }) {
         <button
           type="submit"
           disabled={!enabled || status === "sending" || status === "sent"}
-          className="cursor-pointer border border-ink px-12 py-5 text-[12px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper disabled:cursor-default disabled:opacity-60"
+          className="cursor-pointer border border-ink/38 px-12 py-5 text-[12px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep disabled:cursor-default disabled:opacity-60"
         >
           {status === "sent" ? tContact("sent") : t("cta")}
         </button>

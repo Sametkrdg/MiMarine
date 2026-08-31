@@ -62,20 +62,20 @@ export default async function YachtDetailPage({ params }: Props) {
           priority
           sizes="100vw"
         />
-        <div className="pointer-events-none absolute inset-0 bg-ink/45" />
+        <div className="hero-veil pointer-events-none absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 pb-14">
           <div className="shell">
             <Link
               href={tabHref(yacht.status)}
-              className="text-[10px] tracking-label text-paper/70 uppercase transition-colors hover:text-paper"
+              className="text-[10px] tracking-label text-ink/70 uppercase transition-colors hover:text-ink"
             >
               ← {t("backToFleet")}
               {statusLabelKey ? ` · ${tTabs(statusLabelKey)}` : ""}
             </Link>
-            <h1 className="mt-[22px] text-[38px] font-extralight tracking-[0.02em] text-paper lg:text-[60px]">
+            <h1 className="mt-[22px] text-[38px] font-extralight tracking-[0.02em] text-ink lg:text-[60px]">
               {yacht.name}
             </h1>
-            <div className="mt-4 text-[12px] tracking-nav text-paper/75 uppercase">
+            <div className="mt-4 text-[12px] tracking-nav text-ink/75 uppercase">
               {pick(yacht.subtitle, l)} · {pick(yacht.loa, l)}
             </div>
           </div>
@@ -103,10 +103,10 @@ export default async function YachtDetailPage({ params }: Props) {
       {/* ── Specifications ────────────────────────────────────────────── */}
       <section className="shell pt-[120px]">
         <p className="eyebrow mb-8 tracking-[0.3em]">{t("specifications")}</p>
-        <div className="h-px bg-ink" />
-        <div className="grid grid-cols-2 gap-px bg-ink lg:grid-cols-4">
+        <div className="h-px bg-rule" />
+        <div className="grid grid-cols-2 gap-px bg-rule-soft lg:grid-cols-4">
           {yacht.specs.map((spec, i) => (
-            <div key={i} className="bg-paper pt-[34px] pr-[30px] pb-[38px]">
+            <div key={i} className="bg-card px-[30px] pt-[34px] pb-[38px]">
               <div className="text-[10px] tracking-[0.24em] text-muted uppercase">
                 {pick(spec.key, l)}
               </div>
@@ -116,7 +116,7 @@ export default async function YachtDetailPage({ params }: Props) {
             </div>
           ))}
         </div>
-        <div className="h-px bg-ink" />
+        <div className="h-px bg-rule" />
         {/* The definitive field list is not settled; say so rather than let
             provisional numbers read as confirmed. */}
         <p className="mt-5 text-[11px] tracking-[0.14em] text-muted">
@@ -149,13 +149,13 @@ export default async function YachtDetailPage({ params }: Props) {
 
       {/* ── Enquiry ───────────────────────────────────────────────────── */}
       <section className="shell pt-[130px] pb-[180px]">
-        <div className="flex flex-col items-start gap-8 border-t border-ink pt-[52px] lg:flex-row lg:items-end lg:justify-between lg:gap-14">
+        <div className="flex flex-col items-start gap-8 border-t border-rule pt-[52px] lg:flex-row lg:items-end lg:justify-between lg:gap-14">
           <p className="max-w-[26ch] text-[24px] leading-[1.5] font-extralight text-pretty text-ink lg:text-[28px]">
             {t("closing")}
           </p>
           <Link
             href={primaryRoutes.contact}
-            className="shrink-0 border border-ink px-10 py-4 text-[11px] tracking-label whitespace-nowrap uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+            className="shrink-0 border border-ink/38 px-10 py-4 text-[11px] tracking-label whitespace-nowrap text-ink uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep"
           >
             {t("enquire")}
           </Link>

@@ -9,7 +9,7 @@ type Props = {
 export default function Wordmark({ variant = "header" }: Props) {
   if (variant === "footer") {
     return (
-      <div className="text-[18px] font-extralight tracking-[0.3em] text-paper">
+      <div className="text-[18px] font-extralight tracking-wordmark text-ink">
         {brand.wordmark}
       </div>
     );
@@ -18,7 +18,7 @@ export default function Wordmark({ variant = "header" }: Props) {
   if (variant === "compact") {
     return (
       <Link href="/" className="block text-center">
-        <span className="text-[14px] font-extralight tracking-[0.2em] indent-[0.2em] text-ink">
+        <span className="text-[16px] font-extralight tracking-[0.3em] indent-[0.3em] text-ink">
           {brand.wordmark}
         </span>
       </Link>
@@ -27,7 +27,7 @@ export default function Wordmark({ variant = "header" }: Props) {
 
   return (
     <Link href="/" className="block px-5 text-center">
-      <span className="block text-[19px] font-extralight tracking-[0.28em] indent-[0.28em] whitespace-nowrap text-ink">
+      <span className="block text-[20px] font-light tracking-wordmark indent-[0.34em] whitespace-nowrap text-ink">
         {brand.wordmark}
       </span>
     </Link>

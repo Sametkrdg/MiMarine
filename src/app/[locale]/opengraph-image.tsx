@@ -20,14 +20,14 @@ export default async function OpenGraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#FBFAF8",
-          border: "1px solid #171717",
+          background: "#12212F",
+          border: "1px solid rgba(242, 239, 232, 0.18)",
         }}
       >
-        <div style={{ fontSize: 62, letterSpacing: 26, color: "#171717" }}>
+        <div style={{ fontSize: 62, letterSpacing: 26, color: "#F2EFE8" }}>
           {brand.wordmark}
         </div>
-        <div style={{ width: 120, height: 1, background: "#2C5A87", marginTop: 52 }} />
+        <div style={{ width: 120, height: 1, background: "#7FA9C4", marginTop: 52 }} />
       </div>
     ),
     size,

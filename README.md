@@ -65,15 +65,23 @@ messages/                tr.json · en.json — sabit arayüz metinleri
 Prototipten alınmıştır, `src/app/globals.css` içindeki `@theme` bloğunda tanımlıdır.
 Gerçek marka renkleri geldiğinde **sadece burası** değişir.
 
+Palet koyu temalıdır. `paper` / `ink` isimleri "zemin" ve "zeminin üstüne
+yazılan" anlamını taşır — açık temadaki rolleriyle aynıdır, yalnızca parlaklık
+tersine dönmüştür. Bu yüzden `bg-paper` hâlâ sayfa zemini, `text-ink` hâlâ
+okunaklı metindir.
+
 | Token | Değer | Kullanım |
 |---|---|---|
-| `paper` | `#FBFAF8` | Zemin |
-| `ink` | `#171717` | Metin, çizgiler, footer zemini |
-| `accent` | `#2C5A87` | Denizci laciverti — vurgu, hover, aktif durum |
-| `body` | `#525252` | Gövde metni |
-| `muted` | `#737373` | İkincil / etiket metni |
-| `surface` | `#F0EEEA` | Görsel yer tutucu zemini |
-| `surface-alt` | `#F3F1ED` | Menü paneli zemini |
+| `paper` | `#12212F` | Sayfa zemini |
+| `deep` | `#0C1620` | Footer zemini; aksan üstündeki metin rengi |
+| `card` | `#1A2C3C` | Yükseltilmiş yüzeyler: kart, menü paneli, çekmece |
+| `media` | `#223648` | Görsel kuyusu (fotoğraf zemini) |
+| `ink` | `#F2EFE8` | Başlıklar, wordmark, vurgulu metin |
+| `body` | `#A7B3BC` | Gövde metni |
+| `muted` | `#7C8B98` | Küçük büyük-harf etiketler |
+| `accent` | `#7FA9C4` | Hover, aktif durum, dikey aksan |
+| `rule` | `rgba(242,239,232,.18)` | Çizgiler |
+| `rule-soft` | `rgba(242,239,232,.14)` | 1px'lik ızgara aralıkları |
 
 Tipografi: **Jost** (200 / 300 / 400), `next/font/google` üzerinden self-host edilir.
 

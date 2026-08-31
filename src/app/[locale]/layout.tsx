@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Footer from "@/components/site/Footer";
 import ChatWidget from "@/components/site/ChatWidget";
 import Navbar from "@/components/site/Navbar";
+import PageTransition from "@/components/site/PageTransition";
 import { getYachtCounts } from "@/content";
 import { routing } from "@/i18n/routing";
 import { isChatConfigured } from "@/lib/integrations";
@@ -80,7 +81,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           </a>
           <Navbar fleetCounts={fleetCounts} />
           <main id="main" className="flex-1">
-            {children}
+            <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
           {isChatConfigured() && <ChatWidget />}

@@ -35,7 +35,7 @@ export default async function Footer() {
   ];
 
   return (
-    <footer className="bg-ink text-paper/70">
+    <footer className="bg-deep text-ink/70">
       <div className="shell grid grid-cols-2 gap-16 pt-[88px] pb-[44px] lg:grid-cols-[1.4fr_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
         <div>
           <Wordmark variant="footer" />
@@ -51,7 +51,7 @@ export default async function Footer() {
 
         {columns.map((col) => (
           <div key={col.title}>
-            <div className="text-[10px] tracking-label text-paper/45 uppercase">
+            <div className="text-[10px] tracking-label text-ink/[0.52] uppercase">
               {col.title}
             </div>
             <div className="mt-6 flex flex-col gap-[14px]">
@@ -59,7 +59,7 @@ export default async function Footer() {
                 <Link
                   key={`${col.title}-${link.label}`}
                   href={link.href}
-                  className="text-[14px] text-paper/[0.78] transition-colors hover:text-paper"
+                  className="text-[14px] text-ink/[0.78] transition-colors hover:text-accent"
                 >
                   {link.label}
                 </Link>
@@ -70,7 +70,7 @@ export default async function Footer() {
       </div>
 
       <div className="shell">
-        <div className="flex flex-wrap items-center justify-between gap-5 border-t border-paper/15 pt-[26px] pb-10 text-[11px] tracking-[0.16em] text-paper/50">
+        <div className="flex flex-wrap items-center justify-between gap-5 border-t border-ink/[0.14] pt-[26px] pb-10 text-[11px] tracking-[0.16em] text-ink/50">
           <span>
             © {new Date().getFullYear()} {brand.legalName} · {t("rights")}
           </span>
@@ -83,12 +83,12 @@ export default async function Footer() {
                 href={account.href}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors hover:text-paper"
+                className="transition-colors hover:text-accent"
               >
                 {account.label}
               </a>
             ))}
-            <Link href="/privacy-policy" className="transition-colors hover:text-paper">
+            <Link href="/privacy-policy" className="transition-colors hover:text-accent">
               {t("privacy")}
             </Link>
           </span>

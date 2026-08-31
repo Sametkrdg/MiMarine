@@ -34,7 +34,7 @@ export default async function NewsPage({ params }: Props) {
 
       {/* ── Upcoming ──────────────────────────────────────────────────── */}
       <section id="upcoming" className="shell scroll-mt-[110px] pt-24">
-        <div className="flex items-baseline justify-between gap-6 border-b border-ink pb-5">
+        <div className="flex items-baseline justify-between gap-6 border-b border-rule pb-5">
           <h2 className="text-[13px] font-light tracking-[0.28em] text-ink uppercase">
             {tSections("upcoming")}
           </h2>
@@ -54,7 +54,7 @@ export default async function NewsPage({ params }: Props) {
 
       {/* ── Past ──────────────────────────────────────────────────────── */}
       <section id="past" className="shell scroll-mt-[110px] pt-[120px]">
-        <div className="flex items-baseline justify-between gap-6 border-b border-ink pb-5">
+        <div className="flex items-baseline justify-between gap-6 border-b border-rule pb-5">
           <h2 className="text-[13px] font-light tracking-[0.28em] text-ink uppercase">
             {tSections("past")}
           </h2>

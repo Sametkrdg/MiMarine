@@ -42,13 +42,13 @@ export default async function FleetTabPage({
 
       {yachts.length === 0 ? (
         <section className="shell pt-[72px] pb-10">
-          <div className="border border-ink bg-surface-alt px-8 py-16 text-center lg:px-16">
+          <div className="border border-rule bg-card px-8 py-16 text-center lg:px-16">
             <p className="text-[20px] leading-[1.6] font-extralight text-pretty text-ink lg:text-[24px]">
               {t("empty")}
             </p>
             <Link
               href={primaryRoutes.preOrder}
-              className="mt-9 inline-block border border-ink px-10 py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-paper"
+              className="mt-9 inline-block border border-ink/38 px-10 py-4 text-[11px] tracking-label uppercase transition-colors hover:border-accent hover:bg-accent hover:text-deep"
             >
               {tNav("preOrder")}
             </Link>

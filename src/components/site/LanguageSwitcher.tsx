@@ -28,13 +28,13 @@ export default function LanguageSwitcher({ compact = false }: { compact?: boolea
     >
       {routing.locales.map((code, i) => (
         <span key={code} className="flex items-center gap-[9px]">
-          {i > 0 && <span className="h-[11px] w-px bg-ink" aria-hidden />}
+          {i > 0 && <span className="h-[11px] w-px bg-ink/30" aria-hidden />}
           <button
             type="button"
             onClick={() => switchTo(code)}
             aria-current={code === locale ? "true" : undefined}
             className={`cursor-pointer uppercase transition-colors ${
-              code === locale ? "text-ink" : "text-muted hover:text-ink"
+              code === locale ? "text-accent" : "text-muted hover:text-ink"
             }`}
           >
             {code}

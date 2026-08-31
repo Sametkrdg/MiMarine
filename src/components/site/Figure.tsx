@@ -39,7 +39,7 @@ export default function Figure({
 
   return (
     <div
-      className={`${positioned ? "" : "relative"} overflow-hidden border border-ink bg-surface ${className}`}
+      className={`${positioned ? "" : "relative"} overflow-hidden bg-media ${className}`}
     >
       <Image
         src={image.src}

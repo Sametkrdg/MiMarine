@@ -42,7 +42,7 @@ export default async function PrivacyPolicyPage({ params }: Props) {
         </p>
 
         {doc.sections.map((section, i) => (
-          <section key={i} className="mt-14 border-t border-ink pt-10">
+          <section key={i} className="mt-14 border-t border-rule pt-10">
             <h2 className="text-[22px] font-extralight text-ink lg:text-[26px]">
               {pick(section.heading, l)}
             </h2>
