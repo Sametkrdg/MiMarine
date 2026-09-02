@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Figure from "@/components/site/Figure";
 import {
   getAllYachtSlugs,
+  getBespokeContent,
   getYachtOrNotFound,
   pick,
   type Locale,
@@ -46,9 +47,15 @@ export default async function YachtDetailPage({ params }: Props) {
   const t = await getTranslations("yacht");
   const tTabs = await getTranslations("fleetTabs");
   const yacht = await getYachtOrNotFound(slug);
+  const bespoke = await getBespokeContent();
   const l = locale as Locale;
 
-  const statusLabelKey = fleetTabs.find((tab) => tab.status === yacht.status)?.labelKey;
+  // A hull can sit in more than one tab; name them all, and link back to the
+  // first, which is the one the editor listed first.
+  const statusLabels = yacht.statuses
+    .map((status) => fleetTabs.find((tab) => tab.status === status)?.labelKey)
+    .filter((key): key is string => Boolean(key))
+    .map((key) => tTabs(key));
 
   return (
     <>
@@ -66,11 +73,11 @@ export default async function YachtDetailPage({ params }: Props) {
         <div className="absolute inset-x-0 bottom-0 pb-14">
           <div className="shell">
             <Link
-              href={tabHref(yacht.status)}
+              href={tabHref(yacht.statuses[0])}
               className="text-[10px] tracking-label text-ink/70 uppercase transition-colors hover:text-ink"
             >
               ← {t("backToFleet")}
-              {statusLabelKey ? ` · ${tTabs(statusLabelKey)}` : ""}
+              {statusLabels.length > 0 ? ` · ${statusLabels.join(" · ")}` : ""}
             </Link>
             <h1 className="mt-[22px] text-[38px] font-extralight tracking-[0.02em] text-ink lg:text-[60px]">
               {yacht.name}
@@ -117,11 +124,14 @@ export default async function YachtDetailPage({ params }: Props) {
           ))}
         </div>
         <div className="h-px bg-rule" />
-        {/* The definitive field list is not settled; say so rather than let
-            provisional numbers read as confirmed. */}
-        <p className="mt-5 text-[11px] tracking-[0.14em] text-muted">
-          {t("specsProvisional")}
-        </p>
+
+        {/* Written once in Site Settings; the same promise on every hull. */}
+        <div className="mt-9 grid grid-cols-1 items-baseline gap-3 lg:grid-cols-[150px_1fr] lg:gap-10">
+          <p className="eyebrow tracking-[0.3em]">{pick(bespoke.kicker, l)}</p>
+          <p className="max-w-[70ch] text-[15px] leading-[1.95] text-pretty text-body">
+            {pick(bespoke.yachtNote, l)}
+          </p>
+        </div>
       </section>
 
       {/* ── Gallery ───────────────────────────────────────────────────── */}

@@ -12,6 +12,7 @@
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import {
+  fetchBespoke,
   fetchDealers,
   fetchEvents,
   fetchHomeContent,
@@ -22,6 +23,7 @@ import {
 } from "@/sanity/queries";
 import { privacyPolicy } from "./legal";
 import {
+  bespoke as sampleBespoke,
   dealers as sampleDealers,
   events as sampleEvents,
   home as sampleHome,
@@ -31,6 +33,7 @@ import {
   yachts as sampleYachts,
 } from "./sample-data";
 import type {
+  BespokeContent,
   Dealer,
   DealerRegion,
   EventItem,
@@ -76,7 +79,7 @@ const byOrder = (a: Yacht, b: Yacht) => a.order - b.order;
 
 export async function getYachts(status?: YachtStatus): Promise<Yacht[]> {
   const all = await allYachts();
-  const list = status ? all.filter((y) => y.status === status) : all;
+  const list = status ? all.filter((y) => y.statuses.includes(status)) : all;
   return [...list].sort(byOrder);
 }
 
@@ -97,14 +100,18 @@ export async function getFeaturedYacht(): Promise<Yacht | null> {
   return all.find((y) => y.featured) ?? all[0] ?? null;
 }
 
-/** Count per status, for the fleet tabs and the navbar dropdown. */
+/**
+ * Count per tab, for the fleet tabs and the navbar dropdown. A hull listed
+ * under two statuses is counted under both, so the numbers match what each
+ * tab actually shows.
+ */
 export async function getYachtCounts(): Promise<Record<YachtStatus, number>> {
   const all = await allYachts();
-  return {
-    delivered: all.filter((y) => y.status === "delivered").length,
-    "ready-for-delivery": all.filter((y) => y.status === "ready-for-delivery").length,
-    "in-production": all.filter((y) => y.status === "in-production").length,
-  };
+  const counts = { delivered: 0, "ready-for-delivery": 0, "in-production": 0 };
+  for (const yacht of all) {
+    for (const status of yacht.statuses) counts[status] += 1;
+  }
+  return counts;
 }
 
 /**
@@ -190,6 +197,11 @@ export async function getHomeContent(): Promise<HomeContent> {
 
 export async function getOurWorldContent(): Promise<OurWorldContent> {
   return (await fetchOurWorldContent()) ?? sampleOurWorld;
+}
+
+/** The bespoke-interiors block, shown on the home page and on every yacht. */
+export async function getBespokeContent(): Promise<BespokeContent> {
+  return (await fetchBespoke()) ?? sampleBespoke;
 }
 
 /** Privacy policy / KVKK text. Still a legal DRAFT — see `legal.ts`. */

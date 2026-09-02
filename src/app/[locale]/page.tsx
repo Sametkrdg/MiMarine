@@ -1,7 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { alternates } from "@/lib/metadata";
 import Figure from "@/components/site/Figure";
-import { getFeaturedYacht, getHomeContent, pick, type Locale } from "@/content";
+import {
+  getBespokeContent,
+  getFeaturedYacht,
+  getHomeContent,
+  pick,
+  type Locale,
+} from "@/content";
 import { Link } from "@/i18n/navigation";
 import { primaryRoutes } from "@/lib/site-nav";
 
@@ -20,6 +26,7 @@ export default async function HomePage({ params }: Props) {
   const tNav = await getTranslations("nav");
   const home = await getHomeContent();
   const featured = await getFeaturedYacht();
+  const bespoke = await getBespokeContent();
   const l = locale as Locale;
 
   return (
@@ -152,6 +159,44 @@ export default async function HomePage({ params }: Props) {
             </p>
           </Link>
         ))}
+      </section>
+
+      {/* ── Bespoke interiors ─────────────────────────────────────────── */}
+      <section className="shell pt-[150px]">
+        <div className="h-px bg-rule" />
+        <div className="grid grid-cols-1 items-start gap-10 pt-[56px] lg:grid-cols-2 lg:gap-[120px]">
+          <div>
+            <p className="eyebrow tracking-[0.3em]">{pick(bespoke.kicker, l)}</p>
+            <h2 className="mt-6 max-w-[20ch] text-[30px] leading-[1.25] font-extralight text-pretty text-ink lg:text-[42px]">
+              {pick(bespoke.title, l)}
+            </h2>
+          </div>
+          <div>
+            {pick(bespoke.body, l).map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 32)}
+                className="mt-6 text-[17px] leading-[1.95] text-pretty text-body first:mt-0"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {bespoke.points.length > 0 && (
+          <div className="mt-[70px] grid grid-cols-1 gap-px bg-rule-soft lg:grid-cols-3">
+            {bespoke.points.map((point) => (
+              <div key={point.title.en} className="bg-card px-9 pt-10 pb-11">
+                <div className="text-[13px] tracking-[0.16em] text-accent uppercase">
+                  {pick(point.title, l)}
+                </div>
+                <p className="mt-4 text-[15px] leading-[1.9] text-body">
+                  {pick(point.body, l)}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ── Closing CTA ───────────────────────────────────────────────── */}

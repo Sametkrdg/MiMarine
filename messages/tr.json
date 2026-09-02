@@ -138,8 +138,7 @@
     "gallery": "Galeri",
     "closing": "Tam spesifikasyon ve genel yerleşim planını talep edin.",
     "enquire": "Talep gönder",
-    "backToFleet": "Filo",
-    "specsProvisional": "Teknik özellikler placeholder — gerçek verilerle değiştirilecek."
+    "backToFleet": "Filo"
   },
   "article": {
     "share": "Paylaş",
@@ -207,7 +206,7 @@
       "cta": "Özel tasarım yolculuğuna başlayın",
       "models": {
         "superyacht": "PTTRA 42.5m · Süperyat",
-        "explorer": "KTÜ 35 FEET · Explorer",
+        "explorer": "KTÜ 35 FEET · Gezi teknesi",
         "motorYacht": "Özel tasarım motoryat",
         "commercial": "Ticari / iş teknesi",
         "custom": "Özel boyut"

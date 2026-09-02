@@ -87,18 +87,23 @@ const yacht = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
-      name: "status",
+      name: "statuses",
       title: "Durum",
-      type: "string",
+      description:
+        "Bu tekne hangi filo sekmelerinde görünsün? Birden fazla seçilebilir — " +
+        "örneğin teslime hazır bir tekne aynı anda yeni sipariş için de üretilebiliyorsa " +
+        "ikisini birden işaretleyin. İlk işaretlediğiniz sekme, tekne sayfasındaki " +
+        "geri bağlantısının gittiği yerdir.",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
       options: {
         list: [
           { title: "Teslim edildi", value: "delivered" },
           { title: "Teslime hazır", value: "ready-for-delivery" },
           { title: "Üretimde", value: "in-production" },
         ],
-        layout: "radio",
       },
-      validation: (r) => r.required(),
+      validation: (r) => r.required().min(1),
     }),
     defineField({
       name: "order",
@@ -133,7 +138,7 @@ const yacht = defineType({
     }),
   ],
   preview: {
-    select: { title: "name", subtitle: "status", media: "cover" },
+    select: { title: "name", subtitle: "subtitle.tr", media: "cover" },
   },
 });
 
@@ -357,6 +362,17 @@ const ourWorldPage = defineType({
   preview: { prepare: () => ({ title: "Dünyamız" }) },
 });
 
+const bespokePoint = defineType({
+  name: "bespokePoint",
+  title: "Başlık",
+  type: "object",
+  fields: [
+    defineField({ name: "title", title: "Başlık", type: "localeString" }),
+    defineField({ name: "body", title: "Açıklama", type: "localeText" }),
+  ],
+  preview: { select: { title: "title.tr" } },
+});
+
 const siteSettings = defineType({
   name: "siteSettings",
   title: "Site Ayarları",
@@ -378,6 +394,37 @@ const siteSettings = defineType({
     }),
     defineField({ name: "networkMap", title: "Harita yer tutucu görseli", type: "siteImage" }),
     defineField({ name: "contactMap", title: "İletişim harita görseli", type: "siteImage" }),
+    defineField({
+      name: "bespoke",
+      title: "Kişiselleştirme bölümü",
+      description:
+        "Ana sayfadaki \"terzi usulü\" bölümü ve her yat sayfasının teknik özellikler altındaki notu. Tek yerden yazılır, iki yerde birden görünür.",
+      type: "object",
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        defineField({ name: "kicker", title: "Üst etiket", type: "localeString" }),
+        defineField({ name: "title", title: "Başlık", type: "localeString" }),
+        defineField({
+          name: "body",
+          title: "Metin",
+          type: "localeText",
+          description: "Boş satır bırakarak paragraf ayırın.",
+        }),
+        defineField({
+          name: "points",
+          title: "Maddeler",
+          type: "array",
+          of: [defineArrayMember({ type: "bespokePoint" })],
+          validation: (r) => r.max(4),
+        }),
+        defineField({
+          name: "yachtNote",
+          title: "Yat sayfalarındaki not",
+          type: "localeText",
+          description: "Tek cümle. Her yat sayfasında teknik özelliklerin altında görünür.",
+        }),
+      ],
+    }),
   ],
   preview: { prepare: () => ({ title: "Site Ayarları" }) },
 });
@@ -393,6 +440,7 @@ export const schemaTypes = [
   homeTile,
   pillar,
   commitment,
+  bespokePoint,
   // Documents
   yacht,
   event,

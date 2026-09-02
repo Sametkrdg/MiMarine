@@ -138,8 +138,7 @@
     "gallery": "Gallery",
     "closing": "Request the full specification and general arrangement.",
     "enquire": "Enquire",
-    "backToFleet": "Fleet",
-    "specsProvisional": "Specifications are placeholders — to be replaced with real data."
+    "backToFleet": "Fleet"
   },
   "article": {
     "share": "Share",
@@ -207,7 +206,7 @@
       "cta": "Begin the bespoke journey",
       "models": {
         "superyacht": "PTTRA 42.5m · Superyacht",
-        "explorer": "KTU 35 FEET · Explorer",
+        "explorer": "KTU 35 FEET · Cruiser",
         "motorYacht": "Custom motor yacht",
         "commercial": "Commercial / work boat",
         "custom": "Custom size"

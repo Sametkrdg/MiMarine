@@ -86,8 +86,8 @@ Yayınladıktan sonra sitenin güncellenmesi birkaç saniye sürebilir.
 |---|---|
 | **Model / tekne adı** | Örn. `PTTRA 42.5m`. Sitede başlık olarak görünür. |
 | **URL adresi (slug)** | Yanındaki **Generate** butonuna basın, addan otomatik üretir. Örn. `pttra-42-5m`. Yayınlandıktan sonra değiştirmeyin — eski bağlantılar kırılır. |
-| **Durum** | Teslim edildi / Teslime hazır / Üretimde. Teknenin hangi filo sekmesinde görüneceğini belirler. |
-| **Sıra** | Kendi sekmesi içinde küçükten büyüğe sıralanır. 1, 2, 3… |
+| **Durum** | Teslim edildi / Teslime hazır / Üretimde. **Birden fazlasını işaretleyebilirsiniz** — teslime hazır bir tekne aynı anda yeni sipariş için de üretilebiliyorsa ikisini birden seçin, tekne iki sekmede birden görünür. İlk seçtiğiniz sekme, tekne sayfasındaki geri bağlantısının gittiği yerdir. |
+| **Sıra** | Sekmelerde küçükten büyüğe sıralanır. 1, 2, 3… Bir tekne birden fazla sekmedeyse aynı sıra numarası hepsinde geçerlidir; **her tekneye farklı bir numara verin**, aynı numarayı paylaşanların sırası rastgele olur. |
 | **Ana sayfada öne çıkar** | **Yalnızca bir yatta** açık olmalı. Ana sayfadaki büyük görsel bu tekne olur. |
 | **Alt başlık** | Kartın altındaki küçük satır. Örn. `Motoryat · 22 m` |
 | **Tam boy** | Kartın sağındaki ölçü. Türkçede virgüllü, İngilizcede noktalı yazın: `42,5 m` / `42.5 m` |
@@ -163,6 +163,20 @@ Yakıt kapasitesi · Yolcu kapasitesi · Menzil.
 | **Ofisler** | İletişim sayfasında ve footer'da görünür. Konum girerseniz iletişim sayfasında harita çıkar. |
 | **İletişim formu alıcı adresi** | Formlardan gelen talepler bu adrese düşer. **Buradan değiştirebilirsiniz, kod değişikliği gerekmez.** |
 | **Harita yer tutucu görselleri** | Koordinat girilmemişken haritanın yerinde görünen görseller. |
+| **Kişiselleştirme bölümü** | Aşağıya bakın. |
+
+### Kişiselleştirme bölümü
+
+Kapalı duran bu kutuyu açtığınızda beş alan görürsünüz. Buraya yazdığınız
+metin **iki yerde birden** görünür — ayrı ayrı yazmanız gerekmez:
+
+| Alan | Nerede görünür |
+|---|---|
+| **Üst etiket** | Ana sayfadaki bölümün ve yat sayfalarındaki notun küçük başlığı |
+| **Başlık** | Yalnızca ana sayfada, büyük başlık |
+| **Metin** | Yalnızca ana sayfada. Boş satırla paragraf ayırın. |
+| **Maddeler** | Ana sayfada yan yana üç kutu. En fazla 4 madde; her birinde başlık + açıklama. |
+| **Yat sayfalarındaki not** | **Her yat sayfasında** teknik özelliklerin hemen altında. Tek cümle olsun. |
 
 ---
 
@@ -185,7 +199,9 @@ Görsel alanına tıklayıp dosyayı sürükleyin veya **Upload** ile seçin.
 Publish'e bastınız mı? Sağ üstte "Unpublished changes" yazıyorsa basmamışsınız.
 
 **"Yat listede yanlış sekmede."**
-Durum alanını kontrol edin.
+Durum alanını kontrol edin — birden fazla kutu işaretli olabilir, tekne o
+sekmelerin hepsinde görünür. Bu bilinçli bir özelliktir; istemiyorsanız fazla
+işareti kaldırın.
 
 **"Ana sayfada iki tekne birden büyük görünüyor."**
 Birden fazla yatta "Ana sayfada öne çıkar" açık kalmış. Yalnızca birinde açık

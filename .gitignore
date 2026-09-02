@@ -41,3 +41,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# client source material — originals live outside the repo (see MANUEL.md §6)
+/mimarine/

@@ -51,6 +51,8 @@ src/
     globals.css          Tailwind v4 tema token'ları
     robots.ts            /robots.txt
     sitemap.ts           /sitemap.xml (TR+EN, hreflang'li)
+    icon.png             Sekme ikonu (markanın taç + dalga işareti)
+    apple-icon.png       iOS ana ekran ikonu
   components/site/       Navbar, Footer, Wordmark, kartlar, form, yer tutucular
   content/               types.ts · sample-data.ts · legal.ts · index.ts
   i18n/                  next-intl routing / navigation / request
@@ -58,6 +60,9 @@ src/
                          integrations, placeholder
   proxy.ts               locale yönlendirmesi (Next 16'da "middleware"nin yeni adı)
 messages/                tr.json · en.json — sabit arayüz metinleri
+scripts/build-media.mjs  mimarine/ → public/media/ görsel işleme
+public/media/            siteye giren fotoğraflar (üretilen dosyalar)
+mimarine/                client'ın gönderdiği orijinaller ve sunum dosyaları
 ```
 
 ## Tasarım Token'ları
@@ -277,14 +282,36 @@ eksik olduğunu yazar.
 Ayırt etmek için ön sipariş formu bir `subject` alanı gönderiyor; e-posta konu
 satırına yansıyor. Alıcı adresi Sanity Studio → Site Ayarları'ndan yönetiliyor.
 
+## Görseller
+
+Sitedeki yat fotoğrafları client'ın gönderdiği orijinallerden üretiliyor:
+
+```bash
+node scripts/build-media.mjs      # mimarine/ → public/media/
+```
+
+Script küçültme + ilerlemeli JPEG dönüşümünün yanında **EXIF'i de siliyor** —
+gönderilen karelerin bir kısmı telefonla çekilmişti ve GPS koordinatı
+taşıyordu. 38 dosya, 32 MB → 8 MB. Yeni fotoğraf geldiğinde `JOBS` tablosuna
+satır eklenip script yeniden çalıştırılır; `sample-data.ts` içindeki `local()`
+yardımcısı `public/media` altındaki yolu alır.
+
+`mimarine/` **`.gitignore`'da** — orijinaller depoya girmiyor, ayrı saklanıyor.
+`public/media` altındaki üretilmiş dosyalar depoda. Bir kısım MY 14M render'ı
+sunum PDF'inden çıkarıldı; ayrıntı script'in başındaki nota yazılı.
+
+> Sanity'ye görsel girildiği anda o içerik tipi tamamen Sanity'ye geçer ve bu
+> dosyalar devreden çıkar — yani bu klasör geçici bir aşamadır, kalıcı bir
+> varlık deposu değil.
+
 ## Bilinen Eksikler
 
 - Sanity bağlandı ve test edildi, ama **dataset henüz boş** — içerik girilene
   kadar site `sample-data.ts`'i gösteriyor.
-- Görseller yok; her görsel alanında ne geleceğini yazan yer tutucu kutu var
-  (`ImagePlaceholder`). Plan Unsplash placeholder'a izin veriyor — istenirse
-  eklenebilir, şu an bilerek eklenmedi (kırık görsel riski).
-- Bayi haritası henüz Mapbox değil, yer tutucu kutu (token bekliyor).
+- Filo görselleri gerçek; **haber ve etkinlik kapakları hâlâ Unsplash** ve o
+  içeriklerin kendisi de uydurma — yayına çıkmadan önce ya gerçek içerikle
+  değişmeli ya da bölüm kaldırılmalı.
+- Bayi haritası Leaflet + OpenStreetMap ile çalışıyor (Mapbox kullanılmıyor).
 - Fleet sekme şeridi dar ekranda yatay kayar (tasarımın kendi davranışı).
 
 - İletişim formu Resend'e bağlı ama **gerçek bir key ile hiç denenmedi**;

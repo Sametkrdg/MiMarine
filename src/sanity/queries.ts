@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 import type {
+  BespokeContent,
   Dealer,
   DealerRegion,
   DealerType,
@@ -34,6 +35,8 @@ type RawImage = { asset?: unknown; alt?: RawL10nString } | null;
 type RawYacht = {
   name?: string | null;
   slug?: string | null;
+  statuses?: string[] | null;
+  /** Pre-multi-status documents carried a single value. */
   status?: string | null;
   order?: number | null;
   featured?: boolean | null;
@@ -140,6 +143,7 @@ const IMAGE_PROJECTION = `{ asset, alt }`;
 const YACHT_PROJECTION = groq`{
   name,
   "slug": slug.current,
+  statuses,
   status,
   order,
   featured,
@@ -163,6 +167,22 @@ const EVENT_PROJECTION = groq`{
   cover ${IMAGE_PROJECTION}
 }`;
 
+/**
+ * Fleet tabs for one document.
+ *
+ * Reads the `statuses` array, and falls back to the single `status` string
+ * that documents created before the field became multi-select still carry.
+ * An empty or unrecognised value lands in "delivered" so the hull is at least
+ * reachable from a tab rather than vanishing from the fleet entirely.
+ */
+function yachtStatuses(y: RawYacht): YachtStatus[] {
+  const raw = y.statuses?.length ? y.statuses : y.status ? [y.status] : [];
+  const valid = raw.filter((s): s is YachtStatus =>
+    YACHT_STATUSES.includes(s as YachtStatus),
+  );
+  return valid.length ? valid : ["delivered"];
+}
+
 export async function fetchYachts(): Promise<Yacht[] | null> {
   const client = getClient();
   if (!client) return null;
@@ -179,9 +199,7 @@ export async function fetchYachts(): Promise<Yacht[] | null> {
     .map((y) => ({
       slug: y.slug,
       name: y.name ?? y.slug,
-      status: YACHT_STATUSES.includes(y.status as YachtStatus)
-        ? (y.status as YachtStatus)
-        : "delivered",
+      statuses: yachtStatuses(y),
       order: y.order ?? 0,
       featured: Boolean(y.featured),
       subtitle: str(y.subtitle ?? null),
@@ -417,6 +435,42 @@ export async function fetchOffices(): Promise<Office[] | null> {
         ? { lat: o.coordinates.lat, lng: o.coordinates.lng }
         : undefined,
   }));
+}
+
+export async function fetchBespoke(): Promise<BespokeContent | null> {
+  const client = getClient();
+  if (!client) return null;
+
+  const raw = await safely("fetchBespoke", () =>
+    client.fetch<{
+      bespoke?: {
+        kicker?: RawL10nString;
+        title?: RawL10nString;
+        body?: RawL10nString;
+        points?: { title?: RawL10nString; body?: RawL10nString }[] | null;
+        yachtNote?: RawL10nString;
+      } | null;
+    } | null>(
+      groq`*[_type == "siteSettings"][0]{
+        bespoke{ kicker, title, body, points[]{ title, body }, yachtNote }
+      }`,
+    ),
+  );
+
+  const b = raw?.bespoke;
+  // Without a title the section would render as an unexplained list.
+  if (!b?.title) return null;
+
+  return {
+    kicker: str(b.kicker ?? null),
+    title: str(b.title ?? null),
+    body: paragraphs(b.body ?? null),
+    points: (b.points ?? []).map((p) => ({
+      title: str(p.title ?? null),
+      body: str(p.body ?? null),
+    })),
+    yachtNote: firstParagraph(b.yachtNote ?? null),
+  };
 }
 
 export async function fetchMaps(): Promise<MapImages | null> {

@@ -105,7 +105,7 @@ Gemini ile kuruldu ve test edildi. Sağ altta "Asistan" balonu.
 
 ---
 
-## 5 · İçerik Brifingi — işlendi, doğrulanacak birkaç nokta
+## 5 · İçerik — tamamlandı
 
 İki PDF'teki metinler siteye işlendi: kuruluş hikayesi, çelik gövde
 mühendisliği, terzi usulü konumlandırma, %20-50 maliyet avantajı, gerçek
@@ -116,29 +116,112 @@ projeler ve Ön Sipariş sayfası.
 - [x] ~~Palet~~ — brief "denizci laciverti ve antrasit" istiyordu; sonrasında
       gönderdiğin prototip dosyasıyla site **koyu laciverte** taşındı:
       zemin `#12212F`, metin `#F2EFE8`, aksan `#7FA9C4`. Ayrıntı aşağıda.
-- [x] ~~Filo~~ — uydurma 10 tekne silindi, gerçek dört proje girildi.
-
-**Doğrulaman gerekenler:**
-
-- [ ] **Proje durumları doğru mu?** Brief "üstlendiğimiz Cihangir S, Zenday" ve
-      "pazarın yeni gözdeleri olacak KTÜ 35 FEET ve PTTRA 42.5m" diyordu.
-      Buna göre yerleştirdim:
-      Cihangir S · Zenday → **Teslim Edilen** ·
-      KTÜ 35 FEET · PTTRA 42.5m → **Üretimde**.
-      Yanlışsa söyle, tek alan.
-- [ ] **"Teslime Hazır" sekmesi boş** — o kategoride tekne yok. Şu an boş kart
-      yerine "aklınızdaki projeyi paylaşın" + Ön Sipariş butonu gösteriyor.
-- [ ] **Teknik özellikler.** Yalnızca boy ve tekne malzemesi (çelik) girildi;
-      genişlik, su çekimi, motor, yakıt, kapasite, menzil `[BELİRTİLECEK]`
-      durumda. Gerçek değerleri ver.
-- [ ] **Proje görselleri** — dördü de hâlâ Unsplash. Gerçek fotoğraflar gelince
-      Sanity'den değişecek.
+- [x] ~~Filo~~ — uydurma 10 tekne silindi, gerçek altı proje girildi.
+- [x] ~~Proje durumları~~ — client'ın isteğiyle **bir tekne artık birden fazla
+      sekmede görünebiliyor**. Son durum:
+      **Zenday** → yalnızca Teslim Edilen ·
+      **KTÜ 61 FEET** → Teslim Edilen + Teslime Hazır + Üretimde ·
+      **Cihangir S · PTTRA 42.5m · MY 14M · KTÜ 35 FEET** → Teslime Hazır +
+      Üretimde. Böylece "hazır bir teknemiz var, ama size yenisini de
+      yaparız" mesajı iki sekmede birden veriliyor.
+- [x] ~~"Teslime Hazır" sekmesi boş~~ — artık beş tekne orada.
+- [x] ~~Teknik özellikler~~ — altısının da tam listesi sunum dosyalarından
+      girildi (yıl, gövde, boy, genişlik, derinlik/su çekimi, motor, hız,
+      kamara, kapasite; PTTRA'da ayrıca deplasman, RINA klaslaması, menzil,
+      yakıt/su, jeneratör). `[BELİRTİLECEK]` işareti kalmadı, sayfadaki
+      "placeholder" uyarısı kaldırıldı.
+- [x] ~~Proje görselleri~~ — filodaki Unsplash gitti. 38 görsel `public/media`
+      altında; ayrıntı §6'da.
 - [x] ~~Maliyet avantajı ifadesi~~ — **%20-50** olarak onaylandı (client teyit
       etti: tipik aralık %20-30, bazı projelerde %50'ye çıkıyor).
+- [x] ~~İki tekne eklendi~~ — **KTÜ 61 FEET** (`/fleet/ktu-61-feet`) ve
+      **MY 14M** (`/fleet/my-14m`). Metinler ve teknik veriler sunum
+      dosyalarından; görseller katalog ve sunumlardan. Ana sayfadaki rakam
+      4 → **6** oldu. (Not: `KTÜ 35 FEET SUNUM .pdf` dosyasının içeriği aslında
+      KTÜ 61 FEET — dosya adı yanıltıcı, veriyi doğru dosyadan aldım.)
+
+- [x] ~~Kişiselleştirme anlatımı~~ — "iç mimari tamamen size göre şekillenir"
+      mesajı iki yere birden eklendi: **ana sayfada** üç maddelik bir bölüm
+      (malzeme ve renk · aydınlatma ve donanım · kullanım senaryosu) ve **her
+      yat sayfasında** teknik özelliklerin altında tek cümlelik bir not. İkisi
+      de Studio'dan **Site Ayarları → Kişiselleştirme bölümü**'nden tek yerden
+      yazılıyor.
+- [x] ~~Üçüncü taraflara atıf~~ — sunum dosyalarında geçen dış tasarım ofisi ve
+      üniversite adları **sitede hiçbir yerde geçmiyor**; istenmediği için
+      eklenmedi. Katalogdaki öğrenci isim listesi ve fotoğrafları da
+      kullanılmadı.
 
 ---
 
-## 6 · Tasarım Aktarımı — kararını bekleyen iki nokta
+## 6 · Görseller — girildi
+
+`mimarine/` klasöründeki fotoğraflar siteye işlendi. Orijinaller olduğu yerde
+duruyor; siteye giren kopyalar `scripts/build-media.mjs` ile üretiliyor
+(`node scripts/build-media.mjs`) ve `public/media/` altına yazılıyor. Script üç
+iş yapıyor: web boyutuna küçültme, ilerlemeli JPEG'e çevirme (3 MB'lık PNG
+render'lar 150 KB'a iniyor) ve **EXIF temizleme** — telefonla çekilmiş
+kareler GPS koordinatı taşıyordu, o veri artık depoya girmiyor. Toplam
+19 MB → 5 MB.
+
+Nerede ne kullanıldı:
+
+| Yer | Görsel |
+|---|---|
+| Ana sayfa hero | Zenday, akşamüstü Boğaz'da |
+| Ana sayfa kartları | PTTRA gövdesi · Zenday koridoru · Zenday seyirde |
+| Dünyamız hero | PTTRA 42.5m'in tam boy gövdesi |
+| Dünyamız sütunları | KTÜ 35 FEET kıç güvertesi · Cihangir S tersanede · çelik gövde inşası |
+| Zenday | 1 kapak + 6 galeri (dış, salon, koridor, gece seyri) |
+| Cihangir S | 1 kapak + 4 galeri (2 render, 3 tersane fotoğrafı) |
+| KTÜ 35 FEET | 1 kapak + 6 galeri — **hepsi tasarım görseli** |
+| KTÜ 61 FEET | 1 kapak + 3 galeri (3 tasarım görseli + 1 tersane fotoğrafı) |
+| MY 14M | 1 kapak + 4 galeri — **hepsi tasarım görseli** |
+| PTTRA 42.5m | 1 kapak + 8 galeri (5 gerçek inşa fotoğrafı + 4 tasarım görseli) |
+| Favicon | Logodaki taç + dalga işareti |
+
+Yapay zekâ ile üretilmiş görsellerin alt metinlerinde **"tasarım görseli /
+design render"** yazıyor. Ziyaretçi bitmiş teknenin fotoğrafı sanmasın diye;
+arama motorları ve ekran okuyucular da bunu okur.
+
+`mimarine/` klasörü **`.gitignore`'a eklendi** — orijinaller (~50 MB) depoya
+girmiyor. Siteye giren küçültülmüş kopyalar `public/media` altında (8 MB) ve
+onlar depoda. Orijinalleri ayrı bir yerde saklamayı unutma: `mimarine/`
+silinirse `scripts/build-media.mjs` çalışmaz.
+
+**Doğrulaman gereken bir eşleştirme:**
+
+- [ ] **Süperyat görselleri gerçekten PTTRA mı?** `Generated Image July 27`
+      setindeki büyük beyaz süperyat ve iç mekân görsellerinde tekne adı
+      yazmıyor, bu yüzden hangi projeye ait olduğunu görselden okuyamadım.
+      PTTRA'ya bağladım çünkü filodaki tek süperyat o ve setteki
+      "deniz manzaralı spor salonu" görseli, PTTRA sunumunda tarif edilen
+      spor salonuyla birebir örtüşüyor. Yanlışsa dört görseli çıkarırım.
+      Ayrıca render'daki baş bodoslama düz; gerçek çelik gövde fotoğrafında
+      baş tonozlu (bulbous bow) — bu ikisi farklı olabilir.
+
+**Kullanmadıklarım ve nedeni:**
+
+- [ ] **`cihangir 5.jpeg`** — dosya adıyla ilgili değil: **görselin kendisinde**
+      teknenin bordasında `CIHANDIR S` yazıyor, `CİHANGİR S` olması gerekirken.
+      Görsel üretilirken yazı bozulmuş. En iyi yan görünüm oydu; düzeltilmiş
+      hâlini üretebilirsen hemen eklerim. Aynı setteki `cihangir 6.jpeg`de
+      yazım doğru, onu kapak yaptım.
+- **`KATALOG 1 .pdf`'teki fotoğraflar ve isim listesi.** İçinde yüzü belli
+      öğrencilerin çalışırken çekilmiş fotoğrafları ve 30 kişilik bir isim
+      listesi var. Kişilerin açık rızası olmadan yayımlanmamalı (sitede KVKK
+      sayfası da var). Üniversite logosunu da kullanmadım — üçüncü taraf
+      markası.
+- **`zenday liman.jpeg`** — kare güzel ama açı yatık, kadrajda site düzenine
+      oturmuyor. İstersen düzeltip eklerim.
+- **3 adet `Generated Image` kolajı** (birden fazla görselin beyaz çerçeveyle
+      yan yana konduğu kareler) — tek bir görsel olarak kullanılamıyor.
+- **Sunum PDF'leri ve katalog sayfası** birer doküman. İçlerindeki veriyi ve
+      render'ları çıkarıp kullandım. İstersen katalogları yat sayfalarına
+      "indirilebilir PDF" olarak da koyabiliriz; şu an öyle bir alan yok.
+
+---
+
+## 7 · Tasarım Aktarımı — kararını bekleyen iki nokta
 
 Gönderdiğin `MimarineYacht (standalone).html` prototipindeki tasarım sisteminin
 tamamı siteye uygulandı (renk, tipografi, boşluk, bileşen görünümü). Metinler,
@@ -171,7 +254,7 @@ istersen etiket grisini bir tık açarım, tek token.
 
 ---
 
-## 7 · Marka Kimliği
+## 8 · Marka Kimliği
 
 - [x] ~~Tescilli unvan~~ — `MimarineYacht Yatçılık San. Tic. Ltd. Şti.`
 - [x] ~~Kuruluş yılı~~ — 2021, ana sayfadaki rakam şeridinde.
@@ -190,31 +273,47 @@ Karar bekleyen üç küçük nokta:
       isim yok. İstersen iletişim sayfasına ekleyebilirim.
 - [ ] **Üçüncü rakam.** Ana sayfada iki rakam doldu (2021 · 3 uzmanlık alanı),
       üçüncüsü hâlâ `[00]`. Örn. teslim edilen tekne sayısı ya da yerlilik oranı.
-- [ ] **Logo dosyası** (SVG) ve **marka renk kodları**. Site artık koyu
-      paletle çalışıyor: zemin `#12212F`, metin `#F2EFE8`, aksan `#7FA9C4` —
-      `src/app/globals.css` içindeki `@theme` bloğunda, tek yerden değişir.
-- [ ] **Wordmark'ın görsel onayı** — tek satır `MIMARINE YACHT` olarak uygulandı.
+- [x] ~~Logo — favicon olarak kullanıldı.~~ Katalogdaki taç + dalga işaretini
+      kesip sekme ikonuna ve iOS ana ekran ikonuna koydum
+      (`src/app/icon.png`, `src/app/apple-icon.png`). Küçük boyutta net duruyor.
+- [ ] **Logonun vektör (SVG) hâli lazım.** Katalogdaki logo bir JPEG'in içinde
+      ve işaretin kendisi **yalnızca ~74 x 66 piksel**. Favicon için yetiyor
+      ama menüdeki lockup ya da sosyal medya kartı için büyütülürse bulanık
+      çıkar — o yüzden oralarda hâlâ yazı tipiyle dizilmiş `MIMARINEYACHT`
+      kullanılıyor (tasarım da bunu istiyor zaten). Tasarımcıda **SVG / AI /
+      EPS** dosyası varsa gönder, menüye ve sosyal karta koyayım.
+      Renkler için: site koyu paletle çalışıyor — zemin `#12212F`, metin
+      `#F2EFE8`, aksan `#7FA9C4`, hepsi `src/app/globals.css` içindeki `@theme`
+      bloğunda tek yerden değişir.
+- [ ] **Wordmark'ın görsel onayı** — tek satır `MIMARINEYACHT` olarak uygulandı.
+- [ ] **Alan adı: `mimarineyacht.com`.** Katalogda zaten
+      `www.mimarineyacht.com` yazıyor, sen de bunu önerdiğini söyledin.
+      Alındığında yapılacak tek şey: Vercel → Domains'e ekle, DNS'i yönlendir,
+      sonra `NEXT_PUBLIC_SITE_URL=https://mimarineyacht.com` ortam değişkenini
+      gir (bkz. §11). Bu değer canonical URL'leri, hreflang'i, sitemap'i ve
+      sosyal kart adreslerini besliyor — girilmezse Vercel'in geçici adresi
+      kullanılır.
 - [ ] **Sosyal medya adresleri** (Instagram / LinkedIn / YouTube). Gelene kadar
       footer'daki sosyal satır hiç render edilmiyor.
 
 ---
 
-## 8 · İçerik & Görsel
+## 9 · İçerik & Görsel
 
-- [ ] **Gerçek yat fotoğrafları ve galeri görselleri.** Şu an geçici Unsplash
-      görselleri — sadece tasarımı göstermek için, hiçbiri Mimarine'e ait değil.
+- [x] ~~Gerçek yat fotoğrafları~~ — girildi, bkz. §6.
+- [x] ~~Yat teknik özellikleri~~ — girildi, bkz. §5.
+- [ ] **Haber / etkinlik içerikleri hâlâ uydurma — client'a soruluyor.**
+      Sitedeki altı haber ve etkinliğin hiçbiri gerçek değil; tarihleri derleme
+      anına göre hesaplanıyor, kapak görselleri Unsplash. **Sitede kalan tek
+      uydurma içerik bu.** Gerçek liste gelirse girerim; gelmezse yayına
+      çıkmadan önce bölümü kaldırmamız gerekir (navbar'dan da düşer, ~15 dk).
 - [ ] **TR ve EN gerçek metinler** — ya da mevcut taslakları onayla.
 - [ ] **Bayi ve Servis Ağı gerçek listesi**: firma adı, adres, telefon, e-posta,
       koordinat, yetki tipi.
-- [ ] **Yat teknik özellikleri.** Şu an gerçekçi ama **uydurma** placeholder
-      değerler var ve sayfada "Teknik özellikler placeholder — gerçek verilerle
-      değiştirilecek" notu duruyor. Alan seti: tam boy, genişlik, su çekimi,
-      tekne malzemesi, motor, yakıt kapasitesi, yolcu kapasitesi, menzil.
-      Eklenecek/çıkarılacak alan varsa söyle.
 
 ---
 
-## 9 · Gizlilik Politikası / KVKK
+## 10 · Gizlilik Politikası / KVKK
 
 - [x] ~~Taslak uyarısı~~ — senin talimatınla kaldırıldı.
 - [x] ~~Şirket bilgileri~~ — unvan, adres, telefon, e-posta metne işlendi.
@@ -231,19 +330,73 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 10 · Deploy'da Kalan
+## 11 · Yayına Alma — sırayla yapılacaklar
 
-- [ ] **`NEXT_PUBLIC_SITE_URL`'i canlı domainle doldur** (örn.
-      `https://mimarineyacht.com`). Boş kalırsa canonical / sitemap / OG kartı
-      geçici `vercel.app` adresini kullanır.
-- [ ] Domain'i Vercel'e bağla (Settings → Domains, A/CNAME kaydı).
-- [ ] Env değişkeni değiştirdikten sonra elle **Redeploy** et — env değişikliği
-      otomatik build tetiklemez.
-- [ ] Canlıda formu gerçek bir e-posta ile test et.
+Aşağıdakilerin hepsi **kod dışında**, panellerden yapılır. Sırayı bozmayın:
+her adım bir öncekine bağlı.
+
+### A · Alan adı
+
+- [ ] **1. `mimarineyacht.com`'u satın al.** Kayıt sırasında **domain
+      gizliliği / WHOIS privacy** açık olsun.
+- [ ] **2. Vercel'de projeyi oluştur.** vercel.com → Add New → Project → GitHub
+      deposunu seç. Framework "Next.js" olarak otomatik gelir, ayar
+      değiştirmeyin.
+- [ ] **3. Domain'i bağla.** Vercel → proje → Settings → Domains →
+      `mimarineyacht.com` ve `www.mimarineyacht.com` ekle. Vercel size iki
+      DNS kaydı verir (kök için `A`, www için `CNAME`); bunları alan adını
+      aldığınız firmanın DNS panelinden girin. Yayılması 10 dk – 24 saat.
+
+### B · Ortam değişkenleri (Vercel → Settings → Environment Variables)
+
+Her birini **Production + Preview + Development** üçüne birden ekleyin.
+
+- [ ] **4.** `NEXT_PUBLIC_SITE_URL` = `https://mimarineyacht.com`
+      Boş kalırsa canonical adresler, hreflang, sitemap ve sosyal medya kartı
+      geçici `vercel.app` adresini gösterir — Google'a yanlış adres verir.
+- [ ] **5.** `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`
+      (`production`), `SANITY_API_TOKEN`, `SANITY_REVALIDATE_SECRET`
+- [ ] **6.** `RESEND_API_KEY`, `CONTACT_EMAIL_FROM` (bkz. §2),
+      `CONTACT_EMAIL_TO`
+- [ ] **7.** `GEMINI_API_KEY` — yoksa sohbet balonu hiç görünmez, site
+      çalışmaya devam eder.
+- [ ] **8. Değişken ekledikten sonra elle Redeploy edin.** Ortam değişkeni
+      değiştirmek tek başına yeni build tetiklemez; eski build eski değerlerle
+      çalışmaya devam eder.
+
+### C · Sanity
+
+- [ ] **9. API token'ını yenile.** Şu an `.env.local`'de duran token bu
+      konuşmalar sırasında ortaya çıktı — sanity.io/manage → API → Tokens →
+      eskisini sil, yeni bir **Viewer** token üret, Vercel'e onu gir.
+- [ ] **10. CORS kaydı ekle.** sanity.io/manage → API → CORS origins →
+      `https://mimarineyacht.com` ekle, **"Allow credentials" işaretli olsun**.
+      Yoksa `/studio` adresinden giriş yapılamaz.
+- [ ] **11. Webhook kur** (içerik değişince site kendini yenilesin).
+      sanity.io/manage → API → Webhooks → Create:
+      URL `https://mimarineyacht.com/api/revalidate`,
+      Dataset `production`, Trigger on: create + update + delete,
+      Secret: `SANITY_REVALIDATE_SECRET` ile **aynı değer**.
+      Kurulmazsa içerik ancak ~1 saatte bir güncellenir.
+- [ ] **12. İçerik girecek kişiyi davet et.** sanity.io/manage → Members →
+      Invite → rol **Editor**. `SANITY_KILAVUZU.md` dosyasını ona verin.
+
+### D · E-posta
+
+- [ ] **13. Resend'de domain doğrula** — §2'deki adımlar. Bu bitmeden
+      **iletişim ve ön sipariş formları kapalı kalır**.
+
+### E · Yayına aldıktan sonra
+
+- [ ] **14. Formu gerçek bir e-posta ile test et** (hem `/contact` hem
+      `/pre-order`).
+- [ ] **15. Google Search Console**'a siteyi ekle, `sitemap.xml`'i gönder.
+- [ ] **16. Vercel Analytics**'i aç (proje → Analytics → Enable). Ücretsiz
+      planda çalışır.
 
 ---
 
-## 11 · Karar Bekleyen (acil değil)
+## 12 · Karar Bekleyen (acil değil)
 
 - [x] ~~CSP~~ — tam politika kuruldu (site + `/studio` için ayrı ayrı),
       tarayıcıda sıfır ihlalle doğrulandı. Nonce'a **geçilmedi**: nonce tüm
@@ -251,12 +404,28 @@ Hukukçuya götürürken şu üç noktaya bakmalarını isteyin:
 
 ---
 
-## 12 · Yayına Alma Öncesi Son Kontrol
+## 13 · Yayına Alma Öncesi Son Kontrol
 
-- [ ] Sitede hiç `[KÖŞELİ PARANTEZ]` veya `[00]` kaldı mı?
-- [ ] `src/content/sample-data.ts` silindi mi (Sanity'ye geçince silinecek)?
+**Yayına çıkmadan mutlaka:**
+
+- [ ] **Haber ve etkinlik bölümü.** Sitedeki altı kayıt uydurma (bkz. §9).
+      Gerçek içerik gelmeyecekse bu bölüm yayından önce kaldırılmalı.
+- [ ] **Gizlilik Politikası hukukçu onayı** (bkz. §10) ve varsa VERBIS numarası.
+- [ ] **Süperyat görselleri PTTRA'ya mı ait?** (bkz. §6) — müşteri bakıp
+      karar versin, yanlışsa dört görsel çıkar.
+- [ ] TR ve EN tüm sayfaları son kez gözden geçir.
+
+**Kontrol edildi:**
+
+- [x] ~~Sitede `[KÖŞELİ PARANTEZ]` / `[00]` yer tutucusu~~ — kalmadı.
 - [x] ~~Gizlilik Politikası'ndaki TASLAK uyarısı~~ — kaldırıldı.
-- [ ] Yat detay sayfasındaki "teknik özellikler placeholder" notu kaldırıldı mı?
+- [x] ~~"Teknik özellikler placeholder" notu~~ — kaldırıldı, veriler gerçek.
 - [x] ~~Sanity Studio kullanım kılavuzu~~ — `SANITY_KILAVUZU.md`. İçerik
       girecek kişiye bu dosyayı verin.
-- [ ] TR/EN tüm sayfaları son kez gözden geçir.
+
+**Sanity'ye geçtikten sonra:**
+
+- [ ] `src/content/sample-data.ts` silinebilir. Ama dikkat: bu dosya **tip
+      tip** devreden çıkar. Yatları Sanity'ye girdiğinizde yatlar oradan
+      gelir, haberler hâlâ bu dosyadan gelmeye devam eder. Hepsi girilmeden
+      silmeyin.

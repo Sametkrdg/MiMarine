@@ -39,7 +39,14 @@ export type Yacht = {
   slug: string;
   /** Model / hull designation. Not translated. */
   name: string;
-  status: YachtStatus;
+  /**
+   * Which fleet tabs this hull appears under. A hull can sit in more than one
+   * at once — a finished boat that is both ready to hand over and still open
+   * to a build slot shows in "ready for delivery" and "in production" alike.
+   * The first entry is the primary one: it is what the detail page links back
+   * to.
+   */
+  statuses: YachtStatus[];
   /** Sort order within its status tab, ascending. */
   order: number;
   featured: boolean;
@@ -52,6 +59,21 @@ export type Yacht = {
   specs: SpecRow[];
   cover: SiteImage;
   gallery: SiteImage[];
+};
+
+/**
+ * The bespoke-interiors promise.
+ *
+ * Site-wide rather than page-specific: it appears in full on the home page and
+ * in short on every yacht, so it lives in Site Settings and is written once.
+ */
+export type BespokeContent = {
+  kicker: L10n;
+  title: L10n;
+  body: L10n<string[]>;
+  points: { title: L10n; body: L10n }[];
+  /** One line, shown on yacht pages under the specification table. */
+  yachtNote: L10n;
 };
 
 export type EventItem = {

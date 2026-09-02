@@ -64,9 +64,8 @@ export const buildSiteContext = cache(async (locale: Locale): Promise<string> =>
 
   lines.push(locale === "tr" ? "## Filo" : "## Fleet");
   for (const y of yachts) {
-    lines.push(
-      `- ${y.name} — ${statusLabel[y.status]}, ${pick(y.loa, locale)}. ${pick(y.lede, locale)}`,
-    );
+    const status = y.statuses.map((s) => statusLabel[s]).join(" / ");
+    lines.push(`- ${y.name} — ${status}, ${pick(y.loa, locale)}. ${pick(y.lede, locale)}`);
     const specs = y.specs
       .map((s) => `${pick(s.key, locale)}: ${pick(s.value, locale)}`)
       .join(" · ");
