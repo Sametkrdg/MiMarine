@@ -42,15 +42,15 @@
       "intro": "Tasarımdan anahtar teslimine kendi bünyemizde yürüttüğümüz motoryat projeleri."
     },
     "readyForDelivery": {
-      "title": "Teslime hazır tekneler.",
-      "intro": "Tamamlanmış ve devir için bekleyen tekneler burada listelenir."
+      "title": "Teslime hazır yatlar.",
+      "intro": "Tamamlanmış ve devir için bekleyen yatlar burada listelenir."
     },
     "inProduction": {
       "title": "Şu an tezgâhta olanlar.",
       "intro": "İnşa ve tasarım aşamasındaki projeler. Erken siparişler yerleşimi ve donanımı hâlâ etkileyebilir."
     },
     "count": "{count} yat",
-    "empty": "Bu kategoride şu an listelenen tekne yok. Aklınızdaki projeyi bizimle paylaşın."
+    "empty": "Bu kategoride şu an listelenen yat yok. Aklınızdaki projeyi bizimle paylaşın."
   },
   "ourWorld": {
     "eyebrow": "Dünyamız",
@@ -83,8 +83,9 @@
     },
     "cta": {
       "eyebrow": "Bayilik",
-      "title": "Bölgenizde bizi temsil edin.",
-      "body": "MimarineYacht teknelerinin satışı ve servisi için bölgenizde temsilcilik almak istiyorsanız, sizinle konuşmak isteriz. Talebinizi iletin, dönüş yapalım.",
+      "title": "Küresel iş ortaklığı fırsatlarını birlikte değerlendirelim.",
+      "body": "MimarineYacht'ın küresel pazar stratejisini şekillendirdiğimiz bu dönemde; marka temsilciliği ve yetkili servis ağı için stratejik çözüm ortağımız olun.",
+      "bodyClosing": "Sürdürülebilir kazanç modelimizi dayanışma ve karşılıklı değer yaratma ilkesiyle kuruyor; küresel denizcilik vizyonumuza birlikte yön veriyoruz.",
       "action": "Bayilik başvurusu"
     },
     "emptyTitle": "Bayi ve servis ağımız kuruluyor."
@@ -102,7 +103,7 @@
       "interest": "İlgi alanı",
       "interestPlaceholder": "Yeni inşa, brokerlik, servis",
       "message": "Mesaj",
-      "messagePlaceholder": "Tekne, seyir bölgesi ve zaman planı hakkında birkaç satır.",
+      "messagePlaceholder": "Yat, seyir bölgesi ve zaman planı hakkında birkaç satır.",
       "submit": "Talebi gönder",
       "note": "Her talebi bizzat yanıtlıyoruz, genellikle iki iş günü içinde.",
       "sent": "Teşekkürler — en kısa sürede dönüş yapacağız",
@@ -206,7 +207,7 @@
       "cta": "Özel tasarım yolculuğuna başlayın",
       "models": {
         "superyacht": "PTTRA 42.5m · Süperyat",
-        "explorer": "KTÜ 35 FEET · Gezi teknesi",
+        "explorer": "KTÜ 35 FEET · Gezi yatı",
         "motorYacht": "Özel tasarım motoryat",
         "commercial": "Ticari / iş teknesi",
         "custom": "Özel boyut"

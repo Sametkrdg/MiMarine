@@ -43,14 +43,14 @@
     },
     "readyForDelivery": {
       "title": "Ready for delivery.",
-      "intro": "Completed vessels awaiting handover are listed here."
+      "intro": "Completed yachts awaiting handover are listed here."
     },
     "inProduction": {
       "title": "Currently under way.",
       "intro": "Projects in build and at design stage. Early commissions can still shape layout and outfitting."
     },
     "count": "{count} yachts",
-    "empty": "No vessels are listed in this category right now. Tell us about the project you have in mind."
+    "empty": "No yachts are listed in this category right now. Tell us about the project you have in mind."
   },
   "ourWorld": {
     "eyebrow": "Our World",
@@ -83,8 +83,9 @@
     },
     "cta": {
       "eyebrow": "Partnership",
-      "title": "Represent us in your region.",
-      "body": "If you would like to represent MimarineYacht for sales or service in your region, we would like to hear from you. Send us your enquiry and we will be in touch.",
+      "title": "Let us explore global partnership together.",
+      "body": "As we shape MimarineYacht's global market strategy, become our strategic partner for brand representation and the authorised service network.",
+      "bodyClosing": "We build our model of sustainable return on solidarity and the creation of mutual value — and set the course of our global maritime vision together.",
       "action": "Apply for a dealership"
     },
     "emptyTitle": "Our dealer and service network is being built."
@@ -206,7 +207,7 @@
       "cta": "Begin the bespoke journey",
       "models": {
         "superyacht": "PTTRA 42.5m · Superyacht",
-        "explorer": "KTU 35 FEET · Cruiser",
+        "explorer": "KTU 35 FEET · Cruising yacht",
         "motorYacht": "Custom motor yacht",
         "commercial": "Commercial / work boat",
         "custom": "Custom size"

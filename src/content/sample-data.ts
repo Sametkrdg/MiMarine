@@ -117,8 +117,8 @@ export const yachts: Yacht[] = [
     subtitle: { tr: "Motoryat · 22,05 m", en: "Motor yacht · 22.05 m" },
     loa: v("22,05 m", "22.05 m"),
     lede: {
-      tr: "2026'da tezgahlarımızdan suya inen 22 metrelik motoryat: çelik gövdenin sertliğiyle iç mekânın zarafetini aynı teknede buluşturuyor.",
-      en: "A 22-metre motor yacht launched from our sheds in 2026, holding the hardness of a steel hull and the refinement of its interior in the same boat.",
+      tr: "2026'da tezgahlarımızdan suya inen 22 metrelik motoryat: çelik gövdenin sertliğiyle iç mekânın zarafetini aynı yatta buluşturuyor.",
+      en: "A 22-metre motor yacht launched from our sheds in 2026, holding the hardness of a steel hull and the refinement of its interior in one yacht.",
     },
     body: {
       tr: [
@@ -128,7 +128,7 @@ export const yachts: Yacht[] = [
       ],
       en: [
         "Zenday's keel carries the yard's roots in commercial shipbuilding. The hull is steel throughout, built to stand the hardest weather; inside, that hardness gives way to a considered refinement.",
-        "Volume enough for fifty guests, a flybridge open to the whole panorama, and four cabins for long passages — the timber, steel and composite work of our craftsmen in one boat.",
+        "Volume enough for fifty guests, a flybridge open to the whole panorama, and four cabins for long passages — the timber, steel and composite work of our craftsmen in one yacht.",
         "Twin 450 HP Shanghai Diesel engines turn that composure into uninterrupted power offshore.",
       ],
     },
@@ -159,21 +159,21 @@ export const yachts: Yacht[] = [
     statuses: ["delivered", "ready-for-delivery", "in-production"],
     order: 4,
     featured: false,
-    subtitle: { tr: "Davet teknesi · 19,50 m", en: "Event vessel · 19.50 m" },
+    subtitle: { tr: "Davet yatı · 19,50 m", en: "Event yacht · 19.50 m" },
     loa: v("19,50 m", "19.50 m"),
     lede: {
-      tr: "2026'da denize indirilen 19,5 metrelik çelik tekne: özel etkinlikler, butik turlar ve kurumsal davetler için tasarlanmış yüzer bir yaşam alanı.",
-      en: "A 19.5-metre steel vessel launched in 2026: a floating venue drawn for private events, boutique tours and corporate hospitality.",
+      tr: "2026'da denize indirilen 19,5 metrelik çelik yat: özel etkinlikler, butik turlar ve kurumsal davetler için tasarlanmış yüzer bir yaşam alanı.",
+      en: "A 19.5-metre steel yacht launched in 2026: a floating venue drawn for private events, boutique tours and corporate hospitality.",
     },
     body: {
       tr: [
         "19,50 metrelik tam boyu ve 5,60 metrelik geniş gövdesiyle KTÜ 61 FEET sularda sarsılmaz bir duruş sergiler. Gövdede kullanılan yüksek kalite çelik, zorlu deniz koşullarında maksimum stabilite ve uzun yıllar sürecek ticari operasyon güvencesi sağlar.",
-        "Geniş yan yürüme yolları, ahşap küpeşte detayları ve ferah güverte alanları estetikle fonksiyonelliği bir araya getiriyor. Panoramik manzaraya açılan Fly Bridge ile 50 kişilik davetlerde kesintisiz servis verebilen tam donanımlı mutfak, teknenin sosyal omurgasını kuruyor.",
+        "Geniş yan yürüme yolları, ahşap küpeşte detayları ve ferah güverte alanları estetikle fonksiyonelliği bir araya getiriyor. Panoramik manzaraya açılan Fly Bridge ile 50 kişilik davetlerde kesintisiz servis verebilen tam donanımlı mutfak, yatın sosyal omurgasını kuruyor.",
         "50 yolcu kapasiteli güverte yerleşimi, iki kamaralı iç hacim ve Fly Bridge mimarisi sabit kalmak koşuluyla; zemin kaplamalarından oturma gruplarındaki kumaşlara, aydınlatma armatürlerinden ahşap tonlarına kadar iç mimariyi işletme kimliğinize göre şekillendiriyoruz.",
       ],
       en: [
         "At 19.50 metres overall on a 5.60-metre beam, KTU 61 FEET holds herself steady. The high-grade steel of the hull gives maximum stability in hard conditions and the assurance of years of commercial service.",
-        "Wide side decks, timber capping rails and generous deck areas put looks and function together. A flybridge open to the whole panorama and a galley equipped to serve fifty guests without a break form the vessel's social spine.",
+        "Wide side decks, timber capping rails and generous deck areas put looks and function together. A flybridge open to the whole panorama and a galley equipped to serve fifty guests without a break form the yacht's social spine.",
         "The fifty-passenger deck layout, two-cabin interior and flybridge architecture stay fixed; everything else — floor finishes, upholstery, light fittings, timber tones — is shaped to your operation's identity.",
       ],
     },
@@ -217,7 +217,7 @@ export const yachts: Yacht[] = [
       ],
       en: [
         "Cihangir S was drawn away from the moulds of series production: original lines throughout, on a high-tensile steel hull. The durability that hard seas and harsh weather teach, turned here into a bespoke motor yacht.",
-        "Five metres of beam give her far more volume than her class suggests — two separate cabins, two bathrooms and three heads, with room for up to twelve guests. The panoramic flybridge and wide aft deck open the boat up offshore.",
+        "Five metres of beam give her far more volume than her class suggests — two separate cabins, two bathrooms and three heads, with room for up to twelve guests. The panoramic flybridge and wide aft deck open the yacht up offshore.",
         "Twin Cummins engines give 11 knots in service and 14 at maximum: a balanced, economical and safe passage character.",
       ],
     },
@@ -250,11 +250,11 @@ export const yachts: Yacht[] = [
     statuses: ["ready-for-delivery", "in-production"],
     order: 6,
     featured: false,
-    subtitle: { tr: "Gezi teknesi · 10,65 m", en: "Cruiser · 10.65 m" },
+    subtitle: { tr: "Gezi yatı · 10,65 m", en: "Cruising yacht · 10.65 m" },
     loa: v("10,65 m", "10.65 m"),
     lede: {
-      tr: "Zamansız bir siluet ve tek kamaralı sade bir yerleşim: gün boyu seyir için tasarlanmış, iç mekânı kişiselleştirilebilen bir gezi teknesi.",
-      en: "A timeless silhouette and a single-cabin layout: a cruiser drawn for a day under way, with an interior you specify yourself.",
+      tr: "Zamansız bir siluet ve tek kamaralı sade bir yerleşim: gün boyu seyir için tasarlanmış, iç mekânı kişiselleştirilebilen bir gezi yatı.",
+      en: "A timeless silhouette and a single-cabin layout: a cruising yacht drawn for a day under way, with an interior you specify yourself.",
     },
     body: {
       tr: [
@@ -301,12 +301,12 @@ export const yachts: Yacht[] = [
     },
     body: {
       tr: [
-        "MY 14M, klasik ve zarif dış hatlarıyla ahşap detaylı lüks bir iç mekânı aynı tekne üzerinde topluyor. Kompozit gövde ve teak güverte, geleneksel görünümü modern malzeme performansıyla dengeliyor.",
-        "Geniş ve konforlu güverte alanları, yüksek manevra kabiliyeti ve ekonomik yakıt tüketimi teknenin karakterini belirliyor. Çift 440 HP dizel ve V-drive şanzıman düzeni, 20 knot seyir ve 26 knot maksimum hız veriyor.",
-        "Tekne CE Category B tasarım kategorisinde ve Türk Loydu sertifikalı olarak inşa ediliyor. Standart donanım 11 kW jeneratör, 16.000 BTU klima, çift filtreli yakıt sistemi, Class A seyir cihazları, tam donanımlı mutfak ve SOLAS'a uygun güvenlik ekipmanlarını kapsıyor.",
+        "MY 14M, klasik ve zarif dış hatlarıyla ahşap detaylı lüks bir iç mekânı aynı yatta topluyor. Kompozit gövde ve teak güverte, geleneksel görünümü modern malzeme performansıyla dengeliyor.",
+        "Geniş ve konforlu güverte alanları, yüksek manevra kabiliyeti ve ekonomik yakıt tüketimi yatın karakterini belirliyor. Çift 440 HP dizel ve V-drive şanzıman düzeni, 20 knot seyir ve 26 knot maksimum hız veriyor.",
+        "Yat, CE Category B tasarım kategorisinde ve Türk Loydu sertifikalı olarak inşa ediliyor. Standart donanım 11 kW jeneratör, 16.000 BTU klima, çift filtreli yakıt sistemi, Class A seyir cihazları, tam donanımlı mutfak ve SOLAS'a uygun güvenlik ekipmanlarını kapsıyor.",
       ],
       en: [
-        "MY 14M holds classic, elegant exterior lines and a timber-detailed interior in the same boat. A composite hull and teak decks balance the traditional look against modern material performance.",
+        "MY 14M holds classic, elegant exterior lines and a timber-detailed interior in one yacht. A composite hull and teak decks balance the traditional look against modern material performance.",
         "Wide, comfortable deck areas, high manoeuvrability and economical fuel consumption set her character. Twin 440 HP diesels on V-drives give 20 knots in service and 26 at maximum.",
         "She is built to CE Category B and certified by Türk Loydu. Standard equipment covers an 11 kW generator, 16,000 BTU air conditioning, a twin-filter fuel system, Class A navigation electronics, a fully fitted galley and SOLAS-compliant safety gear.",
       ],
@@ -403,13 +403,13 @@ export const events: EventItem[] = [
     location: { tr: "[ETKİNLİK ŞEHRİ]", en: "[EVENT CITY]" },
     title: { tr: "Yat festivali", en: "Yacht festival" },
     excerpt: {
-      tr: "Teslime hazır teknelerimizden biri hafta boyunca iskelede olacak, tersane ekibi teknede.",
+      tr: "Teslime hazır yatlarımızdan biri hafta boyunca iskelede olacak, tersane ekibi yatta.",
       en: "One of our ready-for-delivery hulls will be alongside for the week, with the yard team aboard.",
     },
     body: {
       tr: [
         "Gezme randevuları sabah saatlerinde veriliyor; öğleden sonralar armatörler ve kaptanları için ayrı tutuluyor.",
-        "Mühendislik ekibimiz, proje süreci ve teknik seçenekler hakkında soruları yanıtlamak üzere teknede olacak.",
+        "Mühendislik ekibimiz, proje süreci ve teknik seçenekler hakkında soruları yanıtlamak üzere yatta olacak.",
       ],
       en: [
         "Viewings are by appointment through the morning; afternoons are kept open for owners and their captains.",
@@ -424,12 +424,12 @@ export const events: EventItem[] = [
     location: { tr: "[TESİS ŞEHRİ]", en: "[FACILITY CITY]" },
     title: { tr: "Açık gün ve omurga töreni", en: "Open day and keel ceremony" },
     excerpt: {
-      tr: "İnşa salonu, en büyük teknemizin omurga konulması için bir günlüğüne ziyarete açılıyor.",
+      tr: "İnşa salonu, en büyük yatımızın omurga konulması için bir günlüğüne ziyarete açılıyor.",
       en: "The build hall opens for one day around the keel laying of our largest hull.",
     },
     body: {
       tr: [
-        "Konuklar proje yöneticileriyle tekneyi geziyor ve inşayı yürütecek ekiple tanışıyor.",
+        "Konuklar proje yöneticileriyle yatı geziyor ve inşayı yürütecek ekiple tanışıyor.",
         "Kontenjan sınırlı. Kayıt bayiniz üzerinden ya da doğrudan tersaneden yapılabilir.",
       ],
       en: [
@@ -437,7 +437,7 @@ export const events: EventItem[] = [
         "Places are limited. Registration through your dealer or the yard.",
       ],
     },
-    cover: img("1772550834175-734b417deb42", "Karada bekleyen tekne", "A hull on the hard"),
+    cover: img("1772550834175-734b417deb42", "Karada bekleyen yat", "A yacht on the hard"),
   },
   {
     slug: "refit-forum",
@@ -466,16 +466,16 @@ export const events: EventItem[] = [
     location: { tr: "[TERSANE ŞEHRİ]", en: "[YARD CITY]" },
     title: { tr: "Mimarine 42 teslim edildi", en: "Mimarine 42 delivered" },
     excerpt: {
-      tr: "Uzun bir inşa süresinin sonunda tekne tersaneden ayrıldı.",
-      en: "After a long build, the vessel left the yard.",
+      tr: "Uzun bir inşa süresinin sonunda yat tersaneden ayrıldı.",
+      en: "After a long build, the yacht left the yard.",
     },
     body: {
       tr: [
-        "Tekne, bütün teknelerimiz gibi sabahın erken saatinde sessizce ayrıldı. Armatör tören ve basın istemedi.",
+        "Yat, bütün yatlarımız gibi sabahın erken saatinde sessizce ayrıldı. Armatör tören ve basın istemedi.",
         "Teslimat öncesi son denemeler tersane açıklarında tamamlandı.",
       ],
       en: [
-        "She left quietly early in the morning, as all our boats do. Her owner asked for no ceremony and no press.",
+        "She left quietly early in the morning, as all our yachts do. Her owner asked for no ceremony and no press.",
         "Final trials before handover were completed off the yard.",
       ],
     },
@@ -556,16 +556,16 @@ export const offices: Office[] = [
 export const bespoke: BespokeContent = {
   kicker: { tr: "Terzi usulü", en: "Bespoke" },
   title: {
-    tr: "Her teknenin iç mimarisi size göre şekillenir.",
+    tr: "Her yatın iç mimarisi size göre şekillenir.",
     en: "Every interior is shaped around the owner.",
   },
   body: {
     tr: [
-      "Filomuzdaki her tekne, gövde orantıları ve genel yerleşim planı sabit kalmak üzere, iç mekânı tamamen sizin vizyonunuza göre kurgulanarak inşa edilir. Seri üretimde bir modeli olduğu gibi almak zorundasınız; bizde teknenin karakterini siz belirlersiniz.",
+      "Filomuzdaki her yat, gövde orantıları ve genel yerleşim planı sabit kalmak üzere, iç mekânı tamamen sizin vizyonunuza göre kurgulanarak inşa edilir. Seri üretimde bir modeli olduğu gibi almak zorundasınız; bizde yatın karakterini siz belirlersiniz.",
       "Bu bir opsiyon listesi değil, çalışma biçimimizdir: tasarım aşamasından anahtar teslimine kadar her süreç kendi tersanemizde, sizinle birlikte yürütülür.",
     ],
     en: [
-      "Every hull in our fleet is built with its proportions and general arrangement fixed, and its interior worked entirely to the owner's vision. Series production asks you to take a model as it comes; here you set the character of the boat.",
+      "Every yacht in our fleet is built with its proportions and general arrangement fixed, and its interior worked entirely to the owner's vision. Series production asks you to take a model as it comes; here you set the character of the boat.",
       "This is not an options list, it is how we work: from the first drawings to handover, every stage runs at our own yard, with you.",
     ],
   },
@@ -587,14 +587,14 @@ export const bespoke: BespokeContent = {
     {
       title: { tr: "Kullanım senaryosu", en: "How she will be used" },
       body: {
-        tr: "Özel kullanım, charter ya da kurumsal davet: teknenin sosyal alanları ve kamara düzeni kullanım biçiminize göre planlanır.",
-        en: "Private use, charter or corporate hospitality: the social spaces and cabin layout are planned around how the boat will live.",
+        tr: "Özel kullanım, charter ya da kurumsal davet: yatın sosyal alanları ve kamara düzeni kullanım biçiminize göre planlanır.",
+        en: "Private use, charter or corporate hospitality: the social spaces and cabin layout are planned around how the yacht will live.",
       },
     },
   ],
   yachtNote: {
-    tr: "Bu teknenin gövde orantıları ve genel yerleşim planı sabittir; iç mimarisi — malzeme, renk, kumaş, aydınlatma ve donanım — tamamen size göre şekillenir.",
-    en: "This hull's proportions and general arrangement are fixed; the interior — materials, colours, fabrics, lighting and fit-out — is shaped entirely to your brief.",
+    tr: "Bu yatın gövde orantıları ve genel yerleşim planı sabittir; iç mimarisi — malzeme, renk, kumaş, aydınlatma ve donanım — tamamen size göre şekillenir.",
+    en: "This yacht's proportions and general arrangement are fixed; the interior — materials, colours, fabrics, lighting and fit-out — is shaped entirely to your brief.",
   },
 };
 

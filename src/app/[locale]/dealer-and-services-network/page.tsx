@@ -94,11 +94,14 @@ export default async function NetworkPage({ params, searchParams }: Props) {
         <section className="shell pt-24 pb-4">
           <div className="border border-rule bg-card px-8 py-16 text-center lg:px-16 lg:py-24">
             <p className="eyebrow">{t("cta.eyebrow")}</p>
-            <h2 className="mx-auto mt-7 max-w-[20ch] text-[32px] leading-[1.15] font-extralight text-pretty text-ink lg:text-[52px]">
+            <h2 className="mx-auto mt-7 max-w-[26ch] text-[30px] leading-[1.18] font-extralight text-pretty text-ink lg:text-[46px]">
               {t("cta.title")}
             </h2>
-            <p className="mx-auto mt-7 max-w-[56ch] text-[17px] leading-[2] text-pretty text-body">
+            <p className="mx-auto mt-8 max-w-[60ch] text-[17px] leading-[2] text-pretty text-body">
               {t("cta.body")}
+            </p>
+            <p className="mx-auto mt-5 max-w-[60ch] text-[17px] leading-[2] text-pretty text-body">
+              {t("cta.bodyClosing")}
             </p>
             <Link
               href={primaryRoutes.contact}

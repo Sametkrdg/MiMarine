@@ -150,6 +150,17 @@ projeler ve Ön Sipariş sayfası.
       üniversite adları **sitede hiçbir yerde geçmiyor**; istenmediği için
       eklenmedi. Katalogdaki öğrenci isim listesi ve fotoğrafları da
       kullanılmadı.
+- [x] ~~"tekne" → "yat"~~ — sitedeki tüm "tekne" kullanımları "yat" oldu,
+      İngilizce tarafta da karşılıkları (`boat` / `vessel` → `yacht`) birlikte
+      değişti. **Bilerek değiştirilmeyen üç yer var**, çünkü hepsi ticari iş
+      teknesinden söz ediyor ve "yat" demek cümleyi yanlış yapardı:
+      site açıklaması ("balıkçı gemileri, ticari iş tekneleri ve özel yatlar"),
+      Ön Sipariş formundaki "Ticari / iş teknesi" seçeneği ve ana sayfadaki
+      "balıkçı gemilerinden ticari teknelere uzanan tecrübemiz" cümlesi.
+      Yine de değişsin istersen söyle.
+- [x] ~~Bayilik çağrısı~~ — bayi sayfasındaki başvuru butonunun üstündeki metin
+      client'ın gönderdiği "küresel iş ortaklığı" metniyle değiştirildi (TR +
+      EN).
 
 ---
 

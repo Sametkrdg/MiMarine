@@ -78,7 +78,7 @@ const yacht = defineType({
   title: "Yat",
   type: "document",
   fields: [
-    defineField({ name: "name", title: "Model / tekne adı", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "name", title: "Model / yat adı", type: "string", validation: (r) => r.required() }),
     defineField({
       name: "slug",
       title: "URL adresi",
@@ -90,9 +90,9 @@ const yacht = defineType({
       name: "statuses",
       title: "Durum",
       description:
-        "Bu tekne hangi filo sekmelerinde görünsün? Birden fazla seçilebilir — " +
-        "örneğin teslime hazır bir tekne aynı anda yeni sipariş için de üretilebiliyorsa " +
-        "ikisini birden işaretleyin. İlk işaretlediğiniz sekme, tekne sayfasındaki " +
+        "Bu yat hangi filo sekmelerinde görünsün? Birden fazla seçilebilir — " +
+        "örneğin teslime hazır bir yat aynı anda yeni sipariş için de üretilebiliyorsa " +
+        "ikisini birden işaretleyin. İlk işaretlediğiniz sekme, yat sayfasındaki " +
         "geri bağlantısının gittiği yerdir.",
       type: "array",
       of: [defineArrayMember({ type: "string" })],
